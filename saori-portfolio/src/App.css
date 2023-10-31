@@ -2,21 +2,66 @@
   position: relative;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
   overflow: hidden;
   background-color: rgb(27 26 34);
+  color: whitesmoke;
 }
 
 .openai-container {
-  position: absolute;
   top: 0;
   left: 0;
   z-index: 10;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  position: relative;
+  display: block;
+}
+
+/* For screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  .title {
+    padding: 0 50px;
+  }
+
+  .about-me {
+    padding-right: 30px;
+  }
+}
+
+/* For screens between 600px and 900px */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  .title {
+    padding: 0 70px;
+  }
+  .about-me {
+    padding-right: 30px;
+  }
+}
+
+/* For screens between 901px and 1200px */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  .title {
+    padding: 0 90px;
+  }
+  .about-me {
+    padding-right: 30px;
+  }
+}
+
+/* For screens larger than 1200px */
+@media only screen and (min-width: 1201px) {
+  .title {
+    padding: 0 300px;
+  }
+  .about-me {
+    padding-right: 200px;
+  }
+}
+
+.intro {
+  display: block;
+  position: relative;
 }
 
 #prompt {
@@ -37,6 +82,7 @@ button {
   margin-top: 10px;
   width: 80%;
   padding: 10px;
+  position: relative;
   border: 1px solid #ccc;
 }
 
@@ -45,11 +91,116 @@ button {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
   100% {
     transform: translateY(0);
   }
+}
+
+:root {
+  --fontSizes-XXL: 4.8rem;
+  --fontSizes-XL: 4rem;
+  --fontSizes-L: 3.2rem;
+  --fontSizes-M: 2.6rem;
+  --fontSizes-S: 2rem;
+  --fontSizes-XS: 1.6rem;
+  --fontSizes-XXS: 1.4rem;
+  --fontSizes-XXXS: 1.1rem;
+  --lineHeights-XL: 5rem;
+  --lineHeights-L: 4.2rem;
+  --lineHeights-M: 3.6rem;
+  --lineHeights-S: 3rem;
+  --lineHeights-XS: 2.6rem;
+  --lineHeights-XXS: 180%;
+}
+
+h2 {
+  font-size: var(--fontSizes-XXL);
+  /* rest of your styles */
+}
+
+/* For screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  h2 {
+    font-size: var(--fontSizes-S);
+    line-height: var(--lineHeights-S);
+  }
+  p {
+    font-size: var(--fontSizes-XXS);
+  }
+}
+
+/* For screens between 600px and 900px */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  h2 {
+    font-size: var(--fontSizes-M);
+    line-height: var(--lineHeights-M);
+  }
+  p {
+    font-size: var(--fontSizes-XXS);
+  }
+}
+
+/* For screens between 901px and 1200px */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  h2 {
+    font-size: var(--fontSizes-L);
+    line-height: var(--lineHeights-L);
+  }
+  p {
+    font-size: var(--fontSizes-XS);
+  }
+}
+
+/* For screens larger than 1200px */
+@media only screen and (min-width: 1201px) {
+  h2 {
+    font-size: var(--fontSizes-XL);
+    line-height: var(--lineHeights-XL);
+  }
+  p {
+    font-size: var(--fontSizes-S);
+  }
+}
+
+/* For screens between 600px and 900px */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  h2 {
+    font-size: var(--fontSizes-M);
+  }
+}
+
+/* For screens between 901px and 1200px */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  h2 {
+    font-size: var(--fontSizes-L);
+  }
+}
+
+/* For screens larger than 1200px */
+@media only screen and (min-width: 1201px) {
+  h2 {
+    font-size: var(--fontSizes-XL);
+  }
+}
+
+h2 {
+  font-weight: 300;
+  font-family: 'Yantramanav', sans-serif;
+  
+  /* Change font color to a light color */
+  color: #f0f0f0;
+  margin-bottom: 0;
+  /* Add outer glow */
+  text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
+}
+
+p {
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 200;
+  text-shadow: 0 0 10px #000000;
+  line-height: 1.5em;
 }
 
 .wedge {
@@ -57,41 +208,10 @@ button {
   position: absolute;
   border-radius: 50%;
   width: min(1440px, 100%);
-  aspect-ratio: 1 / 1;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;  aspect-ratio: 1 / 1;
   top: max(-720px, -50vw);
   right: max(-720px, -50vw);
   background-color: rgb(250, 250, 250);
   filter: blur(4px);
-}
-
-
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

@@ -1,34 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const colors = ["#d4acff", "#7ab8ff", "#ffffff"];
+const colors = ["#d4acff", "#7ab8ff", "#cddac3"];
 
 function getRandomColor() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-function getRandomPosition() {
+function getRandomWidth() {
+  // Randomize width between 20% to 40%
+  return `${20 + Math.random() * 30}vw`;
+}
+
+function getRandomPosition(index) {
+  const gridSize = 2;
+  const cellSize = 150 / gridSize;
+  const row = Math.floor(index / gridSize);
+  const column = index % gridSize;
   return {
-    left: `${Math.random() * 100}vw`,
-    top: `${Math.random() * 100}vh`
+    left: `${cellSize * column}vw`,
+    top: `${cellSize * row}vh`
   };
 }
 
-function getRandomWidth() {
-  // Randomize width between 50% to 100%
-  return `${50 + Math.random() * 50}vw`;
-}
-
 function AnimatedBackground() {
+  useEffect(() => {
+    const wedges = document.querySelectorAll('.wedge');
+    wedges.forEach(wedge => {
+      setTimeout(() => {
+        wedge.style.opacity = '1';
+      }, 300); // Delay of 1 second
+    });
+  }, []);
   return (
     <div>
-      {colors.map((_, index) => {
+      {Array(3).fill().map((_, index) => {
         const randomColor = getRandomColor();
         return (
           <div 
             key={index} 
             className="wedge" 
             style={{ 
-              ...getRandomPosition(),
+              ...getRandomPosition(index),
               width: getRandomWidth(),
               boxShadow: `rgb(250, 250, 250) 0px 0px 100px -40px inset, ${randomColor} 0px 0px 30vw 30vw inset, ${randomColor} 0px 0px 70px 40px`
             }} 
