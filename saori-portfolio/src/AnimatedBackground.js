@@ -1,56 +1,36 @@
-// src/AnimatedBackground.js
-import React, { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React from 'react';
 
-const AnimatedCircle = ({ x, y }) => {
-  const animationProps = useSpring({
-    from: { opacity: 1, scale: 0 },
-    to: { opacity: 0, scale: 1 },
-    config: {
-      tension: 200,
-      friction: 5,
-      duration: 3000,
-    },
-    onRest: () => {},
-  });
+const colors = ["#d4acff", "#7ab8ff", "#ffffff"];
 
-  return (
-    <animated.div
-      style={{
-        position: 'absolute',
-        top: y,
-        left: x,
-        width: '50px',
-        height: '50px',
-        backgroundColor: 'lightblue',
-        borderRadius: '50%',
-        transform: animationProps.scale.interpolate(scale => `scale(${scale})`),
-        opacity: animationProps.opacity,
-      }}
-    />
-  );
-};
+function getRandomColor() {
+  return colors[Math.floor(Math.random() * colors.length)];
+}
 
-const AnimatedBackground = () => {
-  const [circles, setCircles] = useState([]);
-
-  const addCircle = (x, y) => {
-    setCircles([...circles, { x, y }]);
-    setTimeout(() => {
-      setCircles(c => c.slice(1)); // Remove the circle after some time
-    }, 3000);
-  };
-
-  return (
-    <div
-      style={{ position: 'relative', width: '100vw', height: '100vh' }}
-      onClick={(e) => addCircle(e.clientX, e.clientY)}
-    >
-      {circles.map((circle, index) => (
-        <AnimatedCircle key={index} x={circle.x} y={circle.y} />
-      ))}
-    </div>
-  );
-};
+function getRandomPosition() {
+    return {
+      left: `${Math.random() * 100}vw`,
+      top: `${Math.random() * 100}vh`
+    };
+  }
+  
+  function AnimatedBackground() {
+    return (
+      <div>
+        {colors.map((_, index) => (
+          <div 
+            key={index} 
+            className="wedge" 
+            style={{ 
+              ...getRandomPosition(),
+              backgroundColor: getRandomColor(), 
+              width: '100px', 
+              height: '100px' 
+            }} 
+          />
+        ))}
+      </div>
+    );
+  }
+  
 
 export default AnimatedBackground;

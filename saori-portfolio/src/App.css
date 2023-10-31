@@ -1,11 +1,63 @@
 .App {
-  text-align: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgb(27 26 34);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.openai-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
+
+#prompt {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  resize: none;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.openai-response {
+  margin-top: 10px;
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.wedge {
+  animation: float 3s infinite;
+  position: absolute;
+  border-radius: 50%;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
