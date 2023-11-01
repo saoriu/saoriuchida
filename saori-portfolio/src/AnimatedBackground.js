@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const colors = ["#6D70A6", "#C1C7D9", "#37648C"];
+const colors = ["#6D70A6", "#ebb66a", "#37648C"];
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -11,7 +11,6 @@ function shuffleArray(array) {
 }
 
 function getRandomWidth() {
-  // Randomize width between 20% to 40%
   return `${20 + Math.random() * 30}vw`;
 }
 
@@ -32,7 +31,7 @@ function AnimatedBackground() {
     wedges.forEach(wedge => {
       setTimeout(() => {
         wedge.style.opacity = '1';
-      }, 300); // Delay of 300ms
+      }, 300);
     });
   }, []);
   

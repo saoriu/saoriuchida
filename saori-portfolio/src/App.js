@@ -1,6 +1,7 @@
 import * as React from 'react'
 import './App.css';
 import AnimatedBackground from './AnimatedBackground';
+import OpenAiForm from './OpenAiForm';
 
 
 
@@ -14,9 +15,13 @@ function App() {
       <div className='title'>
       <div className='intro'>
       <h2>Hi! I'm Saori Uchida, a web designer and data analyst based in New York City 👩🏻‍💻</h2>
-      <p className='about-me'>Welcome to my corner of the internet! I designed and developed this site using React and animated it with React Spring.</p>
+      <p className='about-me'>I designed and developed this website using React.</p>
       </div>
+      <div className='content'>
       <div className="openai-container">
+        <OpenAiForm />
+        </div>
+        
         </div>
       </div>
     </div>
