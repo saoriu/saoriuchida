@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const colors = ["#6D70A6", "#ebb66a", "#37648C"];
 
@@ -26,32 +26,43 @@ function getRandomPosition(index) {
 }
 
 function AnimatedBackground() {
+  // useState with an initializer function
+  const [wedges, setWedges] = useState(() => {
+    // This code will only run once when the component is mounted
+    const shuffledColors = shuffleArray([...colors]);
+    return Array(3).fill().map((_, index) => ({
+      color: shuffledColors[index],
+      position: getRandomPosition(index),
+      width: getRandomWidth(),
+    }));
+  });
+
   useEffect(() => {
-    const wedges = document.querySelectorAll('.wedge');
-    wedges.forEach(wedge => {
+    // Opacity effect when the component mounts
+    const wedgesElements = document.querySelectorAll('.wedge');
+    wedgesElements.forEach(wedge => {
       setTimeout(() => {
         wedge.style.opacity = '1';
       }, 300);
     });
-  }, []);
+  }, []); // Empty dependency array ensures this effect only runs once
+
   
   const shuffledColors = shuffleArray([...colors]);
 
   return (
     <div>
-      {Array(3).fill().map((_, index) => {
-        return (
-          <div 
-            key={index} 
-            className="wedge" 
-            style={{ 
-              ...getRandomPosition(index),
-              width: getRandomWidth(),
-              boxShadow: `rgb(250, 250, 250) 0px 0px 100px -40px inset, ${shuffledColors[index]} 0px 0px 30vw 30vw inset, ${shuffledColors[index]} 0px 0px 70px 40px`
-            }} 
-          />
-        );
-      })}
+      {wedges.map((wedge, index) => (
+        <div 
+          key={index} 
+          className="wedge" 
+          style={{ 
+            ...wedge.position,
+            width: wedge.width,
+            boxShadow: `rgb(250, 250, 250) 0px 0px 100px -40px inset, ${wedge.color} 0px 0px 30vw 30vw inset, ${wedge.color} 0px 0px 70px 40px`
+          }} 
+        />
+      ))}
     </div>
   );
 }

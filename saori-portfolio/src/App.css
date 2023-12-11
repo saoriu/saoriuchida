@@ -9,6 +9,10 @@
   color: whitesmoke;
 }
 
+article {
+  background-color: rgb(27 26 34);
+}
+
 .openai-container {
   top: 0;
   left: 0;
@@ -202,6 +206,48 @@ p {
   text-shadow: 0 0 10px #000000;
   line-height: 1.5em;
 }
+
+.content {
+  position: relative;
+  z-index: 10;
+}
+
+.ask-about-me-btn {
+  color: var(--colors-steel100);
+  border: none;
+  border-radius: var(--radii-r8);
+  padding: 2px;
+  background-clip: content-box;
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+}
+
+.ask-about-me-btn span {
+padding: 10px 20px;
+}
+
+.ask-about-me-btn:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(330deg, #fff59a 20%, #ff6d6d 100%);
+  transition: filter 250ms ease-out 0s;
+}
+
+.ask-about-me-btn:hover:before {
+  background: linear-gradient(90deg, blue, purple);
+  opacity: 1;
+}
+
+.ask-about-me-btn:active:before {
+  opacity: 0.6;
+}
+
 
 .wedge {
   animation: float 3s infinite;

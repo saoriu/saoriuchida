@@ -6,9 +6,9 @@ import OpenAiForm from './OpenAiForm';
 
 
 
+
 function App() {
 
-  
   return (
     <div className="App">
       <AnimatedBackground />
@@ -18,10 +18,14 @@ function App() {
       <p className='about-me'>I designed and developed this website using React.</p>
       </div>
       <div className='content'>
-      <div className="openai-container">
-        <OpenAiForm />
-        </div>
-        
+{/* Conditionally render the OpenAiForm based on showForm state */}
+  <div className="openai-container">
+    <div className="openai-header">
+      <h3>AI About Me</h3>
+      <p>Built an AI assistant that will answer questions about me!</p>
+    </div>
+    <OpenAiForm />
+  </div>
         </div>
       </div>
     </div>
@@ -29,3 +33,6 @@ function App() {
 }
 
 export default App;
+
+
+
