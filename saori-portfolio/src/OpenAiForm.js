@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
-
-const OpenAiForm = ({ setIsLoading }) => {
+const OpenAiForm = () => {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // Define isLoading state here
   const textareaRef = useRef(null);
-  
   
   useEffect(() => {
     if (textareaRef.current) {
@@ -27,7 +26,6 @@ const OpenAiForm = ({ setIsLoading }) => {
           'Content-Type': 'application/json'
         }
       });
-      
 
       setResponse(result.data.choices[0].message.content);
     } catch (error) {
@@ -39,21 +37,21 @@ const OpenAiForm = ({ setIsLoading }) => {
   };
 
   return (
-<div className='openai'>
-    <form className='form-ai' onSubmit={handleSubmit}>
-      <textarea 
-        id="prompt"
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        ref={textareaRef}
-        placeholder="Ask my AI about me!"
-      ></textarea>
-            <button type="submit">➡</button>
-    </form>
-    <div className="openai-response">
-      {response}
+    <div className={`openai ${isLoading ? 'loading' : ''}`}>
+      <form className="form-ai" onSubmit={handleSubmit}>
+        <textarea 
+          id="prompt"
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          ref={textareaRef}
+          placeholder="Ask my AI about me!"
+        ></textarea>
+        <button type="submit">➡</button>
+      </form>
+      <div className="openai-response">
+        {response}
+      </div>
     </div>
-  </div>
   );
 };
 

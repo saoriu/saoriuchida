@@ -18,14 +18,19 @@ article {
 }
 
 .openai {
-  max-width: 600px;
+  max-width: 800px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  transition: opacity 1.3s ease;
 }
 
 .form-ai {
   display: flex;
+}
+
+.openai-container {
+  position: absolute;
 }
 
 .openai textarea {
@@ -390,6 +395,11 @@ p {
   font-size: 18px;
   color: var(--text-color);
   line-height: 1.6;
+}
+
+.openai.loading {
+  opacity: 0 !important;
+  transition: opacity 1.3s ease;
 }
 
 .modal-hidden {
