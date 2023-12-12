@@ -4,28 +4,78 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: rgb(27 26 34);
   color: whitesmoke;
 }
 
+body {
+  background-color: rgb(27 26 34);
+
+}
 article {
   background-color: rgb(27 26 34);
 }
 
-.openai-container {
-  top: 0;
-  left: 0;
-  z-index: 10;
+.openai {
+  max-width: 600px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-ai {
+  display: flex;
+}
+
+.openai textarea {
   width: 100%;
-  position: relative;
-  display: block;
+  padding: 10px;
+  color: #f0f0f0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+    border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+}
+
+.openai button {
+  padding: 10px 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #227dcd;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.openai button:hover {
+  background-color: #2785d8;
+}
+
+.openai-response {
+  margin-top: 20px;
+  text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
 }
 
 /* For screens smaller than 600px */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 449px) {
   .title {
-    padding: 0 50px;
+    padding: 50px 50px;
+  }
+
+  .App {
+    height: 100%;
+  }
+
+  .about-me {
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 600px) {
+  .title {
+    padding: 50px 50px;
   }
 
   .about-me {
@@ -71,7 +121,6 @@ article {
 #prompt {
   width: 80%;
   padding: 10px;
-  margin-bottom: 10px;
   font-size: 16px;
   resize: none;
 }
@@ -80,14 +129,6 @@ button {
   padding: 8px 12px;
   font-size: 16px;
   cursor: pointer;
-}
-
-.openai-response {
-  margin-top: 10px;
-  width: 80%;
-  padding: 10px;
-  position: relative;
-  border: 1px solid #ccc;
 }
 
 @keyframes float {
@@ -189,6 +230,79 @@ h2 {
   }
 }
 
+.hover-underline-animation__1, .hover-underline-animation__2, .hover-underline-animation__3 {
+  text-decoration: none;
+  cursor: pointer;
+  transition: text-shadow 0.3s ease-in-out;
+  mix-blend-mode: screen;
+}
+
+.hover-underline-animation__1:hover {
+  animation: glow1 5s infinite;
+}
+
+.hover-underline-animation__2:hover {
+  animation: glow2 5s infinite;
+}
+
+.hover-underline-animation__3:hover {
+  animation: glow3 5s infinite;
+}
+
+@keyframes glow1 {
+  0%, 100% {
+    text-shadow: 0 0 10px rgb(153, 133, 255), 0 0 20px rgb(153, 133, 255), 0 0 30px rgb(153, 133, 255), 0 0 40px rgb(153, 133, 255);
+  }
+  20% {
+    text-shadow: 0 0 12px rgb(153, 133, 255), 0 0 22px rgb(153, 133, 255), 0 0 32px rgb(153, 133, 255), 0 0 42px rgb(153, 133, 255);
+  }
+  40% {
+    text-shadow: 0 0 15px rgb(153, 133, 255), 0 0 25px rgb(153, 133, 255), 0 0 35px rgb(153, 133, 255), 0 0 45px rgb(153, 133, 255);
+  }
+  60% {
+    text-shadow: 0 0 12px rgb(153, 133, 255), 0 0 22px rgb(153, 133, 255), 0 0 32px rgb(153, 133, 255), 0 0 42px rgb(153, 133, 255);
+  }
+  80% {
+    text-shadow: 0 0 10px rgb(153, 133, 255), 0 0 20px rgb(153, 133, 255), 0 0 30px rgb(153, 133, 255), 0 0 40px rgb(153, 133, 255);
+  }
+}
+
+@keyframes glow2 {
+  0%, 100% {
+    text-shadow: 0 0 10px rgb(37, 143, 237), 0 0 20px rgb(37, 143, 237), 0 0 30px rgb(37, 143, 237), 0 0 40px rgb(37, 143, 237);
+  }
+  20% {
+    text-shadow: 0 0 12px rgb(37, 143, 237), 0 0 22px rgb(37, 143, 237), 0 0 32px rgb(37, 143, 237), 0 0 42px rgb(37, 143, 237);
+  }
+  40% {
+    text-shadow: 0 0 15px rgb(37, 143, 237), 0 0 25px rgb(37, 143, 237), 0 0 35px rgb(37, 143, 237), 0 0 45px rgb(37, 143, 237);
+  }
+  60% {
+    text-shadow: 0 0 12px rgb(37, 143, 237), 0 0 22px rgb(37, 143, 237), 0 0 32px rgb(37, 143, 237), 0 0 42px rgb(37, 143, 237);
+  }
+  80% {
+    text-shadow: 0 0 10px rgb(37, 143, 237), 0 0 20px rgb(37, 143, 237), 0 0 30px rgb(37, 143, 237), 0 0 40px rgb(37, 143, 237);
+  }
+}
+
+@keyframes glow3 {
+  0%, 100% {
+    text-shadow: 0 0 10px rgb(235, 182, 106), 0 0 20px rgb(235, 182, 106), 0 0 30px rgb(235, 182, 106), 0 0 40px rgb(235, 182, 106);
+  }
+  20% {
+    text-shadow: 0 0 12px rgb(235, 182, 106), 0 0 22px rgb(235, 182, 106), 0 0 32px rgb(235, 182, 106), 0 0 42px rgb(235, 182, 106);
+  }
+  40% {
+    text-shadow: 0 0 15px rgb(235, 182, 106), 0 0 25px rgb(235, 182, 106), 0 0 35px rgb(235, 182, 106), 0 0 45px rgb(235, 182, 106);
+  }
+  60% {
+    text-shadow: 0 0 12px rgb(235, 182, 106), 0 0 22px rgb(235, 182, 106), 0 0 32px rgb(235, 182, 106), 0 0 42px rgb(235, 182, 106);
+  }
+  80% {
+    text-shadow: 0 0 10px rgb(235, 182, 106), 0 0 20px rgb(235, 182, 106), 0 0 30px rgb(235, 182, 106), 0 0 40px rgb(235, 182, 106);
+  }
+}
+
 h2 {
   font-weight: 300;
   font-family: 'Yantramanav', sans-serif;
@@ -197,19 +311,20 @@ h2 {
   color: #f0f0f0;
   margin-bottom: 0;
   /* Add outer glow */
-  text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
 }
 
 p {
   font-family: 'Yantramanav', sans-serif;
   font-weight: 200;
-  text-shadow: 0 0 10px #000000;
   line-height: 1.5em;
 }
 
+.intro {
+  text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
+
+}
 .content {
   position: relative;
-  z-index: 10;
 }
 
 .ask-about-me-btn {
@@ -222,6 +337,104 @@ p {
   display: inline-block;
   z-index: 0;
 }
+
+:root {
+  --primary-color: #fafafa; /* A vibrant blue */
+  --secondary-color: #fafafa; /* Light grey for backgrounds */
+  --text-color: #fafafa; /* Dark grey for text */
+  --modal-border-radius: 15px;
+  --modal-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.modal-section {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #2b2b37;
+  border-radius: var(--modal-border-radius);
+  transition: transform 0.3s ease;
+}
+
+.modal-section:hover {
+  transform: translateY(-5px);
+}
+
+.modal-subtitle {
+  font-size: 22px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.react-logo {
+  width: 150px;
+}
+
+.code-frame {
+  background-color: #000000;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #ffffff;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.modal-text {
+  font-size: 18px;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.modal-hidden {
+  display: none;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.modal-visible {
+  display: block;
+  animation: fadeIn 0.5s, scaleUp 0.5s;
+}
+
+.screenshot {
+  width: 100%
+}
+.modal-badge {
+  filter: invert(1);
+  width: 130px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); }
+  to { transform: scale(1); }
+}
+
+.modal-closing {
+  animation: fadeOut 0.5s, scaleDown 0.5s;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes scaleDown {
+  from { transform: scale(1); }
+  to { transform: scale(0.9); }
+}
+
 
 .ask-about-me-btn span {
 padding: 10px 20px;
@@ -256,10 +469,28 @@ padding: 10px 20px;
   width: min(1440px, 100%);
   opacity: 0;
   transition: opacity 1.5s ease-in-out;  aspect-ratio: 1 / 1;
+  transition: width 1.5s ease-in-out;
+  transition: color 1.5s ease-in-out;
   top: max(-720px, -50vw);
   right: max(-720px, -50vw);
   background-color: rgb(250, 250, 250);
   filter: blur(4px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.wedge.pulse {
+  animation: pulse 2s infinite;
 }
 
 .dockContainer {

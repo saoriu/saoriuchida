@@ -11,9 +11,19 @@ function shuffleArray(array) {
 }
 
 function getRandomWidth() {
-  return `${20 + Math.random() * 30}vw`;
-}
+  const screenWidth = window.innerWidth;
+  let width;
 
+  if (screenWidth < 600) {
+    width = `${30 + Math.random() * 20}vw`;
+  } else if (screenWidth < 1200) {
+    width = `${20 + Math.random() * 20}vw`;
+  } else {
+    width = `${20 + Math.random() * 15}vw`;
+  }
+
+  return width;
+}
 function getRandomPosition(index) {
   const gridSize = 2;
   const cellSize = 150 / gridSize;
@@ -25,9 +35,9 @@ function getRandomPosition(index) {
   };
 }
 
-function AnimatedBackground() {
+function AnimatedBackground({ isLoading }) {
   // useState with an initializer function
-  const [wedges, setWedges] = useState(() => {
+  const [wedges] = useState(() => {
     // This code will only run once when the component is mounted
     const shuffledColors = shuffleArray([...colors]);
     return Array(3).fill().map((_, index) => ({
@@ -47,23 +57,20 @@ function AnimatedBackground() {
     });
   }, []); // Empty dependency array ensures this effect only runs once
 
-  
-  const shuffledColors = shuffleArray([...colors]);
-
   return (
     <div>
-      {wedges.map((wedge, index) => (
-        <div 
-          key={index} 
-          className="wedge" 
-          style={{ 
-            ...wedge.position,
-            width: wedge.width,
-            boxShadow: `rgb(250, 250, 250) 0px 0px 100px -40px inset, ${wedge.color} 0px 0px 30vw 30vw inset, ${wedge.color} 0px 0px 70px 40px`
-          }} 
-        />
-      ))}
-    </div>
+    {wedges.map((wedge, index) => (
+      <div 
+        key={index} 
+        className={`wedge ${isLoading ? 'pulse' : ''}`} // Add the 'pulse' class when isLoading is true
+        style={{ 
+          ...wedge.position,
+          width: wedge.width,
+          boxShadow: `rgb(250, 250, 250) 0px 0px 100px -40px inset, ${wedge.color} 0px 0px 30vw 30vw inset, ${wedge.color} 0px 0px 70px 40px`
+        }} 
+      />
+    ))}
+  </div>
   );
 }
 
