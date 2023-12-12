@@ -60,7 +60,19 @@ article {
 
 .openai-response {
   margin-top: 20px;
-  text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
+  background: #ffffffe3;
+  color: #1b1a22;
+  padding: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  max-width: 800px;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 /* For screens smaller than 600px */
@@ -417,7 +429,7 @@ p {
   width: 100%
 }
 .modal-badge {
-  
+  filter: invert(1);
   width: 130px;
 }
 

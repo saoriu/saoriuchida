@@ -48,7 +48,7 @@ const OpenAiForm = () => {
         ></textarea>
         <button type="submit">➡</button>
       </form>
-      <div className="openai-response">
+      <div className={`openai-response ${response ? '' : 'hidden'}`}>
         {response}
       </div>
     </div>
