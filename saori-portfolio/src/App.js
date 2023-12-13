@@ -154,7 +154,7 @@ const OpenAiForm = ({ setIsLoading }) => {
     e.preventDefault();
     setIsLoading(true);
 
-    const awsApiGatewayEndpoint = "https://nh5dhpskte.execute-api.us-east-2.amazonaws.com/OpenAI/openai";
+    const awsApiGatewayEndpoint = "https://nh5dhpskte.execute-api.us-east-2.amazonaws.com/OpenAI/openai"; // yeah i have my own endpoint ;)
 
     try {
       const result = await axios.post(awsApiGatewayEndpoint, JSON.stringify({ prompt }), {
