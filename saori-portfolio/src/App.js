@@ -198,7 +198,7 @@ export default OpenAiForm;`}
 <div className='modal-section'>
   <h4 className='modal-subtitle'>Leveraging AI</h4>
   <p className='modal-text'>
-  Although over-hyped, AI has serious potential. Generative language models like GPT-4 are changing how we interact with digital content. By leveraging these models and with my background in data science and my experience with Python, I can sift through the hype to leverage AI solutions that create valuable experiences for users. This project exemplifies my ability to create dynamic, responsive, and personalized digital touchpoints that engage users in meaningful ways.</p>
+  Although over-hyped, AI has serious potential. Generative language models like GPT-4 are changing how we interact with digital content. By leveraging these models and with my background in UX design and my experience with Python, I can sift through the hype to create valuable experiences for users. This project exemplifies my ability to create dynamic, responsive, and personalized digital touchpoints that engage users in meaningful ways.</p>
 </div>
 </Modal>
 
