@@ -41,7 +41,7 @@ article {
 
 .openai-container {
   position: absolute;
-  background: linear-gradient(45deg, #d6d7fefc, #7f87bdfc);
+  background: radial-gradient(#7f87bd, #c9b6fffc);
   padding: 30px;
   top: 50px;
   right: 50%;
@@ -609,14 +609,13 @@ padding: 10px 20px;
   opacity: 0.6;
 }
 
-
 .wedge {
   animation: float 3s infinite;
   position: absolute;
   border-radius: 50%;
   width: min(1440px, 100%);
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;  aspect-ratio: 1 / 1;
+  transition: opacity 3s ease-in-out;  aspect-ratio: 1 / 1;
   transition: width 1.5s ease-in-out;
   transition: color 1.5s ease-in-out;
   top: max(-720px, -50vw);

@@ -50,11 +50,11 @@ function AnimatedBackground({ isLoading }) {
   useEffect(() => {
     // Opacity effect when the component mounts
     const wedgesElements = document.querySelectorAll('.wedge');
-    wedgesElements.forEach(wedge => {
-      setTimeout(() => {
+    setTimeout(() => {
+      wedgesElements.forEach(wedge => {
         wedge.style.opacity = '1';
-      }, 300);
-    });
+      });
+    }, 0); // Delay of 0ms
   }, []); // Empty dependency array ensures this effect only runs once
 
   return (
@@ -66,6 +66,8 @@ function AnimatedBackground({ isLoading }) {
         style={{ 
           ...wedge.position,
           width: wedge.width,
+          opacity: 0, // Initial opacity is 0
+          transition: 'opacity 1s ease-in-out', // Add transition effect
           boxShadow: `rgb(250, 250, 250) 0px 0px 100px -40px inset, ${wedge.color} 0px 0px 30vw 30vw inset, ${wedge.color} 0px 0px 70px 40px`
         }} 
       />

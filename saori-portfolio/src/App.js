@@ -83,9 +83,9 @@ function App() {
 </Draggable>
       <div className='title'>
       <div className='intro'>
-      <h2>Hi! I'm Saori Uchida, a web designer and data analyst based in New York City 👩🏻‍💻</h2>
+      <h2>Hi! I'm Saori Uchida, a web designer, data analyst, and big sister based in New York City 👩🏻‍💻</h2>
       <p className='about-me'>
-        I built this website using 
+        I developed this website using 
         <span className='hover-underline-animation__1' onClick={() => setReactModalIsOpen(true)} style={{color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px'}}> React</span>, 
         and integrated it with 
         <span className='hover-underline-animation__2' onClick={() => setOpenAiModalIsOpen(true)} style={{color: 'rgb(37 143 237)', cursor: 'pointer', textShadow: '0 0 12px #0071d5'}}> OpenAI </span> 
@@ -126,7 +126,7 @@ I found that transitioning to React Hooks from traditional React patterns was a 
   <div className='modal-section'>
   <h3 className='modal-subtitle'>Project Overview</h3>
   <p className='modal-text'>
-  In this project, I demonstrated my ability to integrate advanced AI technologies by connecting a React application with OpenAI's GPT-4. I went beyond simple integration and leveraged the fine-tuning capabilities of OpenAI to create a personalized model. This model was trained on data about my personal and professional experiences, enabling it to generate responses and content that are uniquely tailored to represent my digital persona.
+  In this project, I demonstrated my ability to integrate AI technologies by connecting a React application with OpenAI's GPT-4. I went beyond simple integration and leveraged the fine-tuning capabilities of OpenAI to create a personalized model. This model was trained on data about my personal and professional experiences, enabling it to generate responses and content that are uniquely tailored to represent my digital persona.
   </p>
 </div>
 <div className='modal-section'>
