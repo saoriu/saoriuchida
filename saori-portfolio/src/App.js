@@ -9,6 +9,11 @@ import Modal from 'react-modal';
 import Draggable from 'react-draggable';
 import Collapsible from 'react-collapsible';
 import LinkedInLogo from './linkedin.png';
+import farfetch from './farfetch.png';
+import eqx from './eqx.svg';
+import un from './un.svg';
+import maxell from './maxell.png';
+import sg from './sg.svg';
 
 
 
@@ -217,7 +222,18 @@ export default OpenAiForm;`}
 </Modal>
 
       </div>
+      
       <div className='content'>
+      <h3>WORKED AT</h3>
+      <div className='exp'>
+      <img src={farfetch} alt="farfetch" className="logo" />
+      <img src={sg} alt="sg" className="logo" />
+      <img src={eqx} alt="equinox" className="logo" />
+      <img src={un} alt="un" className="un-logo" />
+      <img src={maxell} alt="maxell" className="logo" />
+
+
+        </div>
         </div>
       </div>
     </div>
