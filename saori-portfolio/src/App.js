@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import AnimatedBackground from './AnimatedBackground';
 import OpenAiForm from './OpenAiForm';
@@ -6,6 +6,8 @@ import OpenAIBadge from './openaibadge.svg';
 import ReactLogo from './logo.svg';
 import Screenie from './devving.png';
 import Modal from 'react-modal';
+import Draggable from 'react-draggable';
+import Collapsible from 'react-collapsible';
 import LinkedInLogo from './linkedin.png';
 
 
@@ -15,9 +17,12 @@ import LinkedInLogo from './linkedin.png';
 function App() {
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [reactModalIsOpen, setReactModalIsOpen] = useState(false);
   const [openAiModalIsOpen, setOpenAiModalIsOpen] = useState(false);
   const [awsModalIsOpen, setAwsModalIsOpen] = useState(false);
+  const draggableRef = useRef(null);
+
   
   const customStyles = {
     content: {
@@ -61,6 +66,16 @@ function App() {
 <a href="https://linkedin.com/in/saoriuchida/" target="_blank" rel="noopener noreferrer">
         <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo" />
       </a>
+      <Draggable nodeRef={draggableRef} bounds="parent">
+  <div ref={draggableRef} className={`openai-container ${isCollapsed ? 'collapsed' : ''}`}>
+    <button className={`ai-button ${isCollapsed ? '' : 'expanded'}`} onClick={() => setIsCollapsed(!isCollapsed)}>
+      {isCollapsed ? 'ask my ai' : 'x'}
+    </button>
+    <Collapsible open={!isCollapsed}>
+      <OpenAiForm setIsLoading={setIsLoading} />
+    </Collapsible>
+  </div>
+</Draggable>
       <div className='title'>
       <div className='intro'>
       <h2>Hi! I'm Saori Uchida, a web designer and data analyst based in New York City 👩🏻‍💻</h2>
@@ -203,10 +218,6 @@ export default OpenAiForm;`}
 
       </div>
       <div className='content'>
-{/* Conditionally render the OpenAiForm based on showForm state */}
-  <div className="openai-container">
-    <OpenAiForm setIsLoading={setIsLoading} />
-      </div>
         </div>
       </div>
     </div>
