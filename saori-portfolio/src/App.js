@@ -126,7 +126,7 @@ I found that transitioning to React Hooks from traditional React patterns was a 
   <div className='modal-section'>
   <h3 className='modal-subtitle'>Project Overview</h3>
   <p className='modal-text'>
-  In this project, I demonstrated my ability to integrate AI technologies by connecting a React application with OpenAI's GPT-4. I went beyond simple integration and leveraged the fine-tuning capabilities of OpenAI to create a personalized model. This model was trained on data about my personal and professional experiences, enabling it to generate responses and content that are uniquely tailored to represent my digital persona.
+  In this project, I demonstrated my ability to integrate AI by connecting a React application with OpenAI's GPT-4. I went beyond simple integration and leveraged the fine-tuning capabilities of OpenAI to create a personalized model. This model was trained on data about my personal and professional experiences, allowing it to generate responses and content that are tailored to represent my digital persona.
   </p>
 </div>
 <div className='modal-section'>
@@ -198,7 +198,7 @@ export default OpenAiForm;`}
 <div className='modal-section'>
   <h4 className='modal-subtitle'>Leveraging AI</h4>
   <p className='modal-text'>
-  The potential of AI in crafting digital experiences is immense. Generative language models like GPT-4 are revolutionizing how we interact with digital content. By leveraging these models and with my background in data science and my experience with Python, I position myself at the forefront of this wave. This project exemplifies my ability to create dynamic, responsive, and personalized digital experiences that engage users in meaningful ways.  </p>
+  Although over-hyped, AI has serious potential. Generative language models like GPT-4 are changing how we interact with digital content. By leveraging these models and with my background in data science and my experience with Python, I can sift through the hype to leverage AI solutions that create valuable experiences for users. This project exemplifies my ability to create dynamic, responsive, and personalized digital touchpoints that engage users in meaningful ways.</p>
 </div>
 </Modal>
 
