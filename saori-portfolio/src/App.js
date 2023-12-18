@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import AnimatedBackground from './AnimatedBackground';
 import OpenAiForm from './OpenAiForm';
@@ -28,6 +28,17 @@ import async from './async.gif';
 import search from './search.png';
 import releases from './releases.png';
 import lambda from './lambda.png';
+
+// Define the URLs of the images you want to preload
+const imageUrls = [search, earbuds, factilanding, hpeqxnew];
+
+// Function to preload images
+function preloadImages() {
+  imageUrls.forEach((url) => {
+    const img = new Image();
+    img.src = url;
+  });
+}
 
 function App() {
 
@@ -98,6 +109,13 @@ function App() {
       height: 'auto',
     },
   };
+
+
+
+  useEffect(() => {
+    preloadImages();
+  }, []);
+
 
 
 
@@ -218,7 +236,7 @@ function App() {
               <h2 className='modal-title'>Technical Product Manager, Ecommerce</h2>
               <h4 className='modal-subtitle'>2022-Present</h4>
               <div className='modal-image-container'>
-                <img src={search} alt="Stadium goods new search experience by Saori Uchida" className="hpeqxnew" preload="auto"/>
+                <img src={search} alt="Stadium goods new search experience by Saori Uchida" className="hpeqxnew" preload="auto" />
                 <p className='modal-text caption'>Predictive search modal that passes requests through ML ranking algorithms</p>
               </div>
               <div className='modal-section'>
@@ -229,7 +247,7 @@ function App() {
                 <p className='modal-text caption'>Release timeline for the various epics I led throughout the year</p>
               </div>
               <div className='modal-section'>
-              <h3 className='modal-subtitle'>Managing product</h3>
+                <h3 className='modal-subtitle'>Managing product</h3>
                 <p className='modal-text'>My role is to manage a comprehensive product roadmap for our app and website,  encompasing both technical and UX/UI aspects. This involves defining product requirements, managing the product backlog, and prioritizing features and improvements strategically. I follow Agile methodologies and work closely with designers, developers, and stakeholders to ensure that our features align with business goals and adhere to projected timelines.</p>
                 <p className='modal-text'>To break down complex projects into manageable tasks, we use the Scrum framework and track progress using JIRA to maintain visibility across all stages of development. To identify areas for improvement, I engage in comprehensive user research and data analysis. Additionally, I oversee the creation of technical documentation.</p>
               </div>
@@ -244,32 +262,32 @@ function App() {
                 </div>
               </div>
               <div className='modal-section'>
-              <h3 className='modal-subtitle'>Features shipped</h3>
-              <p className='modal-text'>Some of my key achievements to optimize the user experience along every step of the funnel included:</p>
-              <p className='modal-text'>
-              <li>Size scale conversion on PDP</li>
-              <li>Address auto-complete on checkout</li>
-              <li>Estimated delivery date on buy box</li>
-              <li>'Notify me' on serial restock</li>
-              <li>ApplePay on PDP</li>
-              <li>Asynchronous response on 'add to bag</li>
-              <li>Predictive site search</li>
-              <li>Footer expansion for SEO</li>
-              <li>Ingesting new product attributes on listing page filters</li>
-              <li>Streamlining search and navigation UI as well as implementing personalized quick filters on PLP</li>
-              <li>Promotional countdown timers on PDP</li>
-              <li>Personalized category sliders</li>
-              <li>Urgency messaging on size selection around serial availability</li>
-              <li>Streamlining new user tutorial and user account screens on app</li>
-              <li>Bolstering event tracking</li>
-              </p>
-              <p className='modal-text'>Beyond building and improving frontend features, I leveraged my technical acumen to identify and solve issues related to main-thread blocking and client-side rendering, redundant and inefficiently structured API calls, gaps in bot traffic prevention, and legacy functions that were severly impacting core web vitals and causing delays at crucial steps in the conversion funnel.</p>
-              <p className='modal-text'>Additionally, I developed and maintained a Python web scraper to parse market data from competitors. One of my key achievements was overseeing the discoverability project to optimize product catalog taxonomy, resulting in a simplified user navigation experience. I also created analytics dashboards, automated reports, and SQL tables to monitor both catalog and e-commerce performance and health. I reported to top management and key stakeholders on site and app performance against key objectives and business goals, supporting marketing and merchandising initiatives.</p>
+                <h3 className='modal-subtitle'>Features shipped</h3>
+                <p className='modal-text'>Some of my key achievements to optimize the user experience along every step of the funnel included:</p>
+                <p className='modal-text'>
+                  <li>Size scale conversion on PDP</li>
+                  <li>Address auto-complete on checkout</li>
+                  <li>Estimated delivery date on buy box</li>
+                  <li>'Notify me' on serial restock</li>
+                  <li>ApplePay on PDP</li>
+                  <li>Asynchronous response on 'add to bag</li>
+                  <li>Predictive site search</li>
+                  <li>Footer expansion for SEO</li>
+                  <li>Ingesting new product attributes on listing page filters</li>
+                  <li>Streamlining search and navigation UI as well as implementing personalized quick filters on PLP</li>
+                  <li>Promotional countdown timers on PDP</li>
+                  <li>Personalized category sliders</li>
+                  <li>Urgency messaging on size selection around serial availability</li>
+                  <li>Streamlining new user tutorial and user account screens on app</li>
+                  <li>Bolstering event tracking</li>
+                </p>
+                <p className='modal-text'>Beyond building and improving frontend features, I leveraged my technical acumen to identify and solve issues related to main-thread blocking and client-side rendering, redundant and inefficiently structured API calls, gaps in bot traffic prevention, and legacy functions that were severly impacting core web vitals and causing delays at crucial steps in the conversion funnel.</p>
+                <p className='modal-text'>Additionally, I developed and maintained a Python web scraper to parse market data from competitors. One of my key achievements was overseeing the discoverability project to optimize product catalog taxonomy, resulting in a simplified user navigation experience. I also created analytics dashboards, automated reports, and SQL tables to monitor both catalog and e-commerce performance and health. I reported to top management and key stakeholders on site and app performance against key objectives and business goals, supporting marketing and merchandising initiatives.</p>
               </div>
               <div className='modal-section'>
-              <h3 className='modal-subtitle'>Embracing agile</h3>
-              <p className='modal-text'>My competencies in user-centric development, agile project management, and cross-functional collaboration have been honed through my experiences at Farfetch. I prioritize data insights to continually refine the user experience and find opportunities for personalziation. In a hype-driven market, I've learned to prioritize a flexible, responsive approach to product development, ensuring alignment with evolving customer needs and market trends.</p>
-</div>
+                <h3 className='modal-subtitle'>Embracing agile</h3>
+                <p className='modal-text'>My competencies in user-centric development, agile project management, and cross-functional collaboration have been honed through my experiences at Farfetch. I prioritize data insights to continually refine the user experience and find opportunities for personalziation. In a hype-driven market, I've learned to prioritize a flexible, responsive approach to product development, ensuring alignment with evolving customer needs and market trends.</p>
+              </div>
             </Modal>
 
             <img src={eqx} alt="equinox" className="logo" onClick={() => handleOpenModal('eqx')} />
@@ -279,7 +297,7 @@ function App() {
               <h2 className='modal-title'>Manager, Digital Merchandising</h2>
               <h4 className='modal-subtitle'>2021-2022</h4>
               <div className='modal-image-container'>
-                <img src={hpeqxnew} alt="Equinox the shop new homepage UX/UI by Saori Uchida" className="hpeqxnew "preload="auto"/>
+                <img src={hpeqxnew} alt="Equinox the shop new homepage UX/UI by Saori Uchida" className="hpeqxnew " preload="auto" />
                 <p className='modal-text caption'>The finished product, currently live at shop.equinox.com</p>
               </div>
               <div className='modal-section'>
@@ -327,7 +345,7 @@ function App() {
               <h2 className='modal-title'>Intern, Economic Affairs</h2>
               <h4 className='modal-subtitle'>2019-2020</h4>
               <div className='modal-image-container'>
-                <img src={factilanding} alt="The website of the final report of the FACTI Panel" className="hpeqxnew" preload="auto"/>
+                <img src={factilanding} alt="The website of the final report of the FACTI Panel" className="hpeqxnew" preload="auto" />
                 <p className='modal-text caption'>The website for the final report</p>
               </div>
               <div className='modal-section'>
@@ -367,7 +385,7 @@ function App() {
               <h2 className='modal-title'>Web Designer</h2>
               <h4 className='modal-subtitle'>2019-2021</h4>
               <div className='modal-image-container'>
-                <img src={earbuds} alt="Marketing asset for Maxell designed by Saori Uchida" className="hpeqxnew" preload="auto"/>
+                <img src={earbuds} alt="Marketing asset for Maxell designed by Saori Uchida" className="hpeqxnew" preload="auto" />
                 <p className='modal-text caption'>Marketing asset designed for product launch</p>
               </div>
               <div className='modal-section'>
