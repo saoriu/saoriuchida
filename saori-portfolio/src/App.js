@@ -234,7 +234,6 @@ function App() {
                 <img src={sg} alt="stadium goods logo" className="logo" />
               </span>
               <h2 className='modal-title'>Technical Product Manager, Ecommerce</h2>
-              <h4 className='modal-subtitle'>2022-Present</h4>
               <div className='modal-image-container'>
                 <img src={search} alt="Stadium goods new search experience by Saori Uchida" className="hpeqxnew" preload="auto" />
                 <p className='modal-text caption'>Predictive search modal that passes requests through ML ranking algorithms</p>
@@ -295,7 +294,6 @@ function App() {
               <button style={customStyles.button} onClick={() => handleCloseModal('eqx')}>&times;</button>
               <img src={eqx} alt="Equinox logo" className="logo" />
               <h2 className='modal-title'>Manager, Digital Merchandising</h2>
-              <h4 className='modal-subtitle'>2021-2022</h4>
               <div className='modal-image-container'>
                 <img src={hpeqxnew} alt="Equinox the shop new homepage UX/UI by Saori Uchida" className="hpeqxnew " preload="auto" />
                 <p className='modal-text caption'>The finished product, currently live at shop.equinox.com</p>
@@ -343,7 +341,6 @@ function App() {
               <button style={customStyles.button} onClick={() => handleCloseModal('un')}>&times;</button>
               <img src={un} alt="United Nations logo" className="un-logo" />
               <h2 className='modal-title'>Intern, Economic Affairs</h2>
-              <h4 className='modal-subtitle'>2019-2020</h4>
               <div className='modal-image-container'>
                 <img src={factilanding} alt="The website of the final report of the FACTI Panel" className="hpeqxnew" preload="auto" />
                 <p className='modal-text caption'>The website for the final report</p>
@@ -383,7 +380,6 @@ function App() {
               <button style={customStyles.button} onClick={() => handleCloseModal('maxell')}>&times;</button>
               <img src={maxell} alt="Maxell logo" className="logo" />
               <h2 className='modal-title'>Web Designer</h2>
-              <h4 className='modal-subtitle'>2019-2021</h4>
               <div className='modal-image-container'>
                 <img src={earbuds} alt="Marketing asset for Maxell designed by Saori Uchida" className="hpeqxnew" preload="auto" />
                 <p className='modal-text caption'>Marketing asset designed for product launch</p>

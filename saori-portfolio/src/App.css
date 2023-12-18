@@ -687,7 +687,6 @@ p {
     }
 
 .hpeqxnew:hover {
-  transform: translateY(-5px);
   transition: transform 0.3s ease;
 }
 
@@ -696,11 +695,12 @@ p {
   margin-bottom: 20px;
   background-color: #2b2b37;
   border-radius: var(--modal-border-radius);
-  transition: transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .modal-section:hover {
-  transform: translateY(-5px);
+background-color: #282833;
+transition: background-color 0.3s ease;
 }
 
 .modal-subtitle {
