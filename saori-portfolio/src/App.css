@@ -65,6 +65,11 @@ article {
 
 }
 
+.modal-text li {
+  text-indent: -1.25em; /* this will bring the bullet point into the padding area */
+  padding-left: 1em; /* this will add padding to the left of the list item */
+}
+
 h4.modal-subtitle {
   margin-top: 0px;
   font-weight: 100;
