@@ -94,7 +94,7 @@ const OpenAiForm = () => {
         <button type="submit">➡</button>
       </form>
       <div className="response-frame" ref={responseContainerRef}>
-      <video className="spacer" height="150px" autoPlay loop muted>
+      <video className="spacer" height="150px" autoPlay loop muted preload="auto">
   <source src={video} type="video/mp4" />
   Your browser does not support the video tag.
 </video>

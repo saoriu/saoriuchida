@@ -37,6 +37,20 @@ article {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: space-between;
+  width: 85%;
+}
+
+.logo {
+  cursor: pointer;
+    width: 130px;
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+  
+.un-logo {
+  width: 130px;
+  cursor: pointer;
 }
 
 .openai-container {
@@ -45,10 +59,17 @@ article {
   padding: 30px;
   top: 50px;
   right: 50%;
-  border-radius: 20px;
+  border-radius: 10px;
   max-width: 400px;
   z-index: 1;
 
+}
+
+h4.modal-subtitle {
+  margin-top: 0px;
+  font-weight: 100;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
 }
 
 .ai-button.expanded {
@@ -82,7 +103,7 @@ transition: color 1s ease;
 .openai-container.collapsed {
   width: 125px; /* Adjust this to the size of your button */
   height: 45px; /* Adjust this to the size of your button */
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   border: none;
   padding: 0;
@@ -100,6 +121,7 @@ transition: color 1s ease;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: #f1f8fe;
+  user-select: text !important;
   max-height: 50px;
   overflow-y: scroll;
   outline: none;
@@ -139,13 +161,9 @@ transition: color 1s ease;
   z-index: 2;
 }
 
-.logo {
-  width: 130px;
-  filter: invert(1) grayscale(1) brightness(2);
-}
-
-.un-logo {
-  width: 130px;
+.modal-text.mini {
+  font-size: 1em;
+  opacity: 0.8;
 }
 
 .openai button {
@@ -194,18 +212,42 @@ transition: color 1s ease;
 /* For screens smaller than 600px */
 @media only screen and (max-width: 449px) {
   .title {
-    padding: 50px 50px;
+    padding: 30px 30px;
   }
 
   .about-me {
     padding-right: 30px;
   }
 
+  .App {
+    height: 100%;
+  }
+
+  .code-frame {
+    max-width: 150px;
+  }
+
   .openai-container {
     display: none;
   }
+
+  .content {
+    margin-top: 50px;
 }
 
+.modal-container {
+  flex-direction: column;
+}
+
+.ReactModal__Content.ReactModal__Content--after-open{
+  width: 70% !important
+}
+
+.exp {
+  width: 100%;
+}
+
+}
 @media only screen and (min-width: 450px) and (max-width: 600px) {
   .title {
     padding: 50px 50px;
@@ -213,6 +255,10 @@ transition: color 1s ease;
 
   .about-me {
     padding-right: 30px;
+  }
+
+  .exp {
+    width: 100%;
   }
 }
 
@@ -224,6 +270,10 @@ transition: color 1s ease;
   .about-me {
     padding-right: 30px;
   }
+
+  .exp {
+    width: 100%;
+  }
 }
 
 /* For screens between 901px and 1200px */
@@ -233,6 +283,10 @@ transition: color 1s ease;
   }
   .about-me {
     padding-right: 30px;
+  }
+
+  .exp {
+    width: 100%;
   }
 }
 
@@ -436,6 +490,24 @@ h2 {
   }
 }
 
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px peachpuff) drop-shadow(0 0 20px peachpuff) drop-shadow(0 0 30px peachpuff) drop-shadow(0 0 40px peachpuff);
+  }
+  20% {
+    filter: drop-shadow(0 0 12px peachpuff) drop-shadow(0 0 22px peachpuff) drop-shadow(0 0 32px peachpuff) drop-shadow(0 0 42px peachpuff);
+  }
+  40% {
+    filter: drop-shadow(0 0 15px peachpuff) drop-shadow(0 0 25px peachpuff) drop-shadow(0 0 35px peachpuff) drop-shadow(0 0 45px peachpuff);
+  }
+  60% {
+    filter: drop-shadow(0 0 12px peachpuff) drop-shadow(0 0 22px peachpuff) drop-shadow(0 0 32px peachpuff) drop-shadow(0 0 42px peachpuff);
+  }
+  80% {
+    filter: drop-shadow(0 0 10px peachpuff) drop-shadow(0 0 20px peachpuff) drop-shadow(0 0 30px peachpuff) drop-shadow(0 0 40px peachpuff);
+  }
+}
+
 h2 {
   font-weight: 300;
   font-family: 'Yantramanav', sans-serif;
@@ -459,6 +531,8 @@ p {
 .content {
   position: relative;
   margin-top: 100px;
+  width: 90%;
+  justify-content: space-between;
 }
 
 .ask-about-me-btn {
@@ -476,15 +550,106 @@ p {
   --primary-color: #fafafa; /* A vibrant blue */
   --secondary-color: #fafafa; /* Light grey for backgrounds */
   --text-color: #fafafa; /* Dark grey for text */
-  --modal-border-radius: 15px;
+  --modal-border-radius: 10px;
   --modal-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .modal-title {
   font-size: 28px;
   font-weight: bold;
+  line-height: 1.5em;
   color: var(--primary-color);
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.hpeqxnew {
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.ReactModal__Content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility .5s;
+}
+
+.ReactModal__Content--after-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+.modal-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* make items stretch to full height */
+  column-gap: 20px;
+}
+
+.modal-section.mini {
+  flex: 3 1;
+}
+
+.modal-text.caption {
+  font-style: italic;
+  text-align: center;
+  font-size: 1em;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.modal-image {
+  border-radius: 10px;
+  object-fit: contain; /* ensure entire image is visible */
+  width: 100%;
+}
+
+.modal-image-container {
+  flex: 1 0;
+  margin-bottom: 20px;
+  transition: flex 1.5s ease, max-height 2.5s ease;
+}
+
+.modal-image-container.second {
+  cursor: pointer;
+  max-height: 200px;
+  overflow: hidden;
+  transition: flex 1.5s ease, max-height 1.5s ease;
+}
+
+.modal-image-container.second.expand {
+  flex: 10;
+  max-height: 2000px;
+  transition: flex 1.5s ease, max-height 2.5s ease;
+  }
+
+  .modal-image-container.third {
+    overflow: hidden;
+    transition: flex 1.5s ease, max-height 1.5s ease;
+  }
+
+  .modal-image-container.first {
+    cursor: pointer;
+    transition: flex 1.5s ease, max-height 1.5s ease;
+  }
+  
+  .modal-image-container.first.expand {
+    flex: 10;
+    transition: flex 1.5s ease, max-height 1.5s ease;
+    }
+
+.hpeqxnew:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
 }
 
 .modal-section {
@@ -511,7 +676,7 @@ p {
 
 .code-frame {
   background-color: #000000;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 15px;
   font-size: 12px;
   font-family: 'Courier New', Courier, monospace;
@@ -638,41 +803,4 @@ padding: 10px 20px;
 
 .wedge.pulse {
   animation: pulse 2s infinite;
-}
-
-.dockContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-  bottom: 0%; /* Adjust as per your design preference */
-  gap: 40px;
-  padding: 5px 20px; /* Adds space on the sides of the dock */
-  background-color: rgba(16, 16, 16, 0.867); /* Semi-transparent background */
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* A subtle shadow to give depth */
-}
-
-.dockItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 12px;
-  text-align: center;
-  filter: saturate(0.9) brightness(0.9);
-  transition: filter 200ms, transform 0.2s ease-in-out;
-  padding: 10px;
-  margin: 0;
-  cursor: pointer;
-
-  &:hover {
-    filter: saturate(1) brightness(1.12);
-  }
-
-  img {
-    margin-bottom: 5px; /* Gives space between the image and the label */
-  }
 }
