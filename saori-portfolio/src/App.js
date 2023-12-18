@@ -248,7 +248,7 @@ function App() {
               </div>
               <div className='modal-section'>
                 <h3 className='modal-subtitle'>Managing product</h3>
-                <p className='modal-text'>My role is to manage a comprehensive product roadmap for our app and website,  encompasing both technical and UX/UI aspects. This involves defining product requirements, managing the product backlog, and prioritizing features and improvements strategically. I follow Agile methodologies and work closely with designers, developers, and stakeholders to ensure that our features align with business goals and adhere to projected timelines.</p>
+                <p className='modal-text'>My role is to manage a comprehensive product roadmap for our app and website,  encompasing both technical and UX/UI aspects. This involves defining product requirements, managing the product backlog, and prioritizing features and improvements strategically. I follow Agile methodologies and work closely with designers, developers, and stakeholders to ensure that our features align with business goals and adhere to projected timelines. During my tenure at the company and against all adversities, I've consistently delivered exceptional improvements to overall conversion and performance.   </p>
                 <p className='modal-text'>To break down complex projects into manageable tasks, we use the Scrum framework and track progress using JIRA to maintain visibility across all stages of development. To identify areas for improvement, I engage in comprehensive user research and data analysis. Additionally, I oversee the creation of technical documentation.</p>
               </div>
               <div className='modal-container'>
@@ -270,7 +270,7 @@ function App() {
                   <li>Estimated delivery date on buy box</li>
                   <li>'Notify me' on serial restock</li>
                   <li>ApplePay on PDP</li>
-                  <li>Asynchronous response on 'add to bag</li>
+                  <li>Asynchronous response on 'add to bag'</li>
                   <li>Predictive site search</li>
                   <li>Footer expansion for SEO</li>
                   <li>Ingesting new product attributes on listing page filters</li>
