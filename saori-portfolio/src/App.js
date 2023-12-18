@@ -251,15 +251,9 @@ function App() {
                 <p className='modal-text'>My role is to manage a comprehensive product roadmap for our app and website,  encompasing both technical and UX/UI aspects. This involves defining product requirements, managing the product backlog, and prioritizing features and improvements strategically. I follow Agile methodologies and work closely with designers, developers, and stakeholders to ensure that our features align with business goals and adhere to projected timelines. During my tenure at the company and against all adversities, I've consistently delivered exceptional improvements to overall conversion and performance.   </p>
                 <p className='modal-text'>To break down complex projects into manageable tasks, we use the Scrum framework and track progress using JIRA to maintain visibility across all stages of development. To identify areas for improvement, I engage in comprehensive user research and data analysis. Additionally, I oversee the creation of technical documentation.</p>
               </div>
-              <div className='modal-container'>
-                <div className='modal-image-container third' onClick={handleClick}>
-                  <img src={sizing} alt="Last 1 at this size feature on Stadium Goods PDP by Saori Uchida" className="modal-image" />
-                  <p className='modal-text caption'>Last serial at this price feature on product page</p>
-                </div>
-                <div className='modal-image-container third' onClick={handleClick}>
-                  <img src={async} alt="Equinox the shop new PDP figma by Saori Uchida" className="modal-image" />
-                  <p className='modal-text caption'>Mini bag modal displayed asynchronously on 'add to bag', bypassing delay from slow API response </p>
-                </div>
+              <div className='modal-image-container'>
+                <img src={cvr} alt="Stadium goods conversion improvements as a result of optimizations" className="hpeqxnew" />
+                <p className='modal-text caption'>My product enhancements and optimizations have contributed to a 45% lift in YoY conversion rate</p>
               </div>
               <div className='modal-section'>
                 <h3 className='modal-subtitle'>Features shipped</h3>
@@ -284,9 +278,15 @@ function App() {
                 <p className='modal-text'>Beyond building and improving frontend features, I leveraged my technical acumen to identify and solve issues related to main-thread blocking and client-side rendering, redundant and inefficiently structured API calls, gaps in bot traffic prevention, and legacy functions that were severly impacting core web vitals and causing delays at crucial steps in the conversion funnel.</p>
                 <p className='modal-text'>Additionally, I developed and maintained a Python web scraper to parse market data from competitors. One of my key achievements was overseeing the discoverability project to optimize product catalog taxonomy, resulting in a simplified user navigation experience. I also created analytics dashboards, automated reports, and SQL tables to monitor both catalog and e-commerce performance and health. I reported to top management and key stakeholders on site and app performance against key objectives and business goals, supporting marketing and merchandising initiatives.</p>
               </div>
-              <div className='modal-image-container'>
-                <img src={cvr} alt="Stadium goods conversion improvements as a result of optimizations" className="hpeqxnew" />
-                <p className='modal-text caption'>My product enhancements and optimizations have contributed to a 45% lift in YoY conversion rate</p>
+              <div className='modal-container'>
+                <div className='modal-image-container third' onClick={handleClick}>
+                  <img src={sizing} alt="Last 1 at this size feature on Stadium Goods PDP by Saori Uchida" className="modal-image" />
+                  <p className='modal-text caption'>Last serial at this price feature on product page</p>
+                </div>
+                <div className='modal-image-container third' onClick={handleClick}>
+                  <img src={async} alt="Equinox the shop new PDP figma by Saori Uchida" className="modal-image" />
+                  <p className='modal-text caption'>Mini bag modal displayed asynchronously on 'add to bag', bypassing delay from slow API response </p>
+                </div>
               </div>
               <div className='modal-section'>
                 <h3 className='modal-subtitle'>Embracing agile</h3>
