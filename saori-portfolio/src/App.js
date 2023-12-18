@@ -87,7 +87,7 @@ function App() {
       flexDirection: 'column',
       border: 'none',
       alignItems: 'center',
-      width: '50%', // Adjust the width as desired
+      width: '55%', // Adjust the width as desired
       margin: '0 auto', // Center the modal horizontally
       overflowX: 'hidden', // Hide horizontal scrollbar
     },

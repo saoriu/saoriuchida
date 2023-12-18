@@ -265,6 +265,10 @@ transition: color 1s ease;
   .exp {
     width: 100%;
   }
+
+  .ReactModal__Content.ReactModal__Content--after-open{
+    width: 70% !important
+  }
 }
 
 /* For screens between 600px and 900px */
@@ -279,6 +283,10 @@ transition: color 1s ease;
   .exp {
     width: 100%;
   }
+
+  .ReactModal__Content.ReactModal__Content--after-open{
+    width: 70% !important
+  }
 }
 
 /* For screens between 901px and 1200px */
@@ -292,6 +300,10 @@ transition: color 1s ease;
 
   .exp {
     width: 100%;
+  }
+
+  .ReactModal__Content.ReactModal__Content--after-open{
+    width: 70% !important
   }
 }
 
