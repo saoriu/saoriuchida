@@ -28,6 +28,7 @@ import async from './async.gif';
 import search from './search.png';
 import releases from './releases.png';
 import lambda from './lambda.png';
+import cvr from './cvr.png';
 
 // Define the URLs of the images you want to preload
 const imageUrls = [search, earbuds, factilanding, hpeqxnew];
@@ -286,6 +287,10 @@ function App() {
               <div className='modal-section'>
                 <h3 className='modal-subtitle'>Embracing agile</h3>
                 <p className='modal-text'>My competencies in user-centric development, agile project management, and cross-functional collaboration have been honed through my experiences at Farfetch. I prioritize data insights to continually refine the user experience and find opportunities for personalziation. In a hype-driven market, I've learned to prioritize a flexible, responsive approach to product development, ensuring alignment with evolving customer needs and market trends.</p>
+              </div>
+              <div className='modal-image-container'>
+                <img src={cvr} alt="Stadium goods conversion improvements as a result of optimizations" className="hpeqxnew" />
+                <p className='modal-text caption'>My product enhancements and optimizations have contributed to a 45% lift in YoY conversion rate</p>
               </div>
             </Modal>
 
