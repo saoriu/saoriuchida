@@ -250,6 +250,7 @@ transition: color 1s ease;
 
 .exp {
   width: 100%;
+  justify-content: flex-start
 }
 
 }
@@ -264,6 +265,7 @@ transition: color 1s ease;
 
   .exp {
     width: 100%;
+    justify-content: flex-start
   }
 
   .ReactModal__Content.ReactModal__Content--after-open{
@@ -282,6 +284,7 @@ transition: color 1s ease;
 
   .exp {
     width: 100%;
+    justify-content: flex-start
   }
 
   .ReactModal__Content.ReactModal__Content--after-open{
@@ -308,12 +311,19 @@ transition: color 1s ease;
 }
 
 /* For screens larger than 1200px */
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: 1201px) and (max-width: 1500px) {
   .title {
-    padding: 0 300px;
+    padding: 0 120px;
   }
   .about-me {
     padding-right: 200px;
+  }
+}
+
+/* For screens larger than 1500px */
+@media only screen and (min-width: 1501px) {
+  .title {
+    padding: 0 300px;
   }
 }
 
