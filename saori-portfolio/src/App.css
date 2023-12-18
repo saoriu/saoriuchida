@@ -366,6 +366,10 @@ h2 {
   p {
     font-size: var(--fontSizes-XXS);
   }
+
+  .logo {
+    width: 80px;
+  }
 }
 
 /* For screens between 600px and 900px */
@@ -377,6 +381,10 @@ h2 {
   p {
     font-size: var(--fontSizes-XXS);
   }
+
+  .logo {
+    width: 100px;
+  }
 }
 
 /* For screens between 901px and 1200px */
@@ -387,6 +395,10 @@ h2 {
   }
   p {
     font-size: var(--fontSizes-XS);
+  }
+
+  .logo {
+    width: 110px;
   }
 }
 
