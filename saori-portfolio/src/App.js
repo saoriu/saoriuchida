@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
+import Modal from 'react-modal';
 import AnimatedBackground from './AnimatedBackground';
 import OpenAiForm from './OpenAiForm';
 import OpenAIBadge from './openaibadge.svg';
