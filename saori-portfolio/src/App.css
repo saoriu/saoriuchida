@@ -295,7 +295,7 @@ transition: color 1s ease;
 /* For screens between 901px and 1200px */
 @media only screen and (min-width: 901px) and (max-width: 1200px) {
   .title {
-    padding: 0 90px;
+    padding: 0 70px;
   }
   .about-me {
     padding-right: 30px;
@@ -311,9 +311,9 @@ transition: color 1s ease;
 }
 
 /* For screens larger than 1200px */
-@media only screen and (min-width: 1201px) and (max-width: 1500px) {
+@media only screen and (min-width: 1201px) and (max-width: 1585px) {
   .title {
-    padding: 0 120px;
+    padding: 0 100px;
   }
   .about-me {
     padding-right: 200px;
@@ -321,7 +321,7 @@ transition: color 1s ease;
 }
 
 /* For screens larger than 1500px */
-@media only screen and (min-width: 1501px) {
+@media only screen and (min-width: 1586px) {
   .title {
     padding: 0 300px;
   }
