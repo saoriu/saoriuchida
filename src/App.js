@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import './App.css';
 import Modal from 'react-modal';
 import AnimatedBackground from './AnimatedBackground';
@@ -123,7 +122,6 @@ function App() {
 
   return (
     <div className="App">
-            <SpeedInsights />
       <AnimatedBackground isLoading={isLoading} />
       <a href="https://linkedin.com/in/saoriuchida/" target="_blank" rel="noopener noreferrer">
         <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo" />
