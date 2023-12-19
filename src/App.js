@@ -6,7 +6,6 @@ import OpenAiForm from './OpenAiForm';
 import OpenAIBadge from './openaibadge.svg';
 import ReactLogo from './logo.svg';
 import Screenie from './devving.png';
-import Modal from 'react-modal';
 import Draggable from 'react-draggable';
 import Collapsible from 'react-collapsible';
 import LinkedInLogo from './linkedin.png';
