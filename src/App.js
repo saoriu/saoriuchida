@@ -125,9 +125,11 @@ function App() {
     <div className="App">
       <Analytics />
       <AnimatedBackground isLoading={isLoading} />
+    <div className='contact'>
       <a href="https://linkedin.com/in/saoriuchida/" target="_blank" rel="noopener noreferrer">
         <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo" />
       </a>
+      </div>
       <Draggable nodeRef={draggableRef} bounds="parent">
         <div ref={draggableRef} className={`openai-container ${isCollapsed ? 'collapsed' : ''}`}>
           <button className={`ai-button ${isCollapsed ? '' : 'expanded'}`} onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -142,13 +144,13 @@ function App() {
         <div className='intro'>
           <h2>Hi! I'm Saori Uchida, a web designer, data analyst, and big sister based in New York 👩🏻‍💻</h2>
           <p className='about-me'>
-            I developed this website using
-            <span className='hover-underline-animation__1' onClick={() => setReactModalIsOpen(true)} style={{ color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px' }}> React</span>,
-            and integrated it with
+            I developed this
+            <span className='hover-underline-animation__1' onClick={() => setReactModalIsOpen(true)} style={{ color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px' }}> React </span>
+            application and integrated it with
             <span className='hover-underline-animation__2' onClick={() => setOpenAiModalIsOpen(true)} style={{ color: 'rgb(37 143 237)', cursor: 'pointer', textShadow: '0 0 12px #0071d5' }}> OpenAI </span>
             via my own
             <span className='hover-underline-animation__3' onClick={() => setAwsModalIsOpen(true)} style={{ color: '#ebb66a', cursor: 'pointer', textShadow: 'rgb(255 182 77) 0px 0px 12px' }}> AWS API Gateway </span>
-            to answer questions about myself!
+            to share my work and interests!
           </p>
 
           <Modal isOpen={reactModalIsOpen} onRequestClose={() => setReactModalIsOpen(false)} style={customStyles} ariaHideApp={false}>
