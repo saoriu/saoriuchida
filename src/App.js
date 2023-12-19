@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react'; // Import Analytics component
 import './App.css';
 import Modal from 'react-modal';
 import AnimatedBackground from './AnimatedBackground';
@@ -122,6 +123,7 @@ function App() {
 
   return (
     <div className="App">
+      <Analytics />
       <AnimatedBackground isLoading={isLoading} />
       <a href="https://linkedin.com/in/saoriuchida/" target="_blank" rel="noopener noreferrer">
         <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo" />
