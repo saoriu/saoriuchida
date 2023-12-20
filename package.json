@@ -21,12 +21,8 @@
   "homepage": "https://saoriuchida.com/",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && node obfuscate.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
+    "build": "react-scripts build && node obfuscate.js"
+    },
   "eslintConfig": {
     "extends": [
       "react-app",
