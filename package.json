@@ -20,9 +20,10 @@
   },
   "homepage": "https://saoriuchida.com/",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && node obfuscate.js"
-    },
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -42,8 +43,11 @@
     ]
   },
   "devDependencies": {
+    "customize-cra": "^1.0.0",
     "gh-pages": "^6.0.0",
     "javascript-obfuscator": "^4.1.0",
-    "terser": "^5.26.0"
+    "react-app-rewired": "^2.2.1",
+    "terser": "^5.26.0",
+    "webpack-obfuscator": "^3.5.1"
   }
 }
