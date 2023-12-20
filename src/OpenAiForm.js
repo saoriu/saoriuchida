@@ -12,20 +12,6 @@ const OpenAiForm = () => {
   const textareaRef = useRef(null);
   const responseContainerRef = useRef(null);
 
-  // Define the URL of the video you want to preload
-  const videoUrl = './moji.mov';
-
-  // Function to preload video
-  function preloadVideo() {
-    const video = document.createElement('video');
-    video.src = videoUrl;
-    video.preload = 'auto';
-  }
-
-  // Call the function to preload the video
-  preloadVideo();
-
-
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
