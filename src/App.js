@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react'; // Import Analytics component
 import './App.css';
 import Modal from 'react-modal';
+import Draggable from 'react-draggable';
 import AnimatedBackground from './AnimatedBackground';
 import OpenAiForm from './OpenAiForm';
 import OpenAIBadge from './openaibadge.svg';
 import ReactLogo from './logo.svg';
 import Screenie from './devving.png';
-import Draggable from 'react-draggable';
 import Collapsible from 'react-collapsible';
 import LinkedInLogo from './linkedin.png';
 import farfetch from './farfetch.png';
@@ -46,6 +46,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [reactModalIsOpen, setReactModalIsOpen] = useState(false);
   const [openAiModalIsOpen, setOpenAiModalIsOpen] = useState(false);
   const [awsModalIsOpen, setAwsModalIsOpen] = useState(false);
@@ -112,35 +113,74 @@ function App() {
     },
   };
 
-
-
   useEffect(() => {
     preloadImages();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
 
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
 
   return (
     <div className="App">
       <Analytics />
       <AnimatedBackground isLoading={isLoading} />
-    <div className='contact'>
-      <a href="https://linkedin.com/in/saoriuchida/" target="_blank" rel="noopener noreferrer">
-        <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo" />
-      </a>
-      </div>
-      <Draggable nodeRef={draggableRef} bounds="parent">
-        <div ref={draggableRef} className={`openai-container ${isCollapsed ? 'collapsed' : ''}`}>
-          <button className={`ai-button ${isCollapsed ? '' : 'expanded'}`} onClick={() => setIsCollapsed(!isCollapsed)}>
-            {isCollapsed ? 'ask my ai' : 'x'}
-          </button>
-          <Collapsible open={!isCollapsed}>
-            <OpenAiForm setIsLoading={setIsLoading} />
-          </Collapsible>
-        </div>
-      </Draggable>
       <div className='title'>
+      <div className='contact'>
+        <a href="https://linkedin.com/in/saoriuchida/" target="_blank" rel="noopener noreferrer">
+        <div className="logo-container">
+          <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo" />
+          </div>
+        </a>
+        <a href="https://github.com/saoriu" target="_blank" rel="noopener noreferrer">
+        <div className="logo-container">
+        <svg className="github-logo" viewBox="0 0 100 100"width="30" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>       
+        </div>
+         </a>
+        <a href="mailto:saori.uchid@gmail.com" target="_blank" rel="noopener noreferrer">
+        <div className="logo-container">
+          <svg fill="white" version="1.1" id="Capa_1" viewBox="0 0 216 216" className="email-logo">
+            <path d="M108,0C48.353,0,0,48.353,0,108s48.353,108,108,108s108-48.353,108-108S167.647,0,108,0z M156.657,60L107.96,98.498
+            L57.679,60H156.657z M161.667,156h-109V76.259l50.244,38.11c1.347,1.03,3.34,1.545,4.947,1.545c1.645,0,3.073-0.54,4.435-1.616
+            l49.374-39.276V156z"/>
+          </svg>
+          </div>
+        </a>
+      </div>
+        <button className={`ai-button ${isCollapsed ? 'collapsed' : 'expanded'}`} onClick={() => setIsCollapsed(!isCollapsed)}>
+          {isCollapsed ? 'ask my ai' : 'ask my ai'}
+        </button>
+        {windowWidth > 650 ? (
+          <Draggable
+            nodeRef={draggableRef}
+            disabled={isCollapsed}
+          >
+            <div ref={draggableRef} className={`openai-container ${isCollapsed ? 'collapsed' : ''}`}>
+            <Collapsible open={!isCollapsed}>
+                <button className="x-button" onClick={() => setIsCollapsed(!isCollapsed)}>
+                  x
+                </button>
+                <OpenAiForm setIsLoading={setIsLoading} />
+                </Collapsible>
+            </div>
+          </Draggable>
+        ) : (
+          <div className={`openai-container ${isCollapsed ? 'collapsed' : ''}`}>
+            <Collapsible open={!isCollapsed}>
+              <button className="x-button" onClick={() => setIsCollapsed(!isCollapsed)}>
+                x
+              </button>
+              <OpenAiForm setIsLoading={setIsLoading} />
+            </Collapsible>
+          </div>
+        )}
         <div className='intro'>
           <h2>Hi! I'm Saori Uchida, a web designer, data analyst, and big sister based in New York 👩🏻‍💻</h2>
           <p className='about-me'>
@@ -185,7 +225,7 @@ function App() {
             <div className='modal-section'>
               <h3 className='modal-subtitle'>Project Overview</h3>
               <p className='modal-text'>
-                In this project, I demonstrated my ability to integrate AI by connecting a React application with OpenAI's GPT-4. I went beyond simple integration and leveraged the fine-tuning capabilities of OpenAI to create a personalized model. This model was trained on data about my personal and professional experiences, allowing it to generate responses and content that are tailored to represent my digital persona.
+                In this project, I demonstrated my ability to manipulate generative AI models by integrating this React application with OpenAI's API. This particular model was trained on data about my personal and professional experiences.
               </p>
             </div>
             <div className='modal-section'>
@@ -197,10 +237,9 @@ function App() {
             <div className='modal-section'>
               <h3 className='modal-subtitle'>Leveraging AI</h3>
               <p className='modal-text'>
-                Although over-hyped, AI has serious potential. Generative language models like GPT-4 are changing how we interact with digital content. By leveraging these models and with my background in UX design and my experience with Python, I can sift through the hype to create valuable experiences for users. This project exemplifies my ability to create dynamic, responsive, and personalized digital touchpoints that engage users in meaningful ways.</p>
+                Although sensationalized, AI is changing how we interact with data and digital content. My hands-on experience implementing machine learning algorithms and with my background in UX design, I can sift through the hype to create valuable experiences for users. This project exemplifies my ability to create dynamic, responsive, and personalized digital touchpoints that engage users in meaningful ways.</p>
             </div>
           </Modal>
-
 
           <Modal isOpen={awsModalIsOpen} onRequestClose={() => setAwsModalIsOpen(false)} style={customStyles} ariaHideApp={false}>
             <button style={customStyles.button} onClick={() => setAwsModalIsOpen(false)}>&times;</button>
@@ -344,7 +383,6 @@ function App() {
               </div>
             </Modal>
 
-
             <img src={un} alt="un" className="un-logo" onClick={() => handleOpenModal('un')} />
             <Modal isOpen={isModalOpen.un} onRequestClose={() => handleCloseModal('un')} style={customStyles} ariaHideApp={false}>
               <button style={customStyles.button} onClick={() => handleCloseModal('un')}>&times;</button>
@@ -355,13 +393,13 @@ function App() {
                 <p className='modal-text caption'>The website for the final report</p>
               </div>
               <div className='modal-section'>
-                <p className='modal-text'>Early in my career I sought to blend economic policy and data science, so I seized a pivotal opportunity to intern with the United Nations Department of Economic and Social Affairs (UNDESA). This internship aligned perfectly with my aspiration at the time, to operate at the highest level of international government.</p>
+                <p className='modal-text'>While pursuing a career in data science, I seized an opportunity to intern with the United Nations Department of Economic and Social Affairs (UNDESA). This internship aligned perfectly with my aspiration at the time, to better understand how advanced data analysis is translated into actionable insights that drive tangible impact.</p>
                 <p className='modal-text mini'>Fun fact: My dream at the time was to work for the CIA, but I later learned they only hire Americans so figured the UN was the next best thing!</p>
               </div>
               <div className='modal-section'>
                 <h3 className='modal-subtitle'>The High Level Panel</h3>
-                <p className='modal-text'>My tenure as an Economic Affairs Intern was primarily dedicated to supporting the FACTI Panel—The High-Level Panel on International Financial Accountability, Transparency, and Integrity for Achieving the 2030 Agenda. Convened by the 74th President of the United Nations General Assembly and the 75th President of the Economic and Social Council in March 2020, the FACTI Panel was a beacon of global efforts in enhancing financial accountability and integrity, key pillars in realizing the ambitious 2030 Agenda for Sustainable Development.</p>
-                <p className='modal-text'>The panel's mandate was broad yet clear: scrutinize prevailing challenges and trends in financial accountability, transparency, and integrity, and furnish evidence-based recommendations to bridge gaps in the international system. Co-chaired by the esteemed  former Prime Minister of Niger, Ibrahim Assane Mayaki and the former President of Lithuania, Dalia Grybauskaitė, the panel consisted of a diverse group of experts and world leaders, each contributing their rich perspectives and insights.</p>
+                <p className='modal-text'>My tenure as an Economic Affairs Intern was primarily dedicated to supporting the FACTI Panel—The High-Level Panel on International Financial Accountability, Transparency, and Integrity for Achieving the 2030 Agenda. The FACTI Panel was a beacon of global efforts in enhancing financial accountability and integrity, key pillars in realizing the ambitious 2030 Agenda for Sustainable Development.</p>
+                <p className='modal-text'>Co-chaired by the former Prime Minister of Niger, Ibrahim Assane Mayaki and the former President of Lithuania, Dalia Grybauskaitė, the panel consisted of a diverse group of experts and world leaders, each contributing their rich perspectives and insights ranging from trade to cybersecurity and cryptocurrency. The panel's mandate was broad yet clear: scrutinize prevailing challenges and trends in financial accountability, transparency, and integrity, and furnish evidence-based recommendations to bridge gaps in the international system.</p>
               </div>
               <div className='modal-section'>
                 <h3 className='modal-subtitle'>A master class in consensus-building</h3>
@@ -382,7 +420,6 @@ function App() {
                 <p className='modal-text caption'>UN Secretary General delivering opening remarks at COP21</p>
               </div>
             </Modal>
-
 
             <img src={maxell} alt="maxell" className="logo" onClick={() => handleOpenModal('maxell')} />
             <Modal isOpen={isModalOpen.maxell} onRequestClose={() => handleCloseModal('maxell')} style={customStyles} ariaHideApp={false}>
@@ -414,6 +451,3 @@ function App() {
 }
 
 export default App;
-
-
-

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import video from './moji.mov';
+import send from './send.svg';
 
 
 const OpenAiForm = () => {
@@ -90,13 +91,15 @@ const OpenAiForm = () => {
           ref={textareaRef}
           placeholder="Ask my AI about me!"
         ></textarea>
-        <button type="submit">➡</button>
+        <button type="submit">
+          <img className="send" src={send} alt="Send" />
+        </button>
       </form>
       <div className="response-frame" ref={responseContainerRef}>
-      <video className="spacer" height="150px" autoPlay loop muted preload="auto">
-  <source src={video} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
+      <video className="spacer" height="150px" autoPlay loop muted playsInline preload="auto">
+        <source src={video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
  <div className={`openai-response ${displayedResponse || isLoading ? '' : 'hidden'}`}>
     {isLoading ? <div className="typing-animation">...</div> : displayedResponse}
   </div>
