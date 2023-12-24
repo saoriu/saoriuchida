@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Analytics } from '@vercel/analytics/react'; // Import Analytics component
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 import Modal from 'react-modal';
 import Draggable from 'react-draggable';
@@ -31,10 +31,8 @@ import releases from './releases.png';
 import lambda from './lambda.png';
 import cvr from './cvr.png';
 
-// Define the URLs of the images you want to preload
 const imageUrls = [search, earbuds, factilanding, hpeqxnew];
 
-// Function to preload images
 function preloadImages() {
   imageUrls.forEach((url) => {
     const img = new Image();
@@ -47,9 +45,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [reactModalIsOpen, setReactModalIsOpen] = useState(false);
-  const [openAiModalIsOpen, setOpenAiModalIsOpen] = useState(false);
-  const [awsModalIsOpen, setAwsModalIsOpen] = useState(false);
   const draggableRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState({
     farfetch: false,
@@ -57,6 +52,9 @@ function App() {
     eqx: false,
     un: false,
     maxell: false,
+    aws: false,
+    ai: false,
+    react: false,
   });
 
   const [expandedElement, setExpandedElement] = useState(null);
@@ -127,6 +125,21 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
+  }, [isModalOpen]);
+
+  useEffect(() => {
+    if (!isCollapsed) {
+      document.body.style.overflow = 'hidden';
+    } else if (!isModalOpen.react) { // Check if no modal is open
+      document.body.style.overflow = 'auto';
+    }
+  }, [isCollapsed, isModalOpen.react]);
 
   return (
     <div className="App">
@@ -136,7 +149,7 @@ function App() {
       <div className='contact'>
         <a href="https://linkedin.com/in/saoriuchida/" target="_blank" rel="noopener noreferrer">
         <div className="logo-container">
-          <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo" />
+          <img src={LinkedInLogo} alt="LinkedIn" className="linkedin-logo"/>
           </div>
         </a>
         <a href="https://github.com/saoriu" target="_blank" rel="noopener noreferrer">
@@ -185,17 +198,18 @@ function App() {
           <h2>Hi! I'm Saori Uchida, a web designer, data analyst, and big sister based in New York 👩🏻‍💻</h2>
           <p className='about-me'>
             I developed this
-            <span className='hover-underline-animation__1' onClick={() => setReactModalIsOpen(true)} style={{ color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px' }}> React </span>
+            <span className='hover-underline-animation__1' onClick={() => handleOpenModal('react')} style={{ color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px' }}> React </span>
             application and integrated it with
-            <span className='hover-underline-animation__2' onClick={() => setOpenAiModalIsOpen(true)} style={{ color: 'rgb(37 143 237)', cursor: 'pointer', textShadow: '0 0 12px #0071d5' }}> OpenAI </span>
+            <span className='hover-underline-animation__2' onClick={() => handleOpenModal('ai')} style={{ color: 'rgb(37 143 237)', cursor: 'pointer', textShadow: '0 0 12px #0071d5' }}> OpenAI </span>
             via my own
-            <span className='hover-underline-animation__3' onClick={() => setAwsModalIsOpen(true)} style={{ color: '#ebb66a', cursor: 'pointer', textShadow: 'rgb(255 182 77) 0px 0px 12px' }}> AWS API Gateway </span>
+            <span className='hover-underline-animation__3' onClick={() => handleOpenModal('aws')} style={{ color: '#ebb66a', cursor: 'pointer', textShadow: 'rgb(255 182 77) 0px 0px 12px' }}> AWS API Gateway </span>
             to share my work and interests!
           </p>
 
-          <Modal isOpen={reactModalIsOpen} onRequestClose={() => setReactModalIsOpen(false)} style={customStyles} ariaHideApp={false}>
-            <button style={customStyles.button} onClick={() => setReactModalIsOpen(false)}>&times;</button>
-            <img src={ReactLogo} alt="Resct Logo" className="react-logo" />
+          <Modal isOpen={isModalOpen.react} onRequestClose={() => handleCloseModal('react')}  style={customStyles} ariaHideApp={false}
+            onAfterClose={() => document.body.style.overflow = 'auto'}             >
+            <button style={customStyles.button} onClick={() => handleCloseModal('react')}>&times;</button>
+            <img src={ReactLogo} alt="React Logo" className="react-logo" />
             <h2 className='modal-title'>Developing a React Application</h2>
             <div className='modal-section'>
               <h3 className='modal-subtitle'>Why React?</h3>
@@ -218,8 +232,10 @@ function App() {
             <img src={Screenie} alt="My development" className="hpeqxnew" />
           </Modal>
 
-          <Modal isOpen={openAiModalIsOpen} onRequestClose={() => setOpenAiModalIsOpen(false)} style={customStyles} ariaHideApp={false}>
-            <button style={customStyles.button} onClick={() => setOpenAiModalIsOpen(false)}>&times;</button>
+          <Modal isOpen={isModalOpen.ai} onRequestClose={() => handleCloseModal('ai')} style={customStyles} ariaHideApp={false}
+            onAfterClose={() => document.body.style.overflow = 'auto'} 
+                        >
+            <button style={customStyles.button} onClick={() => handleCloseModal('ai')}>&times;</button>
             <img src={OpenAIBadge} alt="OpenAI Badge" className="modal-badge" />
             <h2 className='modal-title'>OpenAI Integration and Custom Model Fine-tuning</h2>
             <div className='modal-section'>
@@ -241,8 +257,10 @@ function App() {
             </div>
           </Modal>
 
-          <Modal isOpen={awsModalIsOpen} onRequestClose={() => setAwsModalIsOpen(false)} style={customStyles} ariaHideApp={false}>
-            <button style={customStyles.button} onClick={() => setAwsModalIsOpen(false)}>&times;</button>
+          <Modal isOpen={isModalOpen.aws} onRequestClose={() => handleCloseModal('aws')} style={customStyles} ariaHideApp={false}
+            onAfterClose={() => document.body.style.overflow = 'auto'} 
+            >
+            <button style={customStyles.button} onClick={() => handleCloseModal('aws')}>&times;</button>
             <img src="https://d0.awsstatic.com/logos/powered-by-aws-white.png" alt="Powered by AWS Cloud Computing" style={customStyles.image} />
             <h2 className='modal-title'>Amazon Web Services API Gateway</h2>
             <div className='modal-section'>
@@ -265,15 +283,17 @@ function App() {
         <div className='content'>
           <h3>WORKED AT</h3>
           <div className='exp'>
-            <span className='images'>
+          <span className='images'>
               <img src={farfetch} alt="farfetch" className="logo" onClick={() => handleOpenModal('farfetch')} />
               /
               <img src={sg} alt="farfetch" className="logo" onClick={() => handleOpenModal('farfetch')} />
-            </span>
-            <Modal isOpen={isModalOpen.farfetch} onRequestClose={() => handleCloseModal('farfetch')} style={customStyles} ariaHideApp={false}>
+              </span>
+            <Modal isOpen={isModalOpen.farfetch} onRequestClose={() => handleCloseModal('farfetch')} style={customStyles} ariaHideApp={false}
+              onAfterClose={() => document.body.style.overflow = 'auto'} 
+              >
               <button style={customStyles.button} onClick={() => handleCloseModal('farfetch')}>&times;</button>
               <span className='images'>
-                <img src={farfetch} alt="FARFETCH logo" className="logo" />
+                <img src={farfetch} alt="FARFETCH logo" className="logo"/>
                 /
                 <img src={sg} alt="stadium goods logo" className="logo" />
               </span>
@@ -338,7 +358,9 @@ function App() {
             </Modal>
 
             <img src={eqx} alt="equinox" className="logo" onClick={() => handleOpenModal('eqx')} />
-            <Modal isOpen={isModalOpen.eqx} onRequestClose={() => handleCloseModal('eqx')} style={customStyles} ariaHideApp={false}>
+            <Modal isOpen={isModalOpen.eqx} onRequestClose={() => handleCloseModal('eqx')} style={customStyles} ariaHideApp={false}
+              onAfterClose={() => document.body.style.overflow = 'auto'} 
+              >
               <button style={customStyles.button} onClick={() => handleCloseModal('eqx')}>&times;</button>
               <img src={eqx} alt="Equinox logo" className="logo" />
               <h2 className='modal-title'>Manager, Digital Merchandising</h2>
@@ -384,7 +406,9 @@ function App() {
             </Modal>
 
             <img src={un} alt="un" className="un-logo" onClick={() => handleOpenModal('un')} />
-            <Modal isOpen={isModalOpen.un} onRequestClose={() => handleCloseModal('un')} style={customStyles} ariaHideApp={false}>
+            <Modal isOpen={isModalOpen.un} onRequestClose={() => handleCloseModal('un')} style={customStyles} ariaHideApp={false}
+              onAfterClose={() => document.body.style.overflow = 'auto'} 
+              >
               <button style={customStyles.button} onClick={() => handleCloseModal('un')}>&times;</button>
               <img src={un} alt="United Nations logo" className="un-logo" />
               <h2 className='modal-title'>Intern, Economic Affairs</h2>
@@ -422,7 +446,9 @@ function App() {
             </Modal>
 
             <img src={maxell} alt="maxell" className="logo" onClick={() => handleOpenModal('maxell')} />
-            <Modal isOpen={isModalOpen.maxell} onRequestClose={() => handleCloseModal('maxell')} style={customStyles} ariaHideApp={false}>
+            <Modal isOpen={isModalOpen.maxell} onRequestClose={() => handleCloseModal('maxell')} style={customStyles} ariaHideApp={false}
+              onAfterClose={() => document.body.style.overflow = 'auto'} 
+              >
               <button style={customStyles.button} onClick={() => handleCloseModal('maxell')}>&times;</button>
               <img src={maxell} alt="Maxell logo" className="logo" />
               <h2 className='modal-title'>Web Designer</h2>

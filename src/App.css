@@ -17,8 +17,8 @@
 body {
   background-color: rgb(27 26 34);
   user-select: none;
-
 }
+
 article {
   background-color: rgb(27 26 34);
 }
@@ -53,7 +53,6 @@ article {
     filter: invert(1) grayscale(1) brightness(2);
 }
 
-  
 .un-logo {
   width: 130px;
   cursor: pointer;
@@ -116,6 +115,10 @@ transition: color 1s ease;
   overflow: hidden;
   z-index: 3;
   transition: transform 1s ease-in-out, color 1s ease-in-out;;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  z-index: 5
 }
 
 .ai-button.collapsed::before {
@@ -197,10 +200,6 @@ transition: color 1s ease;
   83.33% {
     content: '....';
   }
-}
-
-.ReactModal__Overlay.ReactModal__Overlay--after-open {
-  z-index: 2;
 }
 
 .modal-text.mini {
@@ -892,19 +891,19 @@ transition: filter 0.3s ease-out 0s, transform 0.3s ease-out;
 
 .logo-container:hover .linkedin-logo {
   filter: brightness(3);
-  transform: translateY(-15px);
+  transform: translateY(-10px);
   transition: filter 0.3s ease-out 0s, transform 0.3s ease-out;
 }
 
 .logo-container:hover .email-logo {
   fill: rgb(255, 98, 98);
-  transform: translateY(-15px);
+  transform: translateY(-10px);
   transition: fill 0.3s ease-out 0s, transform 0.3s ease-out;
 }
 
 .logo-container:hover .github-logo {
   fill: rgb(199, 230, 106);
-  transform: translateY(-15px);
+  transform: translateY(-10px);
   transition: fill 0.3s ease-out 0s, transform 0.3s ease-out;
 }
 
