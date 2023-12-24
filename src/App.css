@@ -119,7 +119,7 @@ transition: color 1s ease;
 }
 
 .ai-button.collapsed::before {
-  background: linear-gradient(90deg, #bbb3b3, #f0f0f0);
+  background: #f0f0f0;
   content: "";
   inset: 0;
   position: absolute;
