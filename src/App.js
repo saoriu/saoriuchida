@@ -133,13 +133,6 @@ function App() {
     }
   }, [isModalOpen]);
 
-  useEffect(() => {
-    if (!isCollapsed) {
-      document.body.style.overflow = 'hidden';
-    } else if (!isModalOpen.react) { // Check if no modal is open
-      document.body.style.overflow = 'auto';
-    }
-  }, [isCollapsed, isModalOpen.react]);
 
   return (
     <div className="App">
