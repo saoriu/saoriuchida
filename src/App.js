@@ -125,14 +125,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'scroll';
-    }
-  }, [isModalOpen]);
-
 
   return (
     <div className="App">
@@ -199,7 +191,7 @@ function App() {
             to share my work and interests!
           </p>
 
-          <Modal isOpen={isModalOpen.react} onRequestClose={() => handleCloseModal('react')}  style={customStyles} ariaHideApp={false}
+          <Modal isOpen={isModalOpen.react}   onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('react')}  style={customStyles} ariaHideApp={false}
             onAfterClose={() => document.body.style.overflow = 'auto'}             >
             <button style={customStyles.button} onClick={() => handleCloseModal('react')}>&times;</button>
             <img src={ReactLogo} alt="React Logo" className="react-logo" />
@@ -225,7 +217,7 @@ function App() {
             <img src={Screenie} alt="My development" className="hpeqxnew" />
           </Modal>
 
-          <Modal isOpen={isModalOpen.ai} onRequestClose={() => handleCloseModal('ai')} style={customStyles} ariaHideApp={false}
+          <Modal isOpen={isModalOpen.ai}   onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('ai')} style={customStyles} ariaHideApp={false}
             onAfterClose={() => document.body.style.overflow = 'auto'} 
                         >
             <button style={customStyles.button} onClick={() => handleCloseModal('ai')}>&times;</button>
@@ -250,7 +242,7 @@ function App() {
             </div>
           </Modal>
 
-          <Modal isOpen={isModalOpen.aws} onRequestClose={() => handleCloseModal('aws')} style={customStyles} ariaHideApp={false}
+          <Modal isOpen={isModalOpen.aws}   onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('aws')} style={customStyles} ariaHideApp={false}
             onAfterClose={() => document.body.style.overflow = 'auto'} 
             >
             <button style={customStyles.button} onClick={() => handleCloseModal('aws')}>&times;</button>
@@ -281,7 +273,7 @@ function App() {
               /
               <img src={sg} alt="farfetch" className="logo" onClick={() => handleOpenModal('farfetch')} />
               </span>
-            <Modal isOpen={isModalOpen.farfetch} onRequestClose={() => handleCloseModal('farfetch')} style={customStyles} ariaHideApp={false}
+            <Modal isOpen={isModalOpen.farfetch}   onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('farfetch')} style={customStyles} ariaHideApp={false}
               onAfterClose={() => document.body.style.overflow = 'auto'} 
               >
               <button style={customStyles.button} onClick={() => handleCloseModal('farfetch')}>&times;</button>
@@ -351,7 +343,7 @@ function App() {
             </Modal>
 
             <img src={eqx} alt="equinox" className="logo" onClick={() => handleOpenModal('eqx')} />
-            <Modal isOpen={isModalOpen.eqx} onRequestClose={() => handleCloseModal('eqx')} style={customStyles} ariaHideApp={false}
+            <Modal isOpen={isModalOpen.eqx}   onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('eqx')} style={customStyles} ariaHideApp={false}
               onAfterClose={() => document.body.style.overflow = 'auto'} 
               >
               <button style={customStyles.button} onClick={() => handleCloseModal('eqx')}>&times;</button>
@@ -399,7 +391,7 @@ function App() {
             </Modal>
 
             <img src={un} alt="un" className="un-logo" onClick={() => handleOpenModal('un')} />
-            <Modal isOpen={isModalOpen.un} onRequestClose={() => handleCloseModal('un')} style={customStyles} ariaHideApp={false}
+            <Modal isOpen={isModalOpen.un}   onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('un')} style={customStyles} ariaHideApp={false}
               onAfterClose={() => document.body.style.overflow = 'auto'} 
               >
               <button style={customStyles.button} onClick={() => handleCloseModal('un')}>&times;</button>
@@ -439,7 +431,7 @@ function App() {
             </Modal>
 
             <img src={maxell} alt="maxell" className="logo" onClick={() => handleOpenModal('maxell')} />
-            <Modal isOpen={isModalOpen.maxell} onRequestClose={() => handleCloseModal('maxell')} style={customStyles} ariaHideApp={false}
+            <Modal isOpen={isModalOpen.maxell}   onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('maxell')} style={customStyles} ariaHideApp={false}
               onAfterClose={() => document.body.style.overflow = 'auto'} 
               >
               <button style={customStyles.button} onClick={() => handleCloseModal('maxell')}>&times;</button>

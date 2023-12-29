@@ -17,6 +17,7 @@
 body {
   background-color: rgb(27 26 34);
   user-select: none;
+  overflow-y: scroll;
 }
 
 article {
