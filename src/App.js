@@ -58,9 +58,9 @@ function App() {
   });
 
   const [expandedElement, setExpandedElement] = useState(null);
-
+  
   useEffect(() => {
-    fetch('http://ip-api.com/json')
+    fetch('https://ip-api.com/json')
       .then(response => response.json())
       .then(data => {
         track('Page View', {
@@ -71,7 +71,7 @@ function App() {
         });
       });
   }, []);
-  
+
   function handleClick(e) {
     if (expandedElement) {
       expandedElement.classList.remove('expand');
