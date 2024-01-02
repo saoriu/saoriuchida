@@ -59,19 +59,6 @@ function App() {
 
   const [expandedElement, setExpandedElement] = useState(null);
   
-  useEffect(() => {
-    fetch('https://ip-api.com/json')
-      .then(response => response.json())
-      .then(data => {
-        track('Page View', {
-          referrer: document.referrer,
-          location: data.city,
-          region: data.regionName,
-          country: data.country
-        });
-      });
-  }, []);
-
   function handleClick(e) {
     if (expandedElement) {
       expandedElement.classList.remove('expand');
