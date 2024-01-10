@@ -4,9 +4,79 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: rgb(27 26 34);
   color: whitesmoke;
+}
+
+.game-text {
+  font-size: 2em;
+  font-family: 'NinjaAdventure';
+  margin: 0;
+  line-height: 1;
+}
+
+.zontent {
+  display: flex;
+  gap: 50px;
+}
+
+.content.one {
+  flex: 1
+}
+
+.content.two {
+  flex: 3
+}
+
+.suki-style img {
+  width: auto;
+  height: 120px;
+}
+
+.suki-container {
+  max-width: 250px;
+}
+
+.suki-title {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.suki-title:hover .game-text {
+  animation: pulse 2s infinite;
+  color: gold;
+  cursor: pointer;
+}
+
+a:-webkit-any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.game-text a:-webkit-any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.game-text a:visited {
+  color: gold !important;
+  text-decoration: none !important;
+}
+
+.game-text a {
+  text-decoration: none;
+}
+
+.suki-style {
+  width: 100px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
@@ -43,9 +113,16 @@ article {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 85%;
+  flex-wrap: wrap;
+}
+
+.suki-text p {
+  font-size: 1.3em;
+  font-weight: 300;
+  font-family: 'NinjaAdventure';
+  word-spacing: 0.25em;
 }
 
 .logo {
@@ -160,6 +237,10 @@ transition: color 1s ease;
   display: none;
 }
 
+h3 {
+  margin-top: 0;
+}
+
 
 .openai textarea {
   color: black;
@@ -254,6 +335,13 @@ transition: color 1s ease;
 
 /* For screens smaller than 600px */
 @media only screen and (max-width: 449px) {
+
+  .zontent {
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+
   .title {
     padding: 30px;
    }
@@ -307,9 +395,10 @@ border-radius: 0;
 
   .content {
     position: relative;
-    margin-top: 50px;
+    margin-top: 15px !important;
     width: 90%;
 }
+
 
 .modal-container {
   flex-direction: column;
@@ -327,6 +416,13 @@ border-radius: 0;
 
 }
 @media only screen and (min-width: 450px) and (max-width: 600px) {
+  .zontent {
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+
+
   .title {
     padding: 50px 50px;
   }
@@ -674,7 +770,7 @@ p {
 .content {
   position: relative;
   width: 90%;
-  margin-top: 100px;
+  margin-top: 50px;
   justify-content: space-between;
 }
 

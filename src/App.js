@@ -5,7 +5,6 @@ import Modal from 'react-modal';
 import Draggable from 'react-draggable';
 import AnimatedBackground from './AnimatedBackground';
 import OpenAiForm from './OpenAiForm';
-import OpenAIBadge from './openaibadge.svg';
 import ReactLogo from './logo.svg';
 import Screenie from './devving.png';
 import Collapsible from 'react-collapsible';
@@ -13,6 +12,7 @@ import LinkedInLogo from './linkedin.png';
 import farfetch from './farfetch.png';
 import eqx from './eqx.svg';
 import un from './un.svg';
+import sukiImage from './suki.png';
 import maxell from './maxell.png';
 import sg from './sg.svg';
 import hpeqxnew from './hp-eqx-new.png';
@@ -32,6 +32,31 @@ import lambda from './lambda.png';
 import cvr from './cvr.png';
 
 const imageUrls = [search, earbuds, factilanding, hpeqxnew];
+const frames = [
+  'suki.png',
+  'run1.png',
+  'run2.png',
+  'run3.png',
+  'run4.png',
+  'run5.png',
+  'run6.png',
+  'run7.png',
+  'run8.png',
+];
+
+function SukiAnimation() {
+  const [currentFrame, setCurrentFrame] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentFrame((currentFrame + 1) % frames.length);
+    }, 125); 
+
+    return () => clearInterval(timer); // Clean up on component unmount
+  }, [currentFrame]);
+
+  return <img src={frames[currentFrame]} alt="Suki" />;
+}
 
 function preloadImages() {
   imageUrls.forEach((url) => {
@@ -45,14 +70,14 @@ function App() {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const draggableRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState({
     farfetch: false,
     sg: false,
     eqx: false,
     un: false,
     maxell: false,
-    aws: false,
-    ai: false,
+    suki: false,
     react: false,
   });
 
@@ -76,6 +101,41 @@ function App() {
   const handleCloseModal = (name) => {
     setIsModalOpen({ ...isModalOpen, [name]: false });
   };
+  const customStylesTwo = {
+      content: {
+        backgroundColor: 'none',
+        background: '#1b1a22',
+        padding: '30px',
+        borderRadius: 'var(--modal-border-radius)',
+        boxShadow: 'var(--modal-shadow)',
+        display: 'flex',
+        flexDirection: 'column',
+        border: 'none',
+        maxHeight: '700px',
+        alignItems: 'center',
+        width: '55%', // Adjust the width as desired
+        margin: '0 auto', // Center the modal horizontally
+        overflowX: 'hidden', // Hide horizontal scrollbar
+      },
+      overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.25)', // Change this to your desired color
+      },
+      button: {
+        color: 'white',
+        fontSize: '2.5em',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        position: 'absolute',
+        right: '10px',
+        top: '5px',
+      },
+      image: {
+        width: '100px',
+        height: 'auto',
+      },
+}
+
   const customStyles = {
     content: {
       backgroundColor: 'none',
@@ -127,6 +187,7 @@ function App() {
 
   return (
     <div className="App" >
+      <div className='App-content'>
       <Analytics />
       <AnimatedBackground isLoading={isLoading} />
       <div className='title'>
@@ -182,7 +243,7 @@ function App() {
           </div>
         )}
         <div className='intro'>
-          <h2>Hi! I'm Saori Uchida, a web designer, data analyst, and big sister based in New York 👩🏻‍💻</h2>
+          <h2>Hi! I'm Saori Uchida, a product manager, budding full stack developer, and big sister based in New York 👩🏻‍💻</h2>
           <p className='about-me'>
             I developed this {' '}
             <span
@@ -195,35 +256,21 @@ function App() {
             >
               React
             </span>        {' '}
-            application and integrated it with {' '}
-            <span
-              className='hover-underline-animation__2'
-              onClick={() => {
-                handleOpenModal('ai');
-                window.gtag('event', 'click', { 'event_category': 'span', 'event_label': 'AI Span Click' });
-              }}
-              style={{ color: 'rgb(37 143 237)', cursor: 'pointer', textShadow: '0 0 12px #0071d5' }}
-            >
-              OpenAI
-            </span>   {' '}
-            via my own {' '}
-            <span
-              className='hover-underline-animation__3'
-              onClick={() => {
-                handleOpenModal('aws');
-                window.gtag('event', 'click', { 'event_category': 'span', 'event_label': 'AWS Span Click' });
-              }}
-              style={{ color: '#ebb66a', cursor: 'pointer', textShadow: 'rgb(255 182 77) 0px 0px 12px' }}
-            >
-              AWS API Gateway
-            </span>     {' '}
-            to share my work and interests!
+            application to share my work and interests!
           </p>
           <Modal isOpen={isModalOpen.react} onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('react')} style={customStyles} ariaHideApp={false}
             onAfterClose={() => document.body.style.overflow = 'auto'}             >
             <button style={customStyles.button} onClick={() => handleCloseModal('react')}>&times;</button>
+            <span className='images'>
             <img src={ReactLogo} alt="React Logo" className="react-logo" />
-            <h2 className='modal-title'>Developing a React Application</h2>
+            <img src="https://d0.awsstatic.com/logos/powered-by-aws-white.png" alt="Powered by AWS Cloud Computing" style={customStyles.image} />
+            </span>
+            <h2 className='modal-title'>Developing a full-stack project</h2>
+            <div className='modal-section'>
+              <p className='modal-text'>
+                I used a component-driven approach to develop this project, breaking down the UI into reusable components using JSX. For the OpenAI API, I created OpenAiForm.js with useState, useRef, and useEffect hooks. I used axios to securely communicate with the AWS API Gateway. The AnimatedBackground.js component uses useState and useEffect hooks to manage state and handle lifecycle events. It includes color-shifting wedges with a shuffle array function for color variation and dynamic positioning. Finally, I implemented event tracking using Google Analytics 4 and deployed this package on Vercel.
+              </p>
+            </div>
             <div className='modal-section'>
               <h3 className='modal-subtitle'>Why React?</h3>
               <p className='modal-text'>
@@ -233,65 +280,125 @@ function App() {
                 I found that transitioning to React hooks from traditional React patterns was a game-changer. These enabled me to utilize state and other React features without needing to write a class. This shift not only simplified my code, but also made it more comprehensible and easier to maintain.
               </p>
             </div>
-            <div className='modal-section'>
-              <h3 className='modal-subtitle'>This project</h3>
-              <p className='modal-text'>
-                I used a component-driven approach to develop this project, breaking down the UI into reusable components using JSX. For the OpenAI API, I created OpenAiForm.js with useState, useRef, and useEffect hooks. I used axios to securely communicate with the AWS API Gateway. The AnimatedBackground.js component uses useState and useEffect hooks to manage state and handle lifecycle events. It includes color-shifting wedges with a shuffle array function for color variation and dynamic positioning. Finally, I added an opacity effect on component mounting for enhanced visual appeal.
-              </p>
-            </div>
             <img src={Screenie} alt="My development" className="hpeqxnew" />
-          </Modal>
-
-          <Modal isOpen={isModalOpen.ai} onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('ai')} style={customStyles} ariaHideApp={false}
-            onAfterClose={() => document.body.style.overflow = 'auto'}
-          >
-            <button style={customStyles.button} onClick={() => handleCloseModal('ai')}>&times;</button>
-            <img src={OpenAIBadge} alt="OpenAI Badge" className="modal-badge" />
-            <h2 className='modal-title'>OpenAI Integration and Custom Model Fine-tuning</h2>
             <div className='modal-section'>
-              <h3 className='modal-subtitle'>Project Overview</h3>
+              <h3 className='modal-subtitle'>Backened development with AWS</h3>
+              <p className='modal-text'>The purpose of this project was to showcase my skills in API integration, Amazon Web Services, and cybersecurity principles. I developed this site as a React application that interacts with OpenAI's API, but instead of directly exposing the API key in the frontend, I created a secure and efficient backend solution using AWS Lambda and API Gateway.</p>
+              <h3 className='modal-subtitle'>Lambda Function</h3>
+              <p className='modal-text'>I created a Lambda function in AWS using Node.js that acts as a middleware between my React app and OpenAI's API. The Lambda function securely stores the OpenAI API key and handles API requests from my frontend application. I also implemented error handling within the function to manage any unexpected interactions with the OpenAI API.</p>
+              <h3 className='modal-subtitle'>API Gateway Configuration</h3>
+              <p className='modal-text'>I set up an API Gateway in AWS to expose a REST endpoint and configured the endpoint to trigger the Lambda function upon receiving a request. I also utilized API Gateway's built-in features for request validation, rate limiting, and CORS configuration to enhance security and reliability.</p>
+              <h3 className='modal-subtitle'>Security Measures</h3>
+              <p className='modal-text'>By using AWS Lambda and API Gateway, I ensured that the OpenAI API key is never exposed to the frontend, mitigating the risk of key compromise. I configured appropriate IAM roles and policies in AWS for the principle of least privilege, ensuring that the Lambda function has only the necessary permissions. To track any unusual activities or errors, I enabled logging and monitoring through AWS CloudWatch.</p>
+            </div>
+            <img src={lambda} alt="Lambda and api gateway" className="hpeqxnew" />
+            <div className='modal-section'>
+              <h3 className='modal-subtitle'>OpenAI Integration and Custom Model Fine-tuning</h3>
               <p className='modal-text'>
                 In this project, I demonstrated my ability to manipulate generative AI models by integrating this React application with OpenAI's API. This particular model was trained on data about my personal and professional experiences.
               </p>
-            </div>
-            <div className='modal-section'>
               <h3 className='modal-subtitle'>Technical Implementation</h3>
               <p className='modal-text'>
                 The integration involves a robust backend infrastructure using AWS Lambda and API Gateway. AWS Lambda serves as the intermediary, ensuring secure communication between the frontend and OpenAI's API without exposing sensitive keys. The API Gateway acts as a controlled access point, providing a RESTful endpoint for frontend requests. This setup not only secures the API key but also enables scalable and efficient request handling, essential for real-time AI interactions.
               </p>
-            </div>
-            <div className='modal-section'>
               <h3 className='modal-subtitle'>Leveraging AI</h3>
               <p className='modal-text'>
                 Although sensationalized, AI is changing how we interact with data and digital content. My hands-on experience implementing machine learning algorithms and with my background in UX design, I can sift through the hype to create valuable experiences for users. This project exemplifies my ability to create dynamic, responsive, and personalized digital touchpoints that engage users in meaningful ways.</p>
             </div>
           </Modal>
 
-          <Modal isOpen={isModalOpen.aws} onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('aws')} style={customStyles} ariaHideApp={false}
-            onAfterClose={() => document.body.style.overflow = 'auto'}
-          >
-            <button style={customStyles.button} onClick={() => handleCloseModal('aws')}>&times;</button>
-            <img src="https://d0.awsstatic.com/logos/powered-by-aws-white.png" alt="Powered by AWS Cloud Computing" style={customStyles.image} />
-            <h2 className='modal-title'>Amazon Web Services API Gateway</h2>
-            <div className='modal-section'>
-              <h3 className='modal-subtitle'>Project Overview</h3>
-              <p className='modal-text'>The purpose of this project was to showcase my skills in API integration, AWS services, and cybersecurity principles. I developed this site as a React application that interacts with OpenAI's API, but instead of directly exposing the API key in the frontend, I created a secure and efficient backend solution using AWS Lambda and API Gateway.</p>
-            </div>
-            <div className='modal-section'>
-              <h3 className='modal-subtitle'>AWS Lambda Function</h3>
-              <p className='modal-text'>I created a Lambda function in AWS using Node.js that acts as a middleware between my React app and OpenAI's API. The Lambda function securely stores the OpenAI API key and handles API requests from my frontend application. I also implemented error handling within the function to manage any unexpected interactions with the OpenAI API.</p>
-              <h3 className='modal-subtitle'>AWS API Gateway Configuration</h3>
-              <p className='modal-text'>I set up an API Gateway in AWS to expose a REST endpoint and configured the endpoint to trigger the Lambda function upon receiving a request. I also utilized API Gateway's built-in features for request validation, rate limiting, and CORS configuration to enhance security and reliability.</p>
-              <h3 className='modal-subtitle'>Security Measures</h3>
-              <p className='modal-text'>By using AWS Lambda and API Gateway, I ensured that the OpenAI API key is never exposed to the frontend, mitigating the risk of key compromise. I configured appropriate IAM roles and policies in AWS for the principle of least privilege, ensuring that the Lambda function has only the necessary permissions. To track any unusual activities or errors, I enabled logging and monitoring through AWS CloudWatch.</p>
-            </div>
-            <img src={lambda} alt="Lambda and api gateway" className="hpeqxnew" />
-          </Modal>
-
         </div>
-
-        <div className='content'>
-          <h3>WORKED AT</h3>
+<div className='zontent'>
+        <div className='content one'>
+          <h3>PROJECT</h3>
+        <div className='suki-container'>
+           <div className='suki-title'> 
+           <div
+              className='suki-style'
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onClick={() => {
+                window.gtag('event', 'Game', { 'event_category': 'Suki', 'event_label': 'Suki Game Click' });
+              }}
+            >
+              <a href="https://sukiranaway.com">
+                {isHovered ? <SukiAnimation /> : <img src={sukiImage} alt="Suki" />}
+              </a>            
+            </div>  
+            <div className='suki-header'
+                 onMouseEnter={() => setIsHovered(true)}
+                 onMouseLeave={() => setIsHovered(false)}
+                 onClick={() => {
+                  window.gtag('event', 'Game', { 'event_category': 'Suki', 'event_label': 'Suki Game Click' });
+                }}
+            >
+              <a href="https://sukiranaway.com">
+                <h3 className='game-text'>SUKI</h3>
+                <h3 className='game-text'>RAN</h3>
+                <h3 className='game-text'>AWAY!</h3>
+              </a>
+            </div>  
+             </div>
+              <div className='suki-text'>
+                <p>read my dev log 
+                <span
+              className='hover-underline-animation__1'
+              onClick={() => {
+                handleOpenModal('suki');
+                window.gtag('event', 'click', { 'event_category': 'span', 'event_label': 'Suki Span Click' });
+              }}
+              style={{ color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px' }}
+            > here
+            </span>
+            </p>
+                </div>
+            </div>
+            <Modal isOpen={isModalOpen.suki} onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('suki')} style={customStylesTwo} ariaHideApp={false}
+            onAfterClose={() => document.body.style.overflow = 'auto'}             >
+            <button style={customStylesTwo.button} onClick={() => handleCloseModal('suki')}>&times;</button>
+            <span className='images' style={{ marginBottom: '30px' }}>
+            <div className='suki-title'> 
+           <div
+              className='suki-style'
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onClick={() => {
+                window.gtag('event', 'Game', { 'event_category': 'Suki', 'event_label': 'Suki Game Click' });
+              }}
+            >
+              <a href="https://sukiranaway.com">
+                {isHovered ? <SukiAnimation /> : <img src={sukiImage} alt="Suki" />}
+              </a>            
+            </div>  
+            <div className='suki-header'
+                 onMouseEnter={() => setIsHovered(true)}
+                 onMouseLeave={() => setIsHovered(false)}
+                 onClick={() => {
+                  window.gtag('event', 'Game', { 'event_category': 'Suki', 'event_label': 'Suki Game Click' });
+                }}
+            >
+              <a href="https://sukiranaway.com">
+                <h3 className='game-text one'>SUKI</h3>
+                <h3 className='game-text one'>RAN</h3>
+                <h3 className='game-text one'>AWAY!</h3>
+              </a>
+            </div>  
+             </div>
+             </span>
+            <div className='modal-section'>
+            <h3 className='modal-subtitle'>Update</h3>
+              <p className='modal-text'>
+              1/2/2024 — The alpha version of my game is now available for demo! The little time I have available to dedicate to this project is spent developing and roadmapping, so detailed developer logs and technical documentation are de-prioritized for now. I've made the repo public since copyrighting this project, so commit history is available for the latest iteration of this project (2023). A comprehensive open beta of the game should be available on Steam by the end of 2024.                            </p>
+            </div>
+            <div className='modal-section'>
+              <h3 className='modal-subtitle'>Summary</h3>
+              <p className='modal-text'>
+              This is a project I started in college, polished during the pandemic, and slowly but surely took to the next level this past year. I developed the frontend of the game using JavaScript, employing Phaser3 as the game development framework and Matter as the physics engine, as well as a bit of React for UI management. I built the backend by constructing my own RESTful API to handle user account data.                             </p>
+            </div>
+          </Modal>
+            </div>
+            <div className='content two'>
+          <h3>WORK</h3>
           <div className='exp'>
             <span className='images' onClick={() => { handleOpenModal('farfetch'); window.gtag('event', 'click', { 'event_category': 'logo', 'event_label': 'Farfetch Logo Click' }); }}>             
               <img src={farfetch} alt="farfetch" className="logo" />
@@ -482,6 +589,8 @@ function App() {
           </div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 }
