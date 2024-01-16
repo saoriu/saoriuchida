@@ -243,7 +243,7 @@ function App() {
           </div>
         )}
         <div className='intro'>
-          <h2>Hi! I'm Saori Uchida, a product manager, budding full stack developer, and big sister based in New York 👩🏻‍💻</h2>
+          <h2>Hi! I'm Saori Uchida, a web developer, product manager, and big sister based in New York 👩🏻‍💻</h2>
           <p className='about-me'>
             I developed this {' '}
             <span
@@ -388,12 +388,12 @@ function App() {
             <div className='modal-section'>
             <h3 className='modal-subtitle'>Update</h3>
               <p className='modal-text'>
-              1/2/2024 — The alpha version of my game is now available for demo! The little time I have available to dedicate to this project is spent developing and roadmapping, so detailed developer logs and technical documentation are de-prioritized for now. I've made the repo public since copyrighting this project, so commit history is available for the latest iteration of this project (2023). A comprehensive open beta of the game should be available on Steam by the end of 2024.                            </p>
+              1/2/2024 — The alpha version of my game is now available for private demo! The little time I have available to dedicate to this project is spent developing and roadmapping, so detailed developer logs and technical documentation are de-prioritized for now. I've made the repo public since copyrighting this project, so commit history is available for the latest iteration of this project (2023). A comprehensive open beta of the game should be available on Steam by the end of 2024.                            </p>
             </div>
             <div className='modal-section'>
               <h3 className='modal-subtitle'>Summary</h3>
               <p className='modal-text'>
-              This is a project I started in college, polished during the pandemic, and slowly but surely took to the next level this past year. I developed the frontend of the game using JavaScript, employing Phaser3 as the game development framework and Matter as the physics engine, as well as a bit of React for UI management. I built the backend by constructing my own RESTful API to handle user account data.                             </p>
+              This is a project I started in college, polished during the pandemic, and slowly but surely took to the next level this past year. I developed the frontend of the game using Javascript/JSX, employing Phaser3 as the game development framework and Matter as the physics engine, as well as a bit of React for UI management. I built the backend by constructing my own RESTful API to handle user account data.                             </p>
             </div>
           </Modal>
             </div>
