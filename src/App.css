@@ -136,6 +136,12 @@ article {
     filter: invert(1) grayscale(1) brightness(2);
 }
 
+.logo-suki {
+  cursor: pointer;
+    width: 250px;
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
 .un-logo {
   width: 130px;
   cursor: pointer;
@@ -597,6 +603,10 @@ h2 {
   .logo {
     width: 80px;
   }
+
+  .logo-suki {
+    width: 150px;
+  }
 }
 
 /* For screens between 600px and 900px */
@@ -612,6 +622,11 @@ h2 {
   .logo {
     width: 100px;
   }
+
+  .logo-suki
+  {
+    width: 200px;
+  }
 }
 
 /* For screens between 901px and 1200px */
@@ -626,6 +641,11 @@ h2 {
 
   .logo {
     width: 110px;
+  }
+
+  .logo-suki
+  {
+    width: 250px;
   }
 }
 
