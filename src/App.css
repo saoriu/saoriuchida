@@ -136,6 +136,12 @@ article {
     filter: invert(1) grayscale(1) brightness(2);
 }
 
+.logo-scraper {
+  cursor: pointer;
+    width: 80px;
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
 .logo-suki {
   cursor: pointer;
     width: 250px;
@@ -342,6 +348,15 @@ h3 {
 
 .hidden {
   visibility: hidden;
+}
+
+.project-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 /* For screens smaller than 600px */

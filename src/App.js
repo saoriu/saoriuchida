@@ -30,6 +30,7 @@ import search from './search.png';
 import releases from './releases.png';
 import lambda from './lambda.png';
 import cvr from './cvr.png';
+import scrape from './scrape.png';
 
 const imageUrls = [search, earbuds, factilanding, hpeqxnew];
 
@@ -284,31 +285,27 @@ function App() {
           </div>
           <div className='zontent'>
             <div className='content one'>
-              <h3>PROJECT</h3>
+              <h3>PROJECTS</h3>
+              <div className='project-container'>
               <div className='suki-container'>
                 <div className='suki-title'>
                   <div className='suki-header'
                     onClick={() => {
+                      handleOpenModal('suki');
                       window.gtag('event', 'Suki-game', { 'event_category': 'Suki', 'event_label': 'Suki Game Click' });
                     }}
                   >
-                <a href="https://sukiranaway.com">
-                      <img src={sukiImage} alt="Suki Ran Away" className="logo-suki" />
-                    </a>          
-                    </div>
+                    <img src={sukiImage} alt="Suki Ran Away" className="logo-suki" />
+                  </div>
                 </div>
-                <div className='suki-text'>
-                  <p>read my dev log
-                    <span
-                      className='hover-underline-animation__1'
-                      onClick={() => {
-                        handleOpenModal('suki');
-                        window.gtag('event', 'Suki-dev', { 'event_category': 'span', 'event_label': 'Suki Span Click' });
-                      }}
-                      style={{ color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px' }}
-                    > here
-                    </span>
-                  </p>
+              </div>
+              <div className='project'>
+                <a href="https://scraper-snowy.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  <img src={scrape} alt="web scraper" className="logo-scraper" />
+                </a>
+                <div className='project-text'>
+                  <h3 className='project-title'>Web Scraper</h3>
+                </div>
                 </div>
               </div>
               <Modal isOpen={isModalOpen.suki} onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('suki')} style={customStylesTwo} ariaHideApp={false}
@@ -321,9 +318,10 @@ function App() {
                         window.gtag('event', 'Suki-game', { 'event_category': 'Suki', 'event_label': 'Suki Game Click' });
                       }}
                     >
-                     <a href="https://sukiranaway.com">
-                      <img src={sukiImage} alt="Suki Ran Away" className="logo-suki" />
-                    </a>      
+                      <a href="https://sukiranaway.com">
+                        <img src={sukiImage} alt="Suki Ran Away" className="logo-suki" />
+                        <p>Click here to play!</p>
+                      </a>
                     </div>
                   </div>
                 </span>
