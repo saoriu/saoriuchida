@@ -30,7 +30,7 @@ import search from './search.png';
 import releases from './releases.png';
 import lambda from './lambda.png';
 import cvr from './cvr.png';
-import scrape from './scrape.png';
+import scrape from './scrapesight.png';
 
 const imageUrls = [search, earbuds, factilanding, hpeqxnew];
 
@@ -300,12 +300,9 @@ function App() {
                 </div>
               </div>
               <div className='project'>
-                <a href="https://scraper-snowy.vercel.app/" target="_blank" rel="noopener noreferrer">
-                  <img src={scrape} alt="web scraper" className="logo-scraper" />
+                <a href="https://scrapesight.com/" target="_blank" rel="noopener noreferrer">
+                  <img src={scrape} alt="Scrape Sight by Saori Uchida" className="logo-scraper" />
                 </a>
-                <div className='project-text'>
-                  <h3 className='project-title'>Web Scraper</h3>
-                </div>
                 </div>
               </div>
               <Modal isOpen={isModalOpen.suki} onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('suki')} style={customStylesTwo} ariaHideApp={false}
