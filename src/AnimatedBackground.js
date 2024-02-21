@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const colors = ["#6D70A6", "#ebb66a", "#37648C"];
+const colors = ["#E9A9A7", "#8C1620", "#E5C1AE"];
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {

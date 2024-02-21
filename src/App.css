@@ -10,8 +10,8 @@
   display: flex;
   align-items: center;
   overflow-x: hidden;
-  background-color: rgb(27 26 34);
-  color: whitesmoke;
+  background-color: #f2f2f2;
+  color: black;
 }
 
 .game-text {
@@ -90,13 +90,13 @@ a:-webkit-any-link {
 }
 
 body {
-  background-color: rgb(27 26 34);
+  background-color: #f2f2f2;
   user-select: none;
   overflow-y: scroll;
 }
 
 article {
-  background-color: rgb(27 26 34);
+  background-color: #f2f2f2;
 }
 
 .openai {
@@ -132,8 +132,7 @@ article {
 
 .logo {
   cursor: pointer;
-    width: 130px;
-    filter: invert(1) grayscale(1) brightness(2);
+    width: 125px;
 }
 
 .logo-scraper {
@@ -655,7 +654,7 @@ h2 {
   }
 
   .logo {
-    width: 110px;
+    width: 115px;
   }
 
   .logo-suki
@@ -792,7 +791,7 @@ h2 {
   font-family: 'Yantramanav', sans-serif;
   
   /* Change font color to a light color */
-  color: #f0f0f0;
+  color: black;
   margin-bottom: 0;
   /* Add outer glow */
 }
@@ -804,9 +803,9 @@ p {
 }
 
 .intro {
-  text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
-
+  text-shadow: 0 0 10px #F1E7CD, 0 0 20px #F1E7CD, 0 0 30px #F1E7CD;
 }
+
 .content {
   position: relative;
   width: 90%;
@@ -1000,28 +999,28 @@ transition: background-color 0.3s ease;
 }
 
 .logo-container {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
 }
 
 .email-logo {
-  fill: white;
+  fill: black;
   width: 35px;
   cursor: pointer;
   transition: fill 0.3s ease-out 0s, transform 0.3s ease-out;
 }
 
 .linkedin-logo {
-width: 35px;
-filter: invert(1) grayscale(1) brightness(2);
+width: 37px;
+filter: invert(1) grayscale(1) brightness(0);
 cursor: pointer;
 transition: filter 0.3s ease-out 0s, transform 0.3s ease-out;
 }
 
 .github-logo {
   fill: white;
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
   transition: fill 0.3s ease-out 0s, transform 0.3s ease-out;
 }
