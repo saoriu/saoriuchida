@@ -187,12 +187,6 @@ function App() {
               </div>
             </a>
           </div>
-          <button className={`ai-button ${isCollapsed ? 'collapsed' : 'expanded'}`} onClick={() => {
-            setIsCollapsed(!isCollapsed);
-            window.gtag('event', 'AI', { 'event_category': 'button', 'event_label': 'AI Button Click', 'value': !isCollapsed });
-          }}>
-            {isCollapsed ? 'ask my ai' : 'ask my ai'}
-          </button>
           {windowWidth > 650 ? (
             <Draggable
               nodeRef={draggableRef}
@@ -218,9 +212,9 @@ function App() {
             </div>
           )}
           <div className='intro'>
-            <h2>Hi! I'm Saori Uchida, a web developer, product manager, and big sister based in New York 👩🏻‍💻</h2>
+            <h2>Hi! I'm Saori Uchida, a technical product manager based in New York 👩🏻‍💻</h2>
             <p className='about-me'>
-              I developed this {' '}
+              As a budding developer, I built this {' '}
               <span
                 className='hover-underline-animation__1'
                 onClick={() => {
@@ -291,11 +285,13 @@ function App() {
                 <div className='suki-title'>
                   <div className='suki-header'
                     onClick={() => {
-                      handleOpenModal('suki');
                       window.gtag('event', 'Suki-game', { 'event_category': 'Suki', 'event_label': 'Suki Game Click' });
                     }}
                   >
+                                        <a href="https://sukiranaway.com">
+
                     <img src={sukiImage} alt="Suki Ran Away" className="logo-suki" />
+                    </a>
                   </div>
                 </div>
               </div>
