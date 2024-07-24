@@ -212,7 +212,7 @@ function App() {
             </div>
           )}
           <div className='intro'>
-            <h2>Hi! I'm Saori Uchida, a React engineer, indie game developer, and technical product manager based in New York 👩🏻‍💻</h2>
+            <h2>Hi! I'm Saori Uchida, a technical product manager, indie game developer, and React fangirl based in New York 👩🏻‍💻</h2>
           </div>
           <div className='zontent'>
             <div className='content one'>
