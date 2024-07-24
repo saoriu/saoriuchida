@@ -212,70 +212,7 @@ function App() {
             </div>
           )}
           <div className='intro'>
-            <h2>Hi! I'm Saori Uchida, a technical product manager based in New York 👩🏻‍💻</h2>
-            <p className='about-me'>
-              As a budding developer, I built this {' '}
-              <span
-                className='hover-underline-animation__1'
-                onClick={() => {
-                  handleOpenModal('react');
-                  window.gtag('event', 'React', { 'event_category': 'span', 'event_label': 'React Span Click' });
-                }}
-                style={{ color: 'rgb(153 133 255)', cursor: 'pointer', textShadow: 'rgb(60 0 255) 0px 0px 12px' }}
-              >
-                React
-              </span>        {' '}
-              application to share my work and interests!
-            </p>
-            <Modal isOpen={isModalOpen.react} onAfterOpen={() => document.body.style.overflow = 'hidden'} onRequestClose={() => handleCloseModal('react')} style={customStyles} ariaHideApp={false}
-              onAfterClose={() => document.body.style.overflow = 'auto'}             >
-              <button style={customStyles.button} onClick={() => handleCloseModal('react')}>&times;</button>
-              <span className='images'>
-                <img src={ReactLogo} alt="React Logo" className="react-logo" />
-                <img src="https://d0.awsstatic.com/logos/powered-by-aws-white.png" alt="Powered by AWS Cloud Computing" style={customStyles.image} />
-              </span>
-              <h2 className='modal-title'>Developing a full-stack project</h2>
-              <div className='modal-section'>
-                <p className='modal-text'>
-                  I used a component-driven approach to develop this project, breaking down the UI into reusable components using JSX. For the OpenAI API, I created OpenAiForm.js with useState, useRef, and useEffect hooks. I used axios to securely communicate with the AWS API Gateway. The AnimatedBackground.js component uses useState and useEffect hooks to manage state and handle lifecycle events. It includes color-shifting wedges with a shuffle array function for color variation and dynamic positioning. Finally, I implemented event tracking using Google Analytics 4 and deployed this package on Vercel.
-                </p>
-              </div>
-              <div className='modal-section'>
-                <h3 className='modal-subtitle'>Why React?</h3>
-                <p className='modal-text'>
-                  My journey with React started in 2020, during the pandemic. Coming from a strong foundation in JavaScript, HTML, and CSS, I saw React as a means to elevate my web development skills and channel my passion for web design, focusing on creating more dynamic, beautiful, and interactive web experiences. React's component-based architecture and its seamless integration with modern JavaScript appealed to me. It offered a way to build dynamic, responsive web applications efficiently, leveraging my existing knowledge in JavaScript, HTML, and CSS.
-                </p>
-                <p className='modal-text'>
-                  I found that transitioning to React hooks from traditional React patterns was a game-changer. These enabled me to utilize state and other React features without needing to write a class. This shift not only simplified my code, but also made it more comprehensible and easier to maintain.
-                </p>
-              </div>
-              <img src={Screenie} alt="My development" className="hpeqxnew" />
-              <div className='modal-section'>
-                <h3 className='modal-subtitle'>Backened development with AWS</h3>
-                <p className='modal-text'>The purpose of this project was to showcase my skills in API integration, Amazon Web Services, and cybersecurity principles. I developed this site as a React application that interacts with OpenAI's API, but instead of directly exposing the API key in the frontend, I created a secure and efficient backend solution using AWS Lambda and API Gateway.</p>
-                <h3 className='modal-subtitle'>Lambda Function</h3>
-                <p className='modal-text'>I created a Lambda function in AWS using Node.js that acts as a middleware between my React app and OpenAI's API. The Lambda function securely stores the OpenAI API key and handles API requests from my frontend application. I also implemented error handling within the function to manage any unexpected interactions with the OpenAI API.</p>
-                <h3 className='modal-subtitle'>API Gateway Configuration</h3>
-                <p className='modal-text'>I set up an API Gateway in AWS to expose a REST endpoint and configured the endpoint to trigger the Lambda function upon receiving a request. I also utilized API Gateway's built-in features for request validation, rate limiting, and CORS configuration to enhance security and reliability.</p>
-                <h3 className='modal-subtitle'>Security Measures</h3>
-                <p className='modal-text'>By using AWS Lambda and API Gateway, I ensured that the OpenAI API key is never exposed to the frontend, mitigating the risk of key compromise. I configured appropriate IAM roles and policies in AWS for the principle of least privilege, ensuring that the Lambda function has only the necessary permissions. To track any unusual activities or errors, I enabled logging and monitoring through AWS CloudWatch.</p>
-              </div>
-              <img src={lambda} alt="Lambda and api gateway" className="hpeqxnew" />
-              <div className='modal-section'>
-                <h3 className='modal-subtitle'>OpenAI Integration and Custom Model Fine-tuning</h3>
-                <p className='modal-text'>
-                  In this project, I demonstrated my ability to manipulate generative AI models by integrating this React application with OpenAI's API. This particular model was trained on data about my personal and professional experiences.
-                </p>
-                <h3 className='modal-subtitle'>Technical Implementation</h3>
-                <p className='modal-text'>
-                  The integration involves a robust backend infrastructure using AWS Lambda and API Gateway. AWS Lambda serves as the intermediary, ensuring secure communication between the frontend and OpenAI's API without exposing sensitive keys. The API Gateway acts as a controlled access point, providing a RESTful endpoint for frontend requests. This setup not only secures the API key but also enables scalable and efficient request handling, essential for real-time AI interactions.
-                </p>
-                <h3 className='modal-subtitle'>Leveraging AI</h3>
-                <p className='modal-text'>
-                  Although sensationalized, AI is changing how we interact with data and digital content. My hands-on experience implementing machine learning algorithms and with my background in UX design, I can sift through the hype to create valuable experiences for users. This project exemplifies my ability to create dynamic, responsive, and personalized digital touchpoints that engage users in meaningful ways.</p>
-              </div>
-            </Modal>
-
+            <h2>Hi! I'm Saori Uchida, a React engineer, indie game developer, and technical product manager based in New York 👩🏻‍💻</h2>
           </div>
           <div className='zontent'>
             <div className='content one'>
