@@ -212,7 +212,7 @@ function App() {
             </div>
           )}
           <div className='intro'>
-            <h2>Hi! I'm Saori Uchida, a technical product manager and indie developer based in New York 👩🏻‍💻</h2>
+            <h2>Hi! I'm Saori Uchida, a technical product manager and indie game developer based in New York 👩🏻‍💻</h2>
           </div>
           <div className='zontent'>
             <div className='content one'>
