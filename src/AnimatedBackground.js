@@ -35,7 +35,7 @@ function getRandomPosition(index) {
   };
 }
 
-function AnimatedBackground({ isLoading }) {
+function AnimatedBackground({ isLoading, opacity }) {
   // useState with an initializer function
   const [wedges] = useState(() => {
     // This code will only run once when the component is mounted
@@ -66,7 +66,7 @@ function AnimatedBackground({ isLoading }) {
         style={{ 
           ...wedge.position,
           width: wedge.width,
-          opacity: 0, // Initial opacity is 0
+          opacity: opacity, // Use the passed opacity prop
           transition: 'opacity 1s ease-in-out', // Add transition effect
           boxShadow: `rgb(250, 250, 250) 0px 0px 100px -40px inset, ${wedge.color} 0px 0px 30vw 30vw inset, ${wedge.color} 0px 0px 70px 40px`
         }} 

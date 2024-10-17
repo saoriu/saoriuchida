@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import video from './moji.mov';
-import send from './send.svg';
+import video from './images/moji.mov';
+import send from './images/send.svg';
 
 
 const OpenAiForm = () => {
