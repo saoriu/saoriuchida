@@ -259,6 +259,10 @@ p {
   transition: border-color 1s ease-in-out;
 }
 
+.pending {
+  cursor: default !important;
+}
+
 .disabled {
   cursor: default !important;
 }

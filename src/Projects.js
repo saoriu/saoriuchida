@@ -6,6 +6,9 @@ import lighting from './images/lighting.png';
 import scraper from './images/scraper.png';
 import crafting from './images/crafting.png';
 import development from './images/development.png';
+import sweetbean from './images/sweetbean.png';
+import sweetpreview from './images/sweetpreview.png';
+import sweethome from './images/sweethome.png';
 import { useSpring, animated } from '@react-spring/web';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,11 +20,21 @@ const sitFrames = importFrames('sit', 8);
 const attack5Frames = importFrames('attack5', 14);
 
 const projects = [
+    { logo: sweetbean,
+        title: 'sweetbean',
+        summary: 'My first business venture, a digital platform for all things beauty — fully designed, developed, and operated by myself. Coming soon!',
+        mainImage: sweetbean,
+        thumbnail: sweetpreview,
+        ready: false,
+        details: ``,
+    }
+    ,
     {
         logo: sukiImage,
         title: 'Suki Ran Away',
         summary: 'An HTML5 game I designed and developed from the ground up. Built with JavaScript, utilizing Phaser3 and a Matter.js for game development, and featuring a React-based UI.',
         mainImage: sukiImage,
+        ready: true,
         thumbnail: gameplay,
         details: `
 <div className='modal-section'>
@@ -52,6 +65,7 @@ const projects = [
         title: 'ScrapeSight',
         summary: 'A web scraping tool for extracting and visualizing catalog and market data for e-commerce websites.',
         mainImage: scrape,
+        ready: true,
         thumbnail: scraper,
         link: 'https://scrapesight.com',
         details: `
@@ -110,8 +124,8 @@ function Projects({ isDarkMode }) {
     }, []);
 
     const handleProjectClick = (index) => {
-        if (selectedProject !== null) {
-            return; // Prevent clicking on the job again if a project is already selected
+        if (selectedProject !== null || !projects[index].ready) {
+            return; // Prevent clicking on the project if another project is already selected or if the project is not ready
         }
         setSelectedProject(index === selectedProject ? null : index);
         if (appRef.current) {
@@ -203,7 +217,7 @@ function Projects({ isDarkMode }) {
                     projects.map((project, index) => (
                         <animated.div
                             key={index}
-                            className={`job ${selectedProject !== null ? 'disabled' : ''}`}
+                            className={`job ${selectedProject !== null ? 'disabled' : ''} ${!project.ready ? 'pending' : ''}`}
                             style={fadeInOutNonSelected}
                             onClick={() => handleProjectClick(index)}
                         >
