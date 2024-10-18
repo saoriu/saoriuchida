@@ -261,7 +261,7 @@ function Projects({ isDarkMode }) {
                                     <img src={image.src} alt={image.caption} className='job-images' />
                                 </div>
                             ))}
-                            <button className="button" onClick={() => { setSelectedProject(null); handleBackProjectClick(); }}>Back</button>
+                            <button className="button backhome" onClick={() => { setSelectedProject(null); handleBackProjectClick(); }}>Back</button>
                         </animated.div>
                     </>
                 )}

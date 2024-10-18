@@ -29,6 +29,7 @@
   --modal-border-radius: 10px;
   --modal-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   --background-color: ivory;
+  --inverted-background-color: #1b1a22;
   --button-background: #1b1a22;
   --button-text: #fafafa;
   --button-border: 1px solid #1b1a22;
@@ -36,6 +37,7 @@
   --text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
   --emoji-shadow: 0 0 10px midnightblue, 0 0 20px midnightblue, 0 0 30px midnightblue;
   --border-color: #00000047;
+  --button-hover-background: rgb(37, 143, 237);
 }
 
 [data-theme='dark'] {
@@ -43,12 +45,14 @@
   --secondary-color: #1b1a22;
   --text-color: #fafafa;
   --background-color: #1b1a22;
+  --inverted-background-color: #fafafa;
   --button-background: #fafafa;
   --button-text: #1b1a22;
   --button-border: 1px solid #fafafa;
   --button-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   --text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
   --border-color: #fafafa1b;
+  --button-hover-background: rgb(37, 143, 237);
     --emoji-shadow: 0 0 10px rgba(255, 247, 223, 0.5), 0 0 20px rgba(255, 247, 223, 0.5), 0 0 30px rgba(255, 247, 223, 0.5);
 }
 
@@ -114,6 +118,10 @@ p {
   z-index: 3;
   cursor: pointer;
   transition: transform 1s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.backhome {
+  margin-top: 40px !important;
 }
 
 .mini {
@@ -713,6 +721,62 @@ p {
 .logo-container {
   width: 35px;
   height: 35px;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Input Styles */
+form input[type="password"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid var(--input-border-color, #ccc);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+form input[type="password"]:focus {
+  border-color: var(--input-focus-border-color, #007BFF);
+  outline: none;
+}
+
+/* Button Styles */
+form button[type="submit"] {
+  width: 100%;
+  max-width: 100px;
+  padding: 10px;
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--fontSizes-XXXS);
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.form-container {
+  margin-top: -25px;
+}
+
+.form-container .modal-text {
+  font-weight: 500 !important;
+}
+
+form button[type="submit"]:hover {
+  background-color: var(--button-hover-background);
+  color: white
+}
+
+form button[type="submit"]:active {
+  transform: scale(1);
 }
 
 .email-logo,
