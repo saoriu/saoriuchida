@@ -692,6 +692,8 @@ p {
   width: 100%;
   transition: transform 0.3s ease;
   margin-top: 20px;
+  max-height: 750px;
+  object-fit: contain;
 }
 
 /*last modal-text remove bottom margin*/
