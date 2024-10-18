@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { useSpring, animated } from '@react-spring/web';
 import './App.css';
 import AnimatedBackground from './AnimatedBackground';
 import Projects from './Projects';
+// import Product from './Product';
 import Work from './Work';
 import Contact from './Contact';
 
@@ -34,20 +36,31 @@ function App() {
   const [visibleComponent, setVisibleComponent] = useState('intro');
   const [backgroundOpacity, setBackgroundOpacity] = useState(1);
   const [isDarkMode, setIsDarkMode] = useState(storedTheme === 'dark');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const showProjects = () => {
     setVisibleComponent('projects');
     setBackgroundOpacity(0.25);
+    navigate('/projects');
   };
 
   const showWork = () => {
     setVisibleComponent('work');
     setBackgroundOpacity(0.25);
+    navigate('/work');
   };
+
+  // const showProduct = () => {
+  //   setVisibleComponent('product');
+  //   setBackgroundOpacity(0.25);
+  //   navigate('/product');
+  // };
 
   const showIntro = () => {
     setVisibleComponent('intro');
     setBackgroundOpacity(1);
+    navigate('/');
   };
 
   useEffect(() => {
@@ -63,6 +76,27 @@ function App() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/projects':
+        setVisibleComponent('projects');
+        setBackgroundOpacity(0.25);
+        break;
+      case '/work':
+        setVisibleComponent('work');
+        setBackgroundOpacity(0.25);
+        break;
+      // case '/product':
+      //   setVisibleComponent('product');
+      //   setBackgroundOpacity(0.25);
+      //   break;
+      default:
+        setVisibleComponent('intro');
+        setBackgroundOpacity(1);
+        break;
+    }
+  }, [location.pathname]);
 
   const transitions = useSpring({
     opacity: visibleComponent === 'intro' ? 1 : 0,
@@ -80,6 +114,11 @@ function App() {
     config: { duration: 1000 },
   });
 
+  // const productTransitions = useSpring({
+  //   opacity: visibleComponent === 'product' ? 1 : 0,
+  //   config: { duration: 1000 },
+  // });
+
   const toggleTheme = () => {
     const newTheme = !isDarkMode ? 'dark' : 'light';
     setIsDarkMode(!isDarkMode);
@@ -96,34 +135,45 @@ function App() {
           <button className="theme-toggle-button" onClick={toggleTheme}>
             {isDarkMode ? '🌞' : '🌜'}
           </button>
-          {visibleComponent === 'intro' && (
-            <animated.div style={transitions} className='title'>
-              <Contact isDarkMode={isDarkMode}/>
-              <div className='intro'>
-                <h2>I'm Saori Uchida, a technical product manager and indie game developer based in New York 👩🏻‍💻</h2>
-                <div className='buttons'>
-                  <button className="button project" onClick={showProjects}>See my projects</button>
-                  <button className="button works" onClick={showWork}>See my work</button>
+          <Routes>
+            <Route path="/" element={
+              <animated.div style={transitions} className='title'>
+                <Contact isDarkMode={isDarkMode}/>
+                <div className='intro'>
+                  <h2>I'm Saori Uchida, a technical product manager and indie game developer based in New York 👩🏻‍💻</h2>
+                  <div className='buttons'>
+                    <button className="button project" onClick={showProjects}>See my projects</button>
+                    <button className="button works" onClick={showWork}>See my work</button>
+                    {/* <button className="button product" onClick={showProduct}>See my product</button> */}
+                  </div>
                 </div>
-              </div>
-            </animated.div>
-          )}
-          {visibleComponent === 'projects' && (
-            <animated.div style={projectTransitions} className='content'>
-              <Projects isDarkMode={isDarkMode} />
-              <button className="home" onClick={showIntro}>
-                🏠
-              </button>
-            </animated.div>
-          )}
-          {visibleComponent === 'work' && (
-            <animated.div style={workTransitions} className='content'>
-              <Work isDarkMode={isDarkMode} />
-              <button className="home" onClick={showIntro}>
-                🏠
-              </button>
-            </animated.div>
-          )}
+              </animated.div>
+            } />
+            <Route path="/projects" element={
+              <animated.div style={projectTransitions} className='content'>
+                <Projects isDarkMode={isDarkMode} />
+                <button className="home" onClick={showIntro}>
+                  🏠
+                </button>
+              </animated.div>
+            } />
+            <Route path="/work" element={
+              <animated.div style={workTransitions} className='content'>
+                <Work isDarkMode={isDarkMode} />
+                <button className="home" onClick={showIntro}>
+                  🏠
+                </button>
+              </animated.div>
+            } />
+             {/* <Route path="/product" element={
+              <animated.div style={productTransitions} className='content'>
+                <Product isDarkMode={isDarkMode} />
+                <button className="home" onClick={showIntro}>
+                  🏠
+                </button>
+              </animated.div>
+            } /> */}
+          </Routes>
         </div>
       </div>
     </div>

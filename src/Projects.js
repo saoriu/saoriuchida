@@ -7,6 +7,7 @@ import scraper from './images/scraper.png';
 import crafting from './images/crafting.png';
 import development from './images/development.png';
 import { useSpring, animated } from '@react-spring/web';
+import { useNavigate } from 'react-router-dom';
 
 const importFrames = (prefix, count) => {
     return Array.from({ length: count }, (_, i) => require(`./images/${prefix}_frame_${i}.png`));
@@ -37,8 +38,8 @@ const projects = [
     `,
         images: [
             { src: crafting, caption: 'The story follows Suki, a friendly cat who belonged to a loving family. One night, Suki accidentally tumbles out of a window and gets lost. Her adventure is a journey of survival and exploration as she tries to find her way back home.' },
-            { src: lighting, caption: 'Testing dynamic raycasting and real-time shadows. This development screenshot showcases the game’s lighting system, where shadows react to light sources using Phaser’s 2D pipeline. The sun’s position and intensity are calculated based on in-game time, enhancing the immersive experience as objects like trees, monsters, and the main character interact with dynamic lighting.' },
-            { src: development, caption: 'Testing view of procedural generation at work. This mechanism plays a key role in the dynamic creation of objects, tiles, and monsters. The system generates the world around the player in real time based on movement and game time. The algorithm spawns different objects like trees, ponds, bushes, and monsters with varying probabilities, creating a fresh and evolving game environment. As the player moves, tiles and objects are dynamically created around them, while distant elements are removed to optimize performance. This approach allows for an expansive and unpredictable world that unfolds as the player explores' },
+            { src: lighting, caption: 'I utilized raycasting to support real-time shadows, which rely on light sources that also leverage Phaser’s 2D pipeline. The sun’s position and intensity are calculated based on in-game time, enhancing the immersive experience as objects like trees, monsters, and the main character interact with dynamic lighting.' },
+            { src: development, caption: 'One of the key mechanics of the game is procedural generation. This mechanism enables dynamic creation of objects, tiles, and monsters. The system generates the world around the player in real time based on movement and game time. The algorithm spawns different objects like trees, ponds, bushes, and monsters with varying probabilities, creating a fresh and evolving game environment. As the player moves, tiles and objects are dynamically created around them, while distant elements are removed to optimize performance. This approach allows for an expansive and unpredictable world that unfolds as the player explores' },
         ],
         link: 'https://sukiranaway.com',
         linkFrames: {
@@ -66,6 +67,10 @@ const projects = [
   <p className='modal-text'>
     The application dynamically sorts and filters data, offering multiple views based on what’s important to the user, whether it’s tracking the last sale date, the total sales value, or price fluctuations. I integrated an infinite scroll feature to load products seamlessly, making sure the experience is fast and smooth across devices, with <strong>Material-UI</strong> and custom CSS driving the responsive design.
   </p>
+
+  <a href='https://scrapesight.com' target='_blank' rel='noopener noreferrer' className='link-container'>
+        Click here to try out ScrapeSight
+    </a>
 </div>
     `,
         images: [
@@ -75,6 +80,7 @@ const projects = [
 ];
 
 function Projects({ isDarkMode }) {
+    const navigate = useNavigate();
     const [selectedProject, setSelectedProject] = useState(null);
     const [hovered, setHovered] = useState(false);
     const appRef = useRef(null);

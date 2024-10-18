@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
+import { useNavigate } from 'react-router-dom';
 
 import farfetch from './images/farfetch.png';
 import eqx from './images/eqx.svg';
@@ -99,6 +100,7 @@ const jobs = [
 function Work({ isDarkMode }) {
     const [selectedJob, setSelectedJob] = useState(null);
     const appRef = useRef(null);
+    const navigate = useNavigate();
 
     const handleJobClick = (index) => {
         if (selectedJob !== null) {
