@@ -7,7 +7,6 @@ import { MdSunny } from 'react-icons/md';
 import './App.css';
 import AnimatedBackground from './AnimatedBackground';
 import Projects from './Projects';
-// import Product from './Product';
 import Work from './Work';
 import Contact from './Contact';
 
@@ -52,12 +51,6 @@ function App() {
     navigate('/work');
   };
 
-  // const showProduct = () => {
-  //   setVisibleComponent('product');
-  //   setBackgroundOpacity(0.25);
-  //   navigate('/product');
-  // };
-
   const showIntro = () => {
     setVisibleComponent('intro');
     setBackgroundOpacity(0.85);
@@ -69,23 +62,17 @@ function App() {
   }, []);
 
   useEffect(() => {
-    switch (location.pathname) {
-      case '/projects':
-        setVisibleComponent('projects');
-        setBackgroundOpacity(0.25);
-        break;
-      case '/work':
-        setVisibleComponent('work');
-        setBackgroundOpacity(0.25);
-        break;
-      // case '/product':
-      //   setVisibleComponent('product');
-      //   setBackgroundOpacity(0.25);
-      //   break;
-      default:
-        setVisibleComponent('intro');
-        setBackgroundOpacity(0.85);
-        break;
+    // Handle specific job routes and base route for /work
+    const path = location.pathname;
+    if (path === '/work' || path.startsWith('/work/')) {
+      setVisibleComponent('work');
+      setBackgroundOpacity(0.25); // Set background opacity for work
+    } else if (path === '/projects' || path.startsWith('/projects/')) {
+      setVisibleComponent('projects');
+      setBackgroundOpacity(0.25);
+    } else {
+      setVisibleComponent('intro');
+      setBackgroundOpacity(0.85); // Higher opacity for intro
     }
   }, [location.pathname]);
 
@@ -105,11 +92,6 @@ function App() {
     config: { duration: 1000 },
   });
 
-  // const productTransitions = useSpring({
-  //   opacity: visibleComponent === 'product' ? 1 : 0,
-  //   config: { duration: 1000 },
-  // });
-
   const toggleTheme = () => {
     const newTheme = !isDarkMode ? 'dark' : 'light';
     setIsDarkMode(!isDarkMode);
@@ -118,18 +100,18 @@ function App() {
   };
 
   let lastScrollTop = 0;
-  
+
   const handleScroll = (event) => {
-      const nav = document.querySelector('.nav');
-      if (nav) {
-          const currentScrollTop = event.target.scrollTop;
-          if (currentScrollTop > lastScrollTop) {
-              nav.style.opacity = '0.2'; // Scrolling down
-          } else {
-              nav.style.opacity = '1'; // Scrolling up
-          }
-          lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+    const nav = document.querySelector('.nav');
+    if (nav) {
+      const currentScrollTop = event.target.scrollTop;
+      if (currentScrollTop > lastScrollTop) {
+        nav.style.opacity = '0.2'; // Scrolling down
+      } else {
+        nav.style.opacity = '1'; // Scrolling up
       }
+      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+    }
   };
 
   useEffect(() => {
@@ -148,7 +130,6 @@ function App() {
     };
   }, []);
 
-
   return (
     <div className="App-main">
       <AnimatedBackground isLoading={isLoading} opacity={backgroundOpacity} />
@@ -159,10 +140,10 @@ function App() {
             <button className="theme-toggle-button" onClick={toggleTheme}>
               {isDarkMode ? <MdSunny /> : <FaMoon />}
             </button>
-            {location.pathname !== '/projects' && location.pathname !== '/work' && (
+            {location.pathname !== '/projects' && !location.pathname.startsWith('/projects/') && !location.pathname.startsWith('/work/') && (
               <Contact isDarkMode={isDarkMode} />
             )}
-            {(location.pathname === '/projects' || location.pathname === '/work') ? (
+            {(location.pathname === '/projects' || location.pathname.startsWith('/projects/') || location.pathname.startsWith('/work/')) ? (
               <button className="home" onClick={showIntro}>
                 <FaHome />
               </button>
@@ -178,29 +159,20 @@ function App() {
                   <div className='buttons'>
                     <button className="button project" onClick={showProjects}>See my projects</button>
                     <button className="button works" onClick={showWork}>See my work</button>
-                    {/* <button className="button product" onClick={showProduct}>See my product</button> */}
                   </div>
                 </div>
               </animated.div>
             } />
-            <Route path="/projects" element={
+            <Route path="/projects/*" element={
               <animated.div style={projectTransitions} className='content'>
                 <Projects isDarkMode={isDarkMode} />
               </animated.div>
             } />
-            <Route path="/work" element={
+            <Route path="/work/*" element={
               <animated.div style={workTransitions} className='content'>
                 <Work isDarkMode={isDarkMode} />
               </animated.div>
             } />
-            {/* <Route path="/product" element={
-              <animated.div style={productTransitions} className='content'>
-                <Product isDarkMode={isDarkMode} />
-                <button className="home" onClick={showIntro}>
-                  🏠
-                </button>
-              </animated.div>
-            } /> */}
           </Routes>
         </div>
       </div>
