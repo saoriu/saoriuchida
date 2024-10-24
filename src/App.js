@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { useSpring, animated } from '@react-spring/web';
+import { FaHome, FaMoon } from 'react-icons/fa';
+import { MdSunny } from 'react-icons/md';
 import './App.css';
 import AnimatedBackground from './AnimatedBackground';
 import Projects from './Projects';
@@ -32,7 +34,6 @@ if (storedTheme) {
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [visibleComponent, setVisibleComponent] = useState('intro');
   const [backgroundOpacity, setBackgroundOpacity] = useState(1);
   const [isDarkMode, setIsDarkMode] = useState(storedTheme === 'dark');
@@ -59,22 +60,12 @@ function App() {
 
   const showIntro = () => {
     setVisibleComponent('intro');
-    setBackgroundOpacity(1);
+    setBackgroundOpacity(0.85);
     navigate('/');
   };
 
   useEffect(() => {
     preloadImages();
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
   }, []);
 
   useEffect(() => {
@@ -93,7 +84,7 @@ function App() {
       //   break;
       default:
         setVisibleComponent('intro');
-        setBackgroundOpacity(1);
+        setBackgroundOpacity(0.85);
         break;
     }
   }, [location.pathname]);
@@ -126,19 +117,60 @@ function App() {
     localStorage.setItem('theme', newTheme);
   };
 
+  let lastScrollTop = 0;
+  
+  const handleScroll = (event) => {
+      const nav = document.querySelector('.nav');
+      if (nav) {
+          const currentScrollTop = event.target.scrollTop;
+          if (currentScrollTop > lastScrollTop) {
+              nav.style.opacity = '0.2'; // Scrolling down
+          } else {
+              nav.style.opacity = '1'; // Scrolling up
+          }
+          lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; // For Mobile or negative scrolling
+      }
+  };
+
+  useEffect(() => {
+    const appMainElement = document.querySelector('.App');
+
+    if (appMainElement) {
+      // Attach the handleScroll function to the scroll event of the appMainElement
+      appMainElement.addEventListener('scroll', handleScroll);
+    }
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      if (appMainElement) {
+        appMainElement.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
+
   return (
     <div className="App-main">
       <AnimatedBackground isLoading={isLoading} opacity={backgroundOpacity} />
       <div className="App">
         <div className='App-content'>
           <Analytics />
-          <button className="theme-toggle-button" onClick={toggleTheme}>
-            {isDarkMode ? '🌞' : '🌜'}
-          </button>
+          <div className='nav'>
+            <button className="theme-toggle-button" onClick={toggleTheme}>
+              {isDarkMode ? <MdSunny /> : <FaMoon />}
+            </button>
+            <Contact isDarkMode={isDarkMode} />
+            {(location.pathname === '/projects' || location.pathname === '/work') ? (
+              <button className="home" onClick={showIntro}>
+                <FaHome />
+              </button>
+            ) : (
+              <div className="home-placeholder"></div>
+            )}
+          </div>
           <Routes>
             <Route path="/" element={
               <animated.div style={transitions} className='title'>
-                <Contact isDarkMode={isDarkMode}/>
                 <div className='intro'>
                   <h2>I'm Saori Uchida, a technical product manager and indie game developer based in New York 👩🏻‍💻</h2>
                   <div className='buttons'>
@@ -152,20 +184,14 @@ function App() {
             <Route path="/projects" element={
               <animated.div style={projectTransitions} className='content'>
                 <Projects isDarkMode={isDarkMode} />
-                <button className="home" onClick={showIntro}>
-                  🏠
-                </button>
               </animated.div>
             } />
             <Route path="/work" element={
               <animated.div style={workTransitions} className='content'>
                 <Work isDarkMode={isDarkMode} />
-                <button className="home" onClick={showIntro}>
-                  🏠
-                </button>
               </animated.div>
             } />
-             {/* <Route path="/product" element={
+            {/* <Route path="/product" element={
               <animated.div style={productTransitions} className='content'>
                 <Product isDarkMode={isDarkMode} />
                 <button className="home" onClick={showIntro}>

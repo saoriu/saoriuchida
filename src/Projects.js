@@ -7,8 +7,7 @@ import scraper from './images/scraper.png';
 import crafting from './images/crafting.png';
 import development from './images/development.png';
 import sweetbean from './images/sweetbean.png';
-import sweetpreview from './images/sweetpreview.png';
-import sweethome from './images/sweethome.png';
+import sweetpreview from './images/sweetbeanpreview.png';
 import { useSpring, animated } from '@react-spring/web';
 import { useNavigate } from 'react-router-dom';
 
@@ -211,8 +210,8 @@ function Projects({ isDarkMode }) {
 
     return (
         <div className='work' ref={appRef}>
-            <h3>MY PROJECTS</h3>
             <div className='exp'>
+            <h2>My projects</h2>
                 {selectedProject === null ? (
                     projects.map((project, index) => (
                         <animated.div

@@ -52,7 +52,7 @@ function AnimatedBackground({ isLoading, opacity }) {
     const wedgesElements = document.querySelectorAll('.wedge');
     setTimeout(() => {
       wedgesElements.forEach(wedge => {
-        wedge.style.opacity = '1';
+        wedge.style.opacity = '0.85';
       });
     }, 0); // Delay of 0ms
   }, []); // Empty dependency array ensures this effect only runs once

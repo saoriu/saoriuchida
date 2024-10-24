@@ -33,7 +33,7 @@ const jobs = [
     {
         logo: kickscrew,
         title: 'Sr. Technical Product Manager (current)',
-        summary: 'As the leader of the product organization, I led a transformation to the product operating model and championed a data-driven culture across the company. By employing a product strategy that centered discovery and risk analysis, we identified, prioritized, and tested more than 50 initatives in the span of a year, including a major and highly technical migration to a headless storefront — delivering significant performance and conversion improvements.',
+        summary: 'As the leader of the product organization, I led the transformation to the product operating model and championed a data-driven culture across the company. By employing a product strategy that centered continuous discovery around business objectives and real user needs, we identified, prioritized, and tested more than 50 initatives in the span of a year, including a major and highly technical migration to a headless storefront.',
         mainImage: headless,
         workSample: kickscrew,
         details: `
@@ -163,9 +163,11 @@ function Work({ isDarkMode }) {
         e.preventDefault();
         if (password === 'discover') {
             setShowSamples(true);
+            appRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
+        } else {
+            alert('Incorrect password. Please try again.');
         }
     };
-
     const fadeInOutSelected = useSpring({
         opacity: selectedJob !== null ? 1 : 0,
         transform: selectedJob !== null ? 'translateY(0)' : 'translateY(-20px)',
@@ -191,9 +193,9 @@ function Work({ isDarkMode }) {
 
     return (
         <div className='work' ref={appRef}>
-            <h3>MY WORK</h3>
             {!showSamples && (
                 <animated.div className='exp' style={fadeInOutExp}>
+                    {selectedJob === null && <h2>My work</h2>}
                     {selectedJob === null ? (
                         jobs.map((job, index) => (
                             <animated.div
@@ -273,7 +275,7 @@ function Work({ isDarkMode }) {
             )}
             {showSamples && (
                 <animated.div style={fadeInOutSamples}>
-                    <Samples />
+                    <Samples isDarkMode={isDarkMode} />
                 </animated.div>
             )}
         </div>

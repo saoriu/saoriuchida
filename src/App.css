@@ -6,6 +6,11 @@
 
 /* Root Variables */
 :root {
+  --fontSizes-XXXXXXL: 12rem;
+  --fontSizes-XXXXXL: 10rem;
+  --fontsizes-XXXXXL: 9.6rem;
+  --fontSizes-XXXXL: 7.2rem;
+  --fontSizes-XXXL: 6.4rem;
   --fontSizes-XXL: 4.8rem;
   --fontSizes-XL: 4rem;
   --fontSizes-L: 3.2rem;
@@ -17,27 +22,38 @@
   --fontSizes-XXXXS: 0.9rem;
   --fontSizes-XXXXXS: 0.7rem;
   --fontSizes-XXXXXXS: 0.5rem;
+  --lineHeights-XXXXL: 8rem;
+  --lineHeights-XXXL: 7.2rem;
+  --lineHeights-XXL: 6rem;
   --lineHeights-XL: 5rem;
   --lineHeights-L: 4.2rem;
   --lineHeights-M: 3.6rem;
   --lineHeights-S: 3rem;
   --lineHeights-XS: 2.6rem;
   --lineHeights-XXS: 180%;
+  /*  line heights xxxs to xxxxs */
+  --lineHeights-XXXS: 160%;
+  --lineHeights-XXXXS: 140%;
+
   --primary-color: #fafafa;
   --secondary-color: #fafafa;
   --text-color: #1b1a22;
   --modal-border-radius: 10px;
   --modal-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   --background-color: ivory;
+  --background-gradient: rgba(255, 255, 240, 0.95);
   --inverted-background-color: #1b1a22;
   --button-background: #1b1a22;
   --button-text: #fafafa;
+  --inverted-buttton-text: #1b1a22;
   --button-border: 1px solid #1b1a22;
-  --button-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  --text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+  --button-shadow: 0 4px 8px 0 rgb(32, 0, 53);
+  --text-shadow: 0 0 80px #ffffff, 0 0 80px #ffffff, 0 0 10px #ffffff;
   --emoji-shadow: 0 0 10px midnightblue, 0 0 20px midnightblue, 0 0 30px midnightblue;
   --border-color: #00000047;
-  --button-hover-background: rgb(37, 143, 237);
+  --button-hover-background: #1b1a22;
+  --button-text-hover: white;
+  --toggle-hover: #26034f;
 }
 
 [data-theme='dark'] {
@@ -45,14 +61,18 @@
   --secondary-color: #1b1a22;
   --text-color: #fafafa;
   --background-color: #1b1a22;
+  --background-gradient: rgba(27, 26, 34, 0.95);
   --inverted-background-color: #fafafa;
   --button-background: #fafafa;
   --button-text: #1b1a22;
+  --inverted-buttton-text: #fafafa;
   --button-border: 1px solid #fafafa;
   --button-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  --text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #0000;
+  --text-shadow: 0 0 80px #000000, 0 0 80px #000000, 0 0 10px #0000;
   --border-color: #fafafa1b;
-  --button-hover-background: rgb(37, 143, 237);
+  --button-hover-background: ivory;
+  --button-text-hover: black;
+  --toggle-hover: gold;
     --emoji-shadow: 0 0 10px rgba(255, 247, 223, 0.5), 0 0 20px rgba(255, 247, 223, 0.5), 0 0 30px rgba(255, 247, 223, 0.5);
 }
 
@@ -60,13 +80,12 @@
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  user-select: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: background-color 1s ease-in-out;
+  transition: background-color 0.7s ease-in-out;
 }
 
 .game-text {
@@ -81,43 +100,57 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
+h1 {
+  font-family: 'Yantramanav', sans-serif;
+  font-weight: 300;
+  color: var(--text-color);
+  transition: color 0.7s ease-in-out;
+  margin-top: 0;
+}
+
 h2 {
   font-weight: 300;
   font-family: 'Yantramanav', sans-serif;
   color: var(--text-color);
   margin-bottom: 0;
   /* transition the color */
-  transition: color 1s ease-in-out;
+  transition: color 0.7s ease-in-out;
 }
 
 h3 {
   margin-top: 0;
-  transition: color 1s ease-in-out;
+  transition: color 0.7s ease-in-out;
 }
 
 h4 {
-  transition: color 1s ease-in-out;
+  transition: color 0.7s ease-in-out;
 }
 
 p {
   font-family: 'Yantramanav', sans-serif;
   font-weight: 200;
   line-height: 1.5em;
-  transition: color 1s ease-in-out;
+  transition: color 0.7s ease-in-out;
 }
 
 .button {
   width: 200px;
   height: 65px;
-  background-color: var(--button-background);
+  background-color: transparent;
   border-radius: 50px;
+  text-transform: uppercase;
   position: relative;
-  color: var(--button-text);
+  color: var(--inverted-button-text);
   border: var(--button-border);
   overflow: hidden;
   z-index: 3;
   cursor: pointer;
-  transition: transform 1s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  transition: transform 0.7s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.intro button {
+  width: 100%  !important;
+  max-width: 200px;
 }
 
 .backhome {
@@ -128,6 +161,13 @@ p {
   width: 150px !important;
   height: 40px !important;
   font-size: var(--fontSizes-XXXXS) !important;
+}
+
+.home-placeholder {
+  width: 25.59px; /* Adjust this width to match the FaHome button */
+  height: 24px; /* Adjust this height to match the FaHome button */
+  display: inline-block;
+  margin-left: 30px;
 }
 
 .button:before {
@@ -153,15 +193,16 @@ p {
 }
 
 .button.works:before {
-  background: rgb(153, 133, 255) !important;
+  background: var(--button-hover-background);
   content: "";
+  color: var(--button-text-hover);
   inset: 0;
   position: absolute;
   transform: scaleX(0);
   border-radius: 0px;
   transform-origin: left;
   z-index: -1;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.7s ease-in-out;
 }
 
 .button.works:hover::before {
@@ -171,20 +212,22 @@ p {
 }
 
 .button.works:hover {
-  color: black;
-  border: 1px solid rgb(153, 133, 255) !important;
+  color: var(--button-text-hover);
+  border: var(--button-border);
+
 }
 
 .button.project:before {
-  background: rgb(235, 182, 106) !important;
+  background: var(--button-hover-background);
   content: "";
   inset: 0;
   position: absolute;
+  color: var(--button-text-hover);
   transform: scaleX(0);
   border-radius: 0px;
   transform-origin: left;
   z-index: -1;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.7s ease-in-out;
 }
 
 .button.project:hover::before {
@@ -194,23 +237,24 @@ p {
 }
 
 .button.project:hover {
-  color: black;
-  border: 1px solid rgb(235, 182, 106) !important;
+  color: var(--button-text-hover);
+  border: var(--button-border);
 }
 
 .buttons {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .theme-toggle-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  margin-right: 30px;
   width: auto; /* Adjust width to fit content */
   height: auto; /* Adjust height to fit content */
   background: transparent; /* No background */
-  color: var(--button-text);
+  color: var(--inverted-button-text);
   padding: 0; /* Remove padding */
   cursor: pointer;
   border: none; /* Remove border */
@@ -221,7 +265,7 @@ p {
   justify-content: center; /* Center the content */
   /* Add a shadow to the emoji */
   text-shadow: var(--emoji-shadow);
-  transition: text-shadow 1s ease-in-out;
+  transition: color 0.7s ease-in-out;
 }
 .theme-toggle-button::before {
   content: attr(data-emoji);
@@ -229,8 +273,7 @@ p {
 }
 
 .theme-toggle-button:hover {
-  color: var(--button-background); /* Ensure text color changes on hover */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  color: var(--toggle-hover);
 }
 
 .job-description {
@@ -256,7 +299,7 @@ p {
   justify-content: center;
   cursor: pointer;
   border-bottom: 1px solid var(--border-color);
-  transition: border-color 1s ease-in-out;
+  transition: border-color 0.7s ease-in-out;
 }
 
 .pending {
@@ -267,31 +310,74 @@ p {
   cursor: default !important;
 }
 
+.button.sample {
+  background-color: transparent !important;
+}
+
+.button.sample:before {
+  background: transparent !important;
+  position: absolute;
+  color: var(--button-text);
+  transform: none !important;
+  border-radius: 0px;
+  transform-origin: none !important;;
+  z-index: -1;
+  transition: transform 0.7s ease-in-out;
+}
+
+.button.sample:hover::before {
+  transform: none !important;;
+  animation: none;
+  transform-origin: left;
+}
+
+.button.sample:hover {
+  color: var(--button-text-hover);
+  border: var(--button-border);
+  background-color: var(--inverted-background-color) !important;
+}
+
+.button.sample:disabled {
+  opacity: 0.25 !important;
+  background-color: grey !important;
+  color: var(--button-text)  !important;
+  transform: none !important;
+  transform-origin: none !important;
+  cursor: not-allowed;
+  border: 1px solid grey !important;
+}
+
+.button:disabled::before {
+  transform: none !important;
+  transition: none !important;
+}
+
+.button:disabled:hover::before {
+  animation: none !important;
+  transform-origin: none !important;
+}
+
 .home {
   width: auto; /* Adjust width to fit content */
   height: auto; /* Adjust height to fit content */
   background: transparent; /* No background */
-  color: var(--button-text);
+  color: var(--inverted-button-text);
   padding: 0; /* Remove padding */
+  margin-left: 30px;
   cursor: pointer;
   border: none; /* Remove border */
   font-size: var(--fontSizes-XS);
   z-index: 1001;
-  position: fixed;
-  top: 20px;
-  left: 20px;
   /* Add a shadow to the emoji */
   text-shadow: var(--emoji-shadow);
-  transition: text-shadow 1s ease-in-out;
+  transition: color 0.7s ease-in-out;
 }
 .home::before {
   content: attr(data-emoji);
-  transition: opacity 0.5s ease-in-out;
 }
 
 .home:hover {
-  color: var(--button-background); /* Ensure text color changes on hover */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  color: var(--button-text-hover);
 }
 
 /* App Styles */
@@ -299,12 +385,19 @@ p {
   position: relative;
   height: 100%;
   overflow-x: hidden;
+  overflow-y: auto;
   color: var(--text-color);
-  padding: 0 120px;
+  padding: 0 60px;
 }
 
 .App-main {
   height: 100%;
+}
+
+.App-content {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 #root {
@@ -314,11 +407,17 @@ p {
 }
 
 .title {
-  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.main {
+  font-weight: 300;
+  text-shadow: var(--text-shadow);
+  transition: text-shadow 0.7s ease-in-out
 }
 
 .work, .projects {
@@ -327,6 +426,55 @@ p {
   align-items: center;
   gap: 20px;
   padding: 100px 100px;
+  width: 100%;
+}
+
+.pdf-container {
+  display: flex;
+  flex-direction: column; /* Stack content horizontally */
+  align-items: flex-start; /* Align items at the start of the container */
+  height: auto; /* Ensure the container height fits its content */
+}
+
+.pdfs {
+  flex: 1; 
+}
+
+.pdf-viewer {
+  flex: 2
+}
+
+.pdf-view {
+  max-height: 700px; /* Ensure it does not exceed the height of its parent */
+  overflow: auto; /* Add scroll if content overflows */
+  width: 100%;
+  margin-top: 25px;
+  border-radius: 8px;
+}
+
+.custom-toolbar {
+  background-color: var(--inverted-background-color);
+}
+
+.custom-toolbar button {
+  color: var(--secondary-color);
+}
+
+.samples {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.samples .buttons {
+  margin: 45px 0 !important;
+  align-items: flex-start !important;
+  justify-content: start !important;
+}
+
+.samples h2 {
+  margin-top: 0 !important;
 }
 
 /* Content Styles */
@@ -340,6 +488,7 @@ p {
   flex-direction: column;
   align-items: center;
   margin-bottom: 90px;
+  margin-top: 50px;
 }
 
 .link-container {
@@ -355,7 +504,7 @@ p {
 .logo-suki,
 .un-logo {
   cursor: pointer;
-  transition: filter 1s ease-in-out; /* Add transition for filter */
+  transition: filter 0.7s ease-in-out; /* Add transition for filter */
 }
 
 .logo {
@@ -382,14 +531,22 @@ p {
   filter: invert(0) grayscale(1) brightness(2);
 }
 
-.linkedin-logo.inverted {
-  /* make it black, its blue by default */
-  filter: invert(1) grayscale(1) brightness(2);
+.nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  position: fixed;
+  width: 100%;
+  padding: 35px 0 35px;
+  left: 0;
+  z-index: 9999;
+  transition: opacity 0.5s ease, background-color .5s ease-in-out;
+  background-color: transparent
 }
 
-.linkedin-logo {
-  /* make it blue, its black by default */
-  filter: invert(0) grayscale(1) brightness(0);
+.nav:hover {
+  opacity: 1 !important;
+  background-color: var(--background-gradient)
 }
 
 .main-image {
@@ -414,10 +571,23 @@ p {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  align-items: start;
+  align-items: flex-start;
   position: relative;
   text-shadow: var(--text-shadow);
-  transition: text-shadow 1s ease-in-out;
+  transition: text-shadow 0.7s ease-in-out;
+  word-break: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  width: 100%;
+}
+
+.intro .buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  flex: 2;
 }
 
 /* Hover Animation Styles */
@@ -445,7 +615,7 @@ p {
 /* Media Queries */
 @media only screen and (max-width: 449px) {
   .App {
-    padding: 0 25px !important;
+    padding: 0 15px !important;
   }
 
   .button {
@@ -467,6 +637,12 @@ p {
     display: none;
   }
 
+  .intro button {
+    max-width: 100% !important;
+    font-size: var(--fontSizes-XXXS);
+    height: 50px !important;
+  }
+
   .job {
     display: grid;
     margin-bottom: 0px;
@@ -474,7 +650,17 @@ p {
     grid-template-columns: 1fr; /* Two equal-width columns */
   }
 
+  .intro .buttons {
+    flex: 1 !important;
+  }
+  
+  .intro {
+    flex-direction: column !important;
+  }
 
+  h2 {
+    font-size: var(--fontSizes-S);
+  }
 
   .logo-container {
     width: 30px !important;
@@ -505,7 +691,7 @@ p {
 
 @media only screen and (min-width: 450px) and (max-width: 600px) {
   .App {
-    padding: 0 35px !important;
+    padding: 0 20px !important;
   }
 
   .button {
@@ -517,6 +703,12 @@ p {
     display: none;
   }
 
+  .intro button {
+    max-width: 100% !important;
+    font-size: var(--fontSizes-XXS);
+    height: 60px !important;
+  }
+
   .job {
     display: grid;
     gap: 20px;
@@ -524,7 +716,18 @@ p {
     grid-template-columns: 1fr; /* Two equal-width columns */
   }
 
+  .intro .buttons {
+    flex: 1 !important;
+  }
+  
+  .intro {
+    flex-direction: column !important;
+  }
 
+
+  h2 {
+    font-size: var(--fontSizes-M);
+  }
 
   .zontent {
     flex-direction: column;
@@ -556,7 +759,7 @@ p {
 
 @media only screen and (min-width: 601px) and (max-width: 900px) {
   .App {
-    padding: 0 80px !important;
+    padding: 0 35px !important;
   }
 
   .button {
@@ -580,15 +783,21 @@ p {
     grid-template-columns: 1fr; /* Two equal-width columns */
   }
 
-
-
   .work , .projects {
     padding: 80px 0px !important; 
   }
 
   h2 {
-    font-size: var(--fontSizes-M);
-    line-height: var(--lineHeights-M);
+    font-size: var(--fontSizes-L);
+  }
+
+  .intro .buttons {
+    flex: 1 !important;
+    height: 55px !important;
+  }
+  
+  .intro {
+    flex-direction: column !important;
   }
 
   p {
@@ -596,7 +805,7 @@ p {
   }
 
   small, .button {
-    font-size: var(--fontSizes-XXXXS);
+    font-size: var(--fontSizes-XXXS);
   }
 
   .logo {
@@ -610,7 +819,7 @@ p {
 
 @media only screen and (min-width: 901px) and (max-width: 1200px) {
   .App {
-    padding: 0 100px !important;
+    padding: 0 45px !important;
   }
 
   .button {
@@ -627,8 +836,7 @@ p {
   }
 
   h2 {
-    font-size: var(--fontSizes-L);
-    line-height: var(--lineHeights-L);
+    font-size: var(--fontSizes-XL);
   }
 
   p {
@@ -650,25 +858,12 @@ p {
 
 @media only screen and (min-width: 1201px) and (max-width: 1585px) {
   .App {
-    padding: 0 110px !important;
+    padding: 0 50px !important;
   }
 
   .button {
     width: 200px;
     height: 65px;
-  }
-
-  h2 {
-    font-size: var(--fontSizes-XL);
-    line-height: var(--lineHeights-XL);
-  }
-
-  p {
-    font-size: var(--fontSizes-XXS);
-  }
-
-  small, .button {
-    font-size: var(--fontSizes-XXXS);
   }
 
   .work , .projects {
@@ -678,12 +873,21 @@ p {
 }
 
 @media only screen and (min-width: 1201px) {
+  .App {
+    padding: 0 60px !important;
+  }
+
   h2 {
-    font-size: var(--fontSizes-XL);
+    font-size: var(--fontSizes-XXL);
   }
 
   p {
     font-size: var(--fontSizes-XXS);
+  }
+
+  .main h1 {
+    font-size: var(--fontSizes-XXXXXL);
+    line-height: var(--lineHeights-XXXXL);
   }
 
   small, .button {
@@ -718,7 +922,7 @@ p {
 
 
 .contact {
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
   align-items: center;
   gap: 25px;
@@ -786,21 +990,16 @@ form button[type="submit"]:active {
 }
 
 .email-logo,
+.linkedin-logo
 .github-logo {
-  fill: var(--text-color);
   width: 35px;
+  color: var(--text-color);
   cursor: pointer;
-  transition: fill 1s ease-out 0s, transform 0.3s ease-out;
-}
-
-.linkedin-logo {
-  width: 35px;
-  cursor: pointer;
-  transition: filter 1s ease-out 0s, transform 0.3s ease-out;
+  transition: fill 0.7s ease-out 0s, transform 0.3s ease-out;
 }
 
 .logo-container:hover .linkedin-logo {
-  filter: brightness(3);
+  fill: rgb(0, 119, 181);
   transform: translateY(-10px);
   transition: filter 0.3s ease-out 0s, transform 0.3s ease-out;
 }
@@ -812,7 +1011,7 @@ form button[type="submit"]:active {
 }
 
 .logo-container:hover .github-logo {
-  fill: rgb(199, 230, 106);
+  fill: #6e5494;
   transform: translateY(-10px);
   transition: fill 0.3s ease-out 0s, transform 0.3s ease-out;
 }
@@ -883,33 +1082,33 @@ form button[type="submit"]:active {
 }
 
 @keyframes glow {
-  0%, 100% { filter: drop-shadow(0 0 10px peachpuff) drop-shadow(0 0 20px peachpuff) drop-shadow(0 0 30px peachpuff) drop-shadow(0 0 40px peachpuff); }
-  20% { filter: drop-shadow(0 0 12px peachpuff) drop-shadow(0 0 22px peachpuff) drop-shadow(0 0 32px peachpuff) drop-shadow(0 0 42px peachpuff); }
-  40% { filter: drop-shadow(0 0 15px peachpuff) drop-shadow(0 0 25px peachpuff) drop-shadow(0 0 35px peachpuff) drop-shadow(0 0 45px peachpuff); }
-  60% { filter: drop-shadow(0 0 12px peachpuff) drop-shadow(0 0 22px peachpuff) drop-shadow(0 0 32px peachpuff) drop-shadow(0 0 42px peachpuff); }
-  80% { filter: drop-shadow(0 0 10px peachpuff) drop-shadow(0 0 20px peachpuff) drop-shadow(0 0 30px peachpuff) drop-shadow(0 0 40px peachpuff); }
+  0%, 100% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
+  20% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  40% { filter: drop-shadow(0 0 15px var(--button-hover-background)) drop-shadow(0 0 25px var(--button-hover-background)) drop-shadow(0 0 35px var(--button-hover-background)) drop-shadow(0 0 45px var(--button-hover-background)); }
+  60% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  80% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
 }
 
 @keyframes glow1-drop {
-  0%, 100% { filter: drop-shadow(0 0 10px rgb(153, 133, 255)) drop-shadow(0 0 20px rgb(153, 133, 255)) drop-shadow(0 0 30px rgb(153, 133, 255)) drop-shadow(0 0 40px rgb(153, 133, 255)); }
-  20% { filter: drop-shadow(0 0 12px rgb(153, 133, 255)) drop-shadow(0 0 22px rgb(153, 133, 255)) drop-shadow(0 0 32px rgb(153, 133, 255)) drop-shadow(0 0 42px rgb(153, 133, 255)); }
-  40% { filter: drop-shadow(0 0 15px rgb(153, 133, 255)) drop-shadow(0 0 25px rgb(153, 133, 255)) drop-shadow(0 0 35px rgb(153, 133, 255)) drop-shadow(0 0 45px rgb(153, 133, 255)); }
-  60% { filter: drop-shadow(0 0 12px rgb(153, 133, 255)) drop-shadow(0 0 22px rgb(153, 133, 255)) drop-shadow(0 0 32px rgb(153, 133, 255)) drop-shadow(0 0 42px rgb(153, 133, 255)); }
-  80% { filter: drop-shadow(0 0 10px rgb(153, 133, 255)) drop-shadow(0 0 20px rgb(153, 133, 255)) drop-shadow(0 0 30px rgb(153, 133, 255)) drop-shadow(0 0 40px rgb(153, 133, 255)); }
+  0%, 100% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
+  20% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  40% { filter: drop-shadow(0 0 15px var(--button-hover-background)) drop-shadow(0 0 25px var(--button-hover-background)) drop-shadow(0 0 35px var(--button-hover-background)) drop-shadow(0 0 45px var(--button-hover-background)); }
+  60% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  80% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
 }
 
 @keyframes glow2-drop {
-  0%, 100% { filter: drop-shadow(0 0 10px rgb(37, 143, 237)) drop-shadow(0 0 20px rgb(37, 143, 237)) drop-shadow(0 0 30px rgb(37, 143, 237)) drop-shadow(0 0 40px rgb(37, 143, 237)); }
-  20% { filter: drop-shadow(0 0 12px rgb(37, 143, 237)) drop-shadow(0 0 22px rgb(37, 143, 237)) drop-shadow(0 0 32px rgb(37, 143, 237)) drop-shadow(0 0 42px rgb(37, 143, 237)); }
-  40% { filter: drop-shadow(0 0 15px rgb(37, 143, 237)) drop-shadow(0 0 25px rgb(37, 143, 237)) drop-shadow(0 0 35px rgb(37, 143, 237)) drop-shadow(0 0 45px rgb(37, 143, 237)); }
-  60% { filter: drop-shadow(0 0 12px rgb(37, 143, 237)) drop-shadow(0 0 22px rgb(37, 143, 237)) drop-shadow(0 0 32px rgb(37, 143, 237)) drop-shadow(0 0 42px rgb(37, 143, 237)); }
-  80% { filter: drop-shadow(0 0 10px rgb(37, 143, 237)) drop-shadow(0 0 20px rgb(37, 143, 237)) drop-shadow(0 0 30px rgb(37, 143, 237)) drop-shadow(0 0 40px rgb(37, 143, 237)); }
+  0%, 100% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
+  20% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  40% { filter: drop-shadow(0 0 15px var(--button-hover-background)) drop-shadow(0 0 25px var(--button-hover-background)) drop-shadow(0 0 35px var(--button-hover-background)) drop-shadow(0 0 45px var(--button-hover-background)); }
+  60% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  80% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
 }
 
 @keyframes glow3-drop {
-  0%, 100% { filter: drop-shadow(0 0 10px rgb(235, 182, 106)) drop-shadow(0 0 20px rgb(235, 182, 106)) drop-shadow(0 0 30px rgb(235, 182, 106)) drop-shadow(0 0 40px rgb(235, 182, 106)); }
-  20% { filter: drop-shadow(0 0 12px rgb(235, 182, 106)) drop-shadow(0 0 22px rgb(235, 182, 106)) drop-shadow(0 0 32px rgb(235, 182, 106)) drop-shadow(0 0 42px rgb(235, 182, 106)); }
-  40% { filter: drop-shadow(0 0 15px rgb(235, 182, 106)) drop-shadow(0 0 25px rgb(235, 182, 106)) drop-shadow(0 0 35px rgb(235, 182, 106)) drop-shadow(0 0 45px rgb(235, 182, 106)); }
-  60% { filter: drop-shadow(0 0 12px rgb(235, 182, 106)) drop-shadow(0 0 22px rgb(235, 182, 106)) drop-shadow(0 0 32px rgb(235, 182, 106)) drop-shadow(0 0 42px rgb(235, 182, 106)); }
-  80% { filter: drop-shadow(0 0 10px rgb(235, 182, 106)) drop-shadow(0 0 20px rgb(235, 182, 106)) drop-shadow(0 0 30px rgb(235, 182, 106)) drop-shadow(0 0 40px rgb(235, 182, 106)); }
+  0%, 100% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
+  20% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  40% { filter: drop-shadow(0 0 15px var(--button-hover-background)) drop-shadow(0 0 25px var(--button-hover-background)) drop-shadow(0 0 35px var(--button-hover-background)) drop-shadow(0 0 45px var(--button-hover-background)); }
+  60% { filter: drop-shadow(0 0 12px var(--button-hover-background)) drop-shadow(0 0 22px var(--button-hover-background)) drop-shadow(0 0 32px var(--button-hover-background)) drop-shadow(0 0 42px var(--button-hover-background)); }
+  80% { filter: drop-shadow(0 0 10px var(--button-hover-background)) drop-shadow(0 0 20px var(--button-hover-background)) drop-shadow(0 0 30px var(--button-hover-background)) drop-shadow(0 0 40px var(--button-hover-background)); }
 }
