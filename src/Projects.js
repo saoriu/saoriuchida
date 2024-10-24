@@ -20,7 +20,7 @@ const attack5Frames = importFrames('attack5', 14);
 
 const projects = [
     { logo: sweetbean,
-        title: 'sweetbean',
+        title: 'sweetbean™',
         summary: 'My first business venture, a digital platform for all things beauty — fully designed, developed, and operated by myself. Coming soon!',
         mainImage: sweetbean,
         thumbnail: sweetpreview,
@@ -30,7 +30,7 @@ const projects = [
     ,
     {
         logo: sukiImage,
-        title: 'Suki Ran Away',
+        title: 'Suki Ran Away™',
         summary: 'An HTML5 game I designed and developed from the ground up. Built with JavaScript, utilizing Phaser3 and a Matter.js for game development, and featuring a React-based UI.',
         mainImage: sukiImage,
         ready: true,
@@ -38,7 +38,7 @@ const projects = [
         details: `
 <div className='modal-section'>
   <p className='modal-text'>
-    <strong>Suki Ran Away</strong> is a passion project I first started in high school, refined during my college years, and have continuously improved over time. It’s a rich, multi-faceted game that blends skill progression, player-versus-monster combat, resource gathering, item crafting, and equipment upgrades, all designed to offer dynamic gameplay.
+    <strong>Suki Ran Away™</strong> is a passion project I first started in high school, refined during my college years, and have continuously improved over time. It’s a rich, multi-faceted game that blends skill progression, player-versus-monster combat, resource gathering, item crafting, and equipment upgrades, all designed to offer dynamic gameplay.
   </p>
   <p className='modal-text'>
     I developed the frontend using <strong>JavaScript/JSX</strong>, employing <strong>Phaser3</strong> as the game development framework and <strong>Matter.js</strong> for physics, while utilizing <strong>React</strong> to manage the UI. The backend is powered by a custom-built <strong>RESTful API</strong> that handles player accounts and save data. An interesting choice of tech stack for a web-game, but since I was already familiar with these languages and frameworks, I've decided to stick with them as they work surprisingly well.

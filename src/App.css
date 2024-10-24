@@ -54,6 +54,7 @@
   --button-hover-background: #1b1a22;
   --button-text-hover: white;
   --toggle-hover: #26034f;
+  --button-text-hover-home: #26034f;
 }
 
 [data-theme='dark'] {
@@ -73,6 +74,7 @@
   --button-hover-background: ivory;
   --button-text-hover: black;
   --toggle-hover: gold;
+  --button-text-hover-home: ivory;
     --emoji-shadow: 0 0 10px rgba(255, 247, 223, 0.5), 0 0 20px rgba(255, 247, 223, 0.5), 0 0 30px rgba(255, 247, 223, 0.5);
 }
 
@@ -377,7 +379,7 @@ p {
 }
 
 .home:hover {
-  color: var(--button-text-hover);
+  color: var(--button-text-hover-home);
 }
 
 /* App Styles */
@@ -540,13 +542,12 @@ p {
   padding: 35px 0 35px;
   left: 0;
   z-index: 9999;
-  transition: opacity 0.5s ease, background-color .5s ease-in-out;
+  transition: opacity 0.5s ease;
   background-color: transparent
 }
 
 .nav:hover {
   opacity: 1 !important;
-  background-color: var(--background-gradient)
 }
 
 .main-image {

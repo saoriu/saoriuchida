@@ -159,7 +159,9 @@ function App() {
             <button className="theme-toggle-button" onClick={toggleTheme}>
               {isDarkMode ? <MdSunny /> : <FaMoon />}
             </button>
-            <Contact isDarkMode={isDarkMode} />
+            {location.pathname !== '/projects' && location.pathname !== '/work' && (
+              <Contact isDarkMode={isDarkMode} />
+            )}
             {(location.pathname === '/projects' || location.pathname === '/work') ? (
               <button className="home" onClick={showIntro}>
                 <FaHome />
