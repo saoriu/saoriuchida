@@ -252,7 +252,7 @@ function Projects({ isDarkMode }) {
                         </animated.div>
                         <animated.div style={fadeInOutSelected} className='job-details'>
                             <div className='job-description' dangerouslySetInnerHTML={{ __html: projects[selectedProject].details }} />
-                            {projects[selectedProject].title === 'Suki Ran Away' && projects[selectedProject].link && projects[selectedProject].linkFrames && (
+                            {projects[selectedProject].title === 'Suki Ran Away™' && projects[selectedProject].link && projects[selectedProject].linkFrames && (
                                 <div className='project-links'>
                                     <a href={projects[selectedProject].link} target="_blank" rel="noopener noreferrer" className='link-container'>
                                         <canvas
