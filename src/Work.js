@@ -82,14 +82,13 @@ function Work({ isDarkMode }) {
     return (
         <div className='work' ref={appRef}>
             {!showSamples && (
-                <animated.div className='exp' style={fadeInOutExp}>
-                    {selectedJob === null && (
-                        <div className='exp-title'>
+            <div className='exp'>
+                    {selectedJob === null && 
+                        <animated.div className='exp-title' style={fadeInOutNonSelected}>
                             <h2>My work</h2>
                             <p>With a background in economics and computer science, I found product management allows me to play to my strengths in data analysis and engage in my passion for solving technical problems. Specializing in e-commerce, I have led cross-functional teams through transformations that leverage new enabling technologies and data-driven insights to deliver measurable business outcomes while enhancing the user experience.</p>
-
-                        </div>
-                    )}
+                        </animated.div>
+                    }
                     {selectedJob === null ? (
                         jobs.map((job, index) => (
                             <animated.div
@@ -112,8 +111,24 @@ function Work({ isDarkMode }) {
                         ))
                     ) : (
                         <>
+                            <animated.div
+                                className={`job ${selectedJob !== null ? 'disabled' : ''}`}
+                                style={fadeInOutSelected}
+                                onClick={() => handleJobClick(selectedJob)}
+                            >
+                                <div>
+                                    <img className='main-image' src={jobs[selectedJob].mainImage} alt={`${jobs[selectedJob].title} main`} />
+                                </div>
+                                <div className='job-title'>
+                                    <div className='images'>
+                                        <img src={jobs[selectedJob].logo} alt={jobs[selectedJob].title} className={`logo ${isDarkMode ? 'invert' : ''}`} />
+                                    </div>
+                                    <h4>{jobs[selectedJob].title}</h4>
+                                    <p>{jobs[selectedJob].summary}</p>
+                                </div>
+                            </animated.div>
                             <animated.div style={fadeInOutSelected} className='job-details'>
-                                <div dangerouslySetInnerHTML={{ __html: jobs[selectedJob].details }} />
+                                <div className='job-description' dangerouslySetInnerHTML={{ __html: jobs[selectedJob].details }} />
                                 {jobs[selectedJob].workSample ? (
                                     <div className='form-container'>
                                         <p className='modal-text'>Enter password to view more detailed work samples</p>
@@ -147,7 +162,7 @@ function Work({ isDarkMode }) {
                             </animated.div>
                         </>
                     )}
-                </animated.div>
+                </div>
             )}
             {showSamples && (
                 <animated.div style={fadeInOutSamples}>

@@ -140,10 +140,10 @@ function App() {
             <button className="theme-toggle-button" onClick={toggleTheme}>
               {isDarkMode ? <MdSunny /> : <FaMoon />}
             </button>
-            {location.pathname !== '/projects' && !location.pathname.startsWith('/projects/') && !location.pathname.startsWith('/work/') && (
+            {location.pathname !== '/work' && location.pathname !== '/projects' && !location.pathname.startsWith('/projects/') && !location.pathname.startsWith('/work/') && (
               <Contact isDarkMode={isDarkMode} />
             )}
-            {(location.pathname === '/projects' || location.pathname.startsWith('/projects/') || location.pathname.startsWith('/work/')) ? (
+            {(location.pathname === '/work' || location.pathname === '/projects' || location.pathname.startsWith('/projects/') || location.pathname.startsWith('/work/')) ? (
               <button className="home" onClick={showIntro}>
                 <FaHome />
               </button>

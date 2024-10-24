@@ -200,6 +200,15 @@ p {
   color: var(--button-background);
 }
 
+.button.backhome:hover::before {
+  transform: none;
+  animation: none;
+}
+
+.button.backhome:hover {
+  color: inherit;
+}
+
 .button.works:before {
   background: var(--button-hover-background);
   content: "";
