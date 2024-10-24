@@ -40,7 +40,7 @@
   --text-color: #1b1a22;
   --modal-border-radius: 10px;
   --modal-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  --background-color: ivory;
+  --background-color: white;
   --background-gradient: rgba(255, 255, 240, 0.95);
   --inverted-background-color: #1b1a22;
   --button-background: #1b1a22;
@@ -61,7 +61,7 @@
   --primary-color: #1b1a22;
   --secondary-color: #1b1a22;
   --text-color: #fafafa;
-  --background-color: #1b1a22;
+  --background-color: black;
   --background-gradient: rgba(27, 26, 34, 0.95);
   --inverted-background-color: #fafafa;
   --button-background: #fafafa;
@@ -118,6 +118,11 @@ h2 {
   margin-top: 0;
   /* transition the color */
   transition: color 0.7s ease-in-out;
+}
+
+.exp-title p {
+  font-weight: 500;
+  font-size: var(--fontSizes-XXS);
 }
 
 h3 {

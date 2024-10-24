@@ -211,7 +211,12 @@ function Projects({ isDarkMode }) {
     return (
         <div className='work' ref={appRef}>
             <div className='exp'>
-            <h2>My projects</h2>
+                {selectedProject === null && 
+                    <animated.div className='exp-title' style={fadeInOutNonSelected}>
+                        <h2>My projects</h2>
+                        <p>Coding and web design have been creative outlets for me ever since I got my hands on the family computer running Windows 95. Over the years, I’ve learned languages like HTML, CSS, Javascript, and Python, as well as frameworks like React and Phaser, as a way to bring my ideas to life. Here are just a few of the many projects I’ve worked on independently.</p>
+                    </animated.div>
+                }
                 {selectedProject === null ? (
                     projects.map((project, index) => (
                         <animated.div

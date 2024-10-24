@@ -195,7 +195,12 @@ function Work({ isDarkMode }) {
         <div className='work' ref={appRef}>
             {!showSamples && (
                 <animated.div className='exp' style={fadeInOutExp}>
-                    {selectedJob === null && <h2>My work</h2>}
+                    {selectedJob === null && (
+                        <div className='exp-title'>
+                            <h2>My work</h2>
+                            <p>With a background in economics and computer science, I found product management allows me to play to my strengths in data analysis and engage in my passion for solving technical problems. Specializing in e-commerce, I have led cross-functional teams through transformations that leverage new enabling technologies and data-driven insights to deliver measurable business outcomes while enhancing the user experience.</p>
+                        </div>
+                    )}
                     {selectedJob === null ? (
                         jobs.map((job, index) => (
                             <animated.div
@@ -249,9 +254,7 @@ function Work({ isDarkMode }) {
                                             <button type="submit">Submit</button>
                                         </form>
                                     </div>
-                                ) : (
-                                    null
-                                )}
+                                ) : null}
                                 {jobs[selectedJob].images.map((image, idx) => (
                                     <div key={idx} className='modal-image-container'>
                                         {jobs[selectedJob].workSample ? (

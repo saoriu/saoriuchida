@@ -15,22 +15,22 @@ const Samples = ({ isDarkMode }) => {
     const pdfs = useMemo(() => ({
         discovery: {
             title: 'Discovery Framework',
-            description: 'This document outlines a structured approach to product discovery, as defined by product leaders Teresa Torres and Marty Cagan. It introduces the methods of opportunity mapping, assumption testing, stakeholder alignment, and a prioritization framework that I implemented in my team.',
+            description: 'This document outlines a structured approach to product discovery, as defined by product leaders Teresa Torres and Marty Cagan. It introduces the methods of opportunity mapping, assumption testing, continuous delivery, and a prioritization framework that I implemented as head of the product team.',
             fileUrl: discovery
         },
         headless: {
             title: 'Next.js Migration',
-            description: 'The headless migration document details the transition from a Shopify theme to a headless architecture using Next.js and React. It showcases the technical strategy, improvements in site performance, and how server-side rendering enhanced SEO and scalability for the platform.',
+            description: 'This work sample from the technical migration project I led, details the transition from a Shopify theme to a headless architecture using Next.js and React. As a stakeholder-facing document, it conveys the technical strategy, improvements in site performance, and the range of business benefits to be gained from the intiative.',
             fileUrl: headless
         },
         edd: {
             title: 'Estimated Delivery',
-            description: 'This document covers the Estimated Delivery Date (EDD) feature, including the technical implementation of location-based shipping estimates. It demonstrates how this feature increased user trust, improved conversion rates, and contributed to an overall enhanced shopping experience.',
+            description: 'This document covers the Estimated Delivery Date feature, including the technical implementation of location-based shipping estimates.',
             fileUrl: edd
         },
         prd: {
             title: 'Product Requirements',
-            description: 'The PRD outlines the requirements and specifications for key features and products. It showcases how technical, design, and business considerations are integrated to create actionable roadmaps that guide successful product development and execution.',
+            description: 'These PRDs showcase my philosophy and methodology for product management. With a focus on real user problems and a structured approach to the opportunity space, I rely on data-driven decisions and business objectives to deliver technical solutions at scale and with measurable impact on the user experience.',
             fileUrl: prd
         }
     }), []);
